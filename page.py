@@ -27,14 +27,16 @@ def main():
     fetched = [r["fetched_at_utc"] for r in records if r.get("fetched_at_utc")]
     window = f"{min(fetched)} to {max(fetched)}" if fetched else "see fetch_status.tsv"
     committees = Counter(r["committee"] for r in records if r["committee"])
+    types = Counter(r["event_type"] for r in records if r["event_type"])
     built = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     rows = []
     for r in records:
         bills = ", ".join(b["number"] for b in r["bills"]) or "—"
+        name = r["committee"] or r["subject"]
         rows.append(
             f'<tr><td><a href="{esc(r["source_url"])}">{r["id"]}</a></td>'
-            f'{cell(r["committee"])}{cell(r["event_date"])}{cell(r["start_time"])}'
+            f'{cell(r["event_type"])}{cell(name)}{cell(r["event_date"])}{cell(r["start_time"])}'
             f'{cell(r["status"])}{cell(r["location"])}'
             f'<td class="bills">{esc(bills)}</td>'
             f'<td class="stamp">{esc(r.get("fetched_at_utc") or "")}</td></tr>'
@@ -81,7 +83,7 @@ def main():
 <body>
 <div class="wrap">
 <h1>Massachusetts Legislature Hearing Page Archive</h1>
-<p class="sub">Archived copies of <code>malegislature.gov/Events/Hearings/Detail/{{id}}</code> pages, with the fields each page displayed at the moment it was fetched.</p>
+<p class="sub">Archived copies of <code>malegislature.gov/Events/Hearings/Detail/{{id}}</code> pages, with the fields each page displayed at the moment it was fetched. This id space carries {", ".join(f"{k} ({n})" for k, n in types.most_common())} pages; for hearings the named body is the committee, for other event types it is the subject.</p>
 
 <div class="scope">
   <h2>What this shows</h2>
@@ -92,6 +94,7 @@ def main():
 <div class="stats">
   <div><span>{len(records)}</span><small>pages archived</small></div>
   <div><span>{len(committees)}</span><small>committees named</small></div>
+  <div><span>{len(types)}</span><small>event types</small></div>
   <div><span>{sum(r["bill_count"] for r in records)}</span><small>bill references</small></div>
   <div><span>{esc(window.split(" to ")[0][:10])}</span><small>fetch window start</small></div>
 </div>
@@ -99,7 +102,7 @@ def main():
 <input id="q" type="search" placeholder="Filter by committee, date, status, bill number…" autocomplete="off">
 <div class="tablewrap">
 <table id="t">
-<thead><tr><th>ID</th><th>Committee</th><th>Event date</th><th>Start</th><th>Status</th><th>Location</th><th>Bills</th><th>Fetched (UTC)</th></tr></thead>
+<thead><tr><th>ID</th><th>Type</th><th>Committee / subject</th><th>Event date</th><th>Start</th><th>Status</th><th>Location</th><th>Bills</th><th>Fetched (UTC)</th></tr></thead>
 <tbody>
 {chr(10).join(rows)}
 </tbody>

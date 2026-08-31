@@ -36,6 +36,11 @@ LABELS = {
 }
 FIELDS = ["status", "event_date", "start_time", "location"]
 
+# The /Events/Hearings/Detail/ id space holds more than hearings: titles read
+# "<event type> Details - <name>". For a hearing the name is the committee; for
+# a conference committee meeting it is the bill subject, not a committee.
+TITLE_SPLIT = re.compile(r"\s+-\s+")
+
 
 def text(fragment):
     """HTML fragment -> collapsed plain text."""
@@ -47,7 +52,9 @@ def parse_page(hearing_id, raw_bytes):
     rec = {
         "id": hearing_id,
         "source_url": SOURCE_URL.format(hearing_id),
+        "event_type": None,
         "committee": None,
+        "subject": None,
         "status": None,
         "event_date": None,
         "start_time": None,
@@ -58,12 +65,17 @@ def parse_page(hearing_id, raw_bytes):
     tm = TITLE.search(doc)
     if tm:
         title = text(tm.group(1))
-        # "Hearing Details - <committee>"; committee is whatever follows.
-        parts = re.split(r"\s+-\s+", title, maxsplit=1)
-        if len(parts) == 2 and parts[1]:
-            rec["committee"] = parts[1]
-        elif title:
-            rec["committee"] = title
+        rec["page_title"] = title
+        parts = TITLE_SPLIT.split(title, maxsplit=1)
+        prefix = parts[0].strip()
+        if prefix.lower().endswith("details"):
+            rec["event_type"] = re.sub(r"\s*Details$", "", prefix, flags=re.I).strip() or None
+        name = parts[1].strip() if len(parts) == 2 else ""
+        if name:
+            if rec["event_type"] and rec["event_type"].lower() == "hearing":
+                rec["committee"] = name
+            else:
+                rec["subject"] = name
 
     for dt, dd in DT_DD.findall(doc):
         label = text(dt).rstrip(":").strip().lower()
@@ -102,16 +114,21 @@ def main():
     times = load_fetch_times()
 
     records, failures = [], Counter()
+    by_type, per_type = Counter(), Counter()
     empty_pages = []
     for path in paths:
         hearing_id = int(path.stem)
         rec = parse_page(hearing_id, path.read_bytes())
         rec["fetched_at_utc"] = times.get(hearing_id)
-        for field in ["committee"] + FIELDS:
+        kind = rec["event_type"] or "<unknown type>"
+        by_type[kind] += 1
+        for field in ["event_type", "committee", "subject"] + FIELDS:
             if rec[field] is None:
                 failures[field] += 1
+                per_type[(kind, field)] += 1
         if rec["bill_count"] == 0:
             failures["bills(empty)"] += 1
+            per_type[(kind, "bills(empty)")] += 1
         if all(rec[f] is None for f in FIELDS):
             empty_pages.append(hearing_id)
         records.append(rec)
@@ -120,12 +137,14 @@ def main():
     with CSV_OUT.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh)
         writer.writerow([
-            "id", "committee", "status", "event_date", "start_time", "location",
-            "bill_count", "bills", "source_url", "fetched_at_utc", "raw_sha256",
+            "id", "event_type", "committee", "subject", "status", "event_date",
+            "start_time", "location", "bill_count", "bills", "source_url",
+            "fetched_at_utc", "raw_sha256",
         ])
         for r in records:
             writer.writerow([
-                r["id"], r["committee"] or "", r["status"] or "", r["event_date"] or "",
+                r["id"], r["event_type"] or "", r["committee"] or "", r["subject"] or "",
+                r["status"] or "", r["event_date"] or "",
                 r["start_time"] or "", r["location"] or "", r["bill_count"],
                 ";".join(b["number"] for b in r["bills"]),
                 r["source_url"], r["fetched_at_utc"] or "", r["raw_sha256"],
@@ -133,11 +152,22 @@ def main():
 
     total = len(records)
     print(f"parsed {total} pages -> {JSON_OUT.name}, {CSV_OUT.name}")
-    print("\nextraction failures (missing field / pages):")
-    for field in ["committee"] + FIELDS + ["bills(empty)"]:
+    print("\npages by event type:")
+    for kind, n in by_type.most_common():
+        print(f"  {kind:<32} {n:>4}")
+
+    print("\nextraction failures (field absent / pages):")
+    for field in ["event_type", "committee", "subject"] + FIELDS + ["bills(empty)"]:
         n = failures[field]
         pct = 100.0 * n / total if total else 0.0
-        print(f"  {field:<14} {n:>4} / {total}  ({pct:.1f}%)")
+        detail = ", ".join(
+            f"{kind}: {per_type[(kind, field)]}/{by_type[kind]}"
+            for kind, _ in by_type.most_common()
+            if per_type[(kind, field)]
+        )
+        print(f"  {field:<14} {n:>4} / {total}  ({pct:.1f}%)" + (f"   [{detail}]" if detail else ""))
+    print("\nnote: committee is populated only for Hearing pages and subject only for"
+          "\nnon-hearing pages, so each is 'missing' on the other type by construction.")
     if empty_pages:
         print(f"\npages with no dt/dd fields at all ({len(empty_pages)}): "
               f"{empty_pages[:20]}{' ...' if len(empty_pages) > 20 else ''}")
