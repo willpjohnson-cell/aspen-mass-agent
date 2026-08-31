@@ -1,0 +1,33 @@
+{
+  "run_id": "20260831T224639+0000",
+  "monitor": "ma-hearings",
+  "kind": "recheck",
+  "started_utc": "2026-08-31T22:46:39+00:00",
+  "finished_utc": "2026-08-31T23:16:23+00:00",
+  "frontier": 5774,
+  "id_range": [
+    5000,
+    5774
+  ],
+  "pages_checked": 775,
+  "pages_archived_after_run": 643,
+  "new_pages": [],
+  "changed_pages": [],
+  "removed_pages": [],
+  "unchanged_pages": 0,
+  "chrome_only_differences": 643,
+  "ids_absent": 132,
+  "errors": [],
+  "compared_fields": [
+    "event_type",
+    "committee",
+    "subject",
+    "event_date",
+    "start_time",
+    "status",
+    "location",
+    "bills"
+  ],
+  "change_detection": "A page counts as changed when the hash of its parsed fields differs from the previous run. Pages whose bytes differ only in per-request markup (this source ships a weather widget and an ASP.NET verification token) are counted under chrome_only_differences and are not changes.",
+  "summary": "775 ids checked; no page changed since the previous run"
+}

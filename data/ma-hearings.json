@@ -19298,10 +19298,11 @@
     "location": "A-1 and Virtual",
     "general_court": 194,
     "bills": [
+      "S3201",
       "S3263",
+      "S3268",
       "H5642",
       "H5606",
-      "S3201",
       "H5609",
       "H5597",
       "H5579",
@@ -19310,10 +19311,10 @@
       "H5557",
       "H5525"
     ],
-    "bill_count": 11,
-    "raw_sha256": "2771775a52d881a889645d43f0338d89cce166c602e751071e3af613ed347aa3",
-    "raw_bytes": 96684,
-    "fetched_at_utc": "2026-08-31T03:30:39+00:00"
+    "bill_count": 12,
+    "raw_sha256": "8cfe76143ca791a86acd759a4700abfb63eb4bbcc88e6df26c5293b926ea4665",
+    "raw_bytes": 97281,
+    "fetched_at_utc": "2026-08-31T22:18:36+00:00"
   },
   {
     "id": 5771,
@@ -19322,16 +19323,16 @@
     "event_type": "Hearing",
     "committee": "Status of Persons with Disabilities",
     "subject": null,
-    "status": "Upcoming",
+    "status": "Completed",
     "event_date": "Monday, August 31, 2026",
     "start_time": "11:00 AM",
     "location": "Virtual Hearing",
     "general_court": null,
     "bills": [],
     "bill_count": 0,
-    "raw_sha256": "1dd26182b1f1f96f9e6407400ea4321cfb6949f164f39c0398b695af388bfd6e",
-    "raw_bytes": 94112,
-    "fetched_at_utc": "2026-08-31T03:30:31+00:00"
+    "raw_sha256": "ca81605e10a3717dcd14ca52ee065760b620865bc4123d4cb2aa6d9d959fdc56",
+    "raw_bytes": 93036,
+    "fetched_at_utc": "2026-08-31T22:18:34+00:00"
   },
   {
     "id": 5772,
@@ -19340,16 +19341,16 @@
     "event_type": "Hearing",
     "committee": "Status of Persons with Disabilities",
     "subject": null,
-    "status": "Upcoming",
+    "status": "Completed",
     "event_date": "Monday, August 31, 2026",
     "start_time": "12:00 PM",
     "location": "Virtual Hearing",
     "general_court": null,
     "bills": [],
     "bill_count": 0,
-    "raw_sha256": "c310be740e7995b29f21377cb98eda176abf618c75d8f41fb101533b5d6b05a9",
-    "raw_bytes": 92961,
-    "fetched_at_utc": "2026-08-31T03:30:37+00:00"
+    "raw_sha256": "b768b33ad09e47d746ce60eb9b4dada1eead9e506884e456dd73f1d2b224bc65",
+    "raw_bytes": 95038,
+    "fetched_at_utc": "2026-08-31T22:18:32+00:00"
   },
   {
     "id": 5773,
@@ -19358,16 +19359,16 @@
     "event_type": "Hearing",
     "committee": "Status of Persons with Disabilities",
     "subject": null,
-    "status": "Upcoming",
+    "status": "Completed",
     "event_date": "Monday, August 31, 2026",
     "start_time": "2:00 PM",
     "location": "Virtual Hearing",
     "general_court": null,
     "bills": [],
     "bill_count": 0,
-    "raw_sha256": "15b4b188dd3b350366d21ae19d89ad68f90e20bcd6af50a6119b64427ae6a273",
-    "raw_bytes": 91181,
-    "fetched_at_utc": "2026-08-31T03:30:33+00:00"
+    "raw_sha256": "830e780c291aed67465979f232f9503a2844f0db19ca9977481a435c63342647",
+    "raw_bytes": 93969,
+    "fetched_at_utc": "2026-08-31T22:18:30+00:00"
   },
   {
     "id": 5774,
