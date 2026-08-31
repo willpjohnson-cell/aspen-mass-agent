@@ -62,10 +62,10 @@
 <header>
     
         <div class="visible-lg-inline weatherBox">
-    <span class="weatherDate">August 31, 2026</span>
-    <img id="wicon" class="weatherIcon" src="https://openweathermap.org/img/w/03d.png" alt="Clouds">
+    <span class="weatherDate">August 30, 2026</span>
+    <img id="wicon" class="weatherIcon" src="https://openweathermap.org/img/w/04n.png" alt="Clouds">
     <span class="weatherDivider"> &#124; </span>
-    <span class="weatherStats">75&deg;F</span>
+    <span class="weatherStats">71&deg;F</span>
 </div>
 
     
@@ -111,7 +111,7 @@
     <input type="submit" value="Signing In..." class="btn btn-default btn-lg fnEnd" style="display: none" />
 </div>
 
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5at3IQcXi4swp5Vdd4eghMuZYUDayQE6YOgZdnVxr0_XymkxDXU1BHQNGniOGCFgLFn2ekgAXc82P5zL0gz6tl6xg31QlMDk1A45V_IhY0WhGNccZjGuy2ZgIUhuUvlPE" /></form>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5vidAEPy-s3fDxwgBqYICBVAgtKy4q0PyxzGNRCUbdz-LduP4M3W-k576DXVm0BnYmr0x6Kp0x6LvjR2tXG13mGCXbtuAVlA0aPptTxibPrITE-svvWDzQNDl0ul2FJGE" /></form>
 <div class="form-group text-center">
     <button type="button" onclick="window.location='/Account/ExternalLogin?provider=Facebook';" class="btn btn-facebook btn-md oauthButton"><span class="fa fa-facebook-official fa-fw"></span> Sign in with Facebook</button>
     <button type="button" onclick="window.location='/Account/ExternalLogin?provider=Google';" class="btn btn-google btn-md oauthButton"><span class="fa fa-google-plus fa-fw"></span> Sign in with Google</button>
@@ -1394,7 +1394,7 @@
         <h2>Event Details</h2>
         <dl class="eventInformation">
                 <dt class="col-xs-4 col-sm-12 col-md-4">Status:</dt>
-                <dd class="col-xs-8 col-sm-12 col-md-8">Completed</dd>
+                <dd class="col-xs-8 col-sm-12 col-md-8">Upcoming</dd>
             <dt class="col-xs-4 col-sm-12 col-md-4">Event Date:</dt>
             <dd class="col-xs-8 col-sm-12 col-md-8">
                 Monday, August 31, 2026
@@ -1454,6 +1454,21 @@ Virtual Hearing<br />
 <li class="MsoNormal" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-list: l3 level1 lfo2; tab-stops: list .5in;"><span style="font-family: 'Times New Roman',serif; mso-fareast-font-family: 'Times New Roman'; color: black;">To view details from previous meetings, visit the Commission&rsquo;s website </span><a href="https://www.mass.gov/orgs/permanent-commission-on-the-status-of-persons-with-disabilities"><span style="font-family: 'Times New Roman',serif; mso-fareast-font-family: 'Times New Roman';">here!</span></a></li>
 </ul></dd>
 
+                <dt id="toggleLabel" class="col-xs-12">Subscribe For Updates Through MyLegislature</dt>
+                <dd class="col-xs-12">
+                    
+    <div class="toggle toggleFull" data-toggle="modal" data-target="#exclusiveFeatureModal">
+        <input name="toggle" type="checkbox" value="1"/>
+        <div class="btn">
+            <label for="toggle">
+                <span class="toggle-on btn btn-primary"><span class="sr-only">Subscribe to hearing</span></span>
+                <span class="toggle-handle btn btn-default"></span>
+                <span class="toggle-off btn btn-default active"></span>
+            </label>
+        </div>
+    </div>
+
+                </dd>
         </dl>
 
     </aside>
@@ -1461,38 +1476,6 @@ Virtual Hearing<br />
             </div>
             <div class="col-xs-12 col-sm-8">
                 
-    <table class="table table-striped">
-        <caption class="sr-only">Videos</caption>
-        <thead>
-            <tr>
-                <th scope="col">Item Name</th>
-                <th scope="col">Start Time</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Webcast</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                    <td>Status of Persons with Disabilities-Disability Employment Subcommittee -8-31-2026</td>
-                    <td>8/31/2026 12:00 PM</td>
-                    <td>
-                        00:48:17
-                    </td>
-                    <td class="text-center"> <button aria-label="Play webcast from beginning" id="playWebcast" onclick="switchVideo('https://prodarchivevideo.blob.core.windows.net/video/2026/Hearings/Joint/August/31Status%20of%20Persons%20with%20Disabilities-Disability%20Employment%20Subcommittee%20-8-31-2026.mp4', '1')" style="border:none; background: transparent;"><span class="fa fa-play"></span></button></td>
-                </tr>
-
-        </tbody>
-    </table>
-        <script>
-            function switchVideo(url, index) {
-                $('td.text-center').find('span.fa.fa-play').attr('class', 'fa fa-video-camera');
-                $(event.currentTarget).find('span.fa.fa-video-camera').attr('class', 'fa fa-play');
-                var player = videojs('video');
-                player.src({ src: url });
-                player.play();
-                    history.pushState(null, null, '/Events/Hearings/Detail/5772' + (index > 0 ? ('/Video' + index) : ''));
-            }
-        </script>
 <script>
     $(document).ready(function () {
         $('#languageDropdown').change(function () {
@@ -1510,32 +1493,14 @@ Virtual Hearing<br />
 
 
                 
-    <div class="eventVideoContainer">
-
-            <link rel="stylesheet" href="/Content/video-js.css" />
-            <script src="/Scripts/video.min.js"></script>
-            <script src="/Scripts/videojs-ie8.min.js"></script>
-            <video id="video" class="video-js" controls preload="none" width="640" height="360"
-                   poster="/Content/Images/DefaultVideoThumbnail.jpg">
-                <source src="https://prodarchivevideo.blob.core.windows.net/video/2026/Hearings/Joint/August/31Status%20of%20Persons%20with%20Disabilities-Disability%20Employment%20Subcommittee%20-8-31-2026.mp4" type='video/mp4'>
-                <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                </p>
-            </video>
-            <script>
-                $(document).ready(intializeVideo('video'));
-
-                //initializes a video with a specific id if it doesn't already exist
-                function intializeVideo(id) {
-                    if (!$('#' + id).find('.vjs-tech').length)
-                        videojs(id, {}, function () {
-                            techOrder: ["html5", "flash"]
-                        });
-                };
-
-            </script>
-    </div>
+        <div class="well upcomingVideo">
+            <h2 class="h3">Video is upcoming</h2>
+            <span class="fa fa-video-camera"></span>
+            The video for this event will start at
+            <span class="time">
+                11:30 AM
+            </span>
+        </div>
 
 
 
@@ -1846,7 +1811,7 @@ Virtual Hearing<br />
 </div>
 <button class="btn btn-primary btn-lg btn-default actionButton fnStart" type="submit">Register</button>
 <button class="btn btn-primary btn-lg btn-default actionButton fnEnd" style="display: none" type="button" disabled>Registering...</button>
-                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5at3IQcXi4swp5Vdd4eghMuZYUDayQE6YOgZdnVxr0_XymkxDXU1BHQNGniOGCFgLFn2ekgAXc82P5zL0gz6tl6xg31QlMDk1A45V_IhY0WhGNccZjGuy2ZgIUhuUvlPE" /></form>
+                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5vidAEPy-s3fDxwgBqYICBVAgtKy4q0PyxzGNRCUbdz-LduP4M3W-k576DXVm0BnYmr0x6Kp0x6LvjR2tXG13mGCXbtuAVlA0aPptTxibPrITE-svvWDzQNDl0ul2FJGE" /></form>
                     </div>
                 </div>
             </div>
@@ -1900,7 +1865,7 @@ Virtual Hearing<br />
     <button type="submit" class="btn btn-primary btn-lg btn-default actionButton fnStart">Sign In</button>
     <button class="btn btn-primary btn-lg btn-default actionButton fnEnd" style="display: none">Signing In...</button>
 </div>
-                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5at3IQcXi4swp5Vdd4eghMuZYUDayQE6YOgZdnVxr0_XymkxDXU1BHQNGniOGCFgLFn2ekgAXc82P5zL0gz6tl6xg31QlMDk1A45V_IhY0WhGNccZjGuy2ZgIUhuUvlPE" /></form>
+                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5vidAEPy-s3fDxwgBqYICBVAgtKy4q0PyxzGNRCUbdz-LduP4M3W-k576DXVm0BnYmr0x6Kp0x6LvjR2tXG13mGCXbtuAVlA0aPptTxibPrITE-svvWDzQNDl0ul2FJGE" /></form>
                     </div>
                 </div>
             </div>
@@ -1941,7 +1906,7 @@ Virtual Hearing<br />
         </div>
     </div>
 
-                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5at3IQcXi4swp5Vdd4eghMuZYUDayQE6YOgZdnVxr0_XymkxDXU1BHQNGniOGCFgLFn2ekgAXc82P5zL0gz6tl6xg31QlMDk1A45V_IhY0WhGNccZjGuy2ZgIUhuUvlPE" /></form>
+                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OpjZjy4Bd9NilwnbDxAiR5vidAEPy-s3fDxwgBqYICBVAgtKy4q0PyxzGNRCUbdz-LduP4M3W-k576DXVm0BnYmr0x6Kp0x6LvjR2tXG13mGCXbtuAVlA0aPptTxibPrITE-svvWDzQNDl0ul2FJGE" /></form>
             </div>
         </div>
     </div>
