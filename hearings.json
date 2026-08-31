@@ -1,0 +1,6015 @@
+[
+  {
+    "id": 5477,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5477",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Children, Families and Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H202",
+        "general_court": 194
+      },
+      {
+        "number": "H210",
+        "general_court": 194
+      },
+      {
+        "number": "H215",
+        "general_court": 194
+      },
+      {
+        "number": "H216",
+        "general_court": 194
+      },
+      {
+        "number": "H226",
+        "general_court": 194
+      },
+      {
+        "number": "H240",
+        "general_court": 194
+      },
+      {
+        "number": "H245",
+        "general_court": 194
+      },
+      {
+        "number": "H260",
+        "general_court": 194
+      },
+      {
+        "number": "H279",
+        "general_court": 194
+      },
+      {
+        "number": "H280",
+        "general_court": 194
+      },
+      {
+        "number": "H285",
+        "general_court": 194
+      },
+      {
+        "number": "H289",
+        "general_court": 194
+      },
+      {
+        "number": "H291",
+        "general_court": 194
+      },
+      {
+        "number": "H4194",
+        "general_court": 194
+      },
+      {
+        "number": "S126",
+        "general_court": 194
+      },
+      {
+        "number": "S143",
+        "general_court": 194
+      },
+      {
+        "number": "S166",
+        "general_court": 194
+      },
+      {
+        "number": "S169",
+        "general_court": 194
+      },
+      {
+        "number": "S2714",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Children, Families and Persons with Disabilities",
+    "bill_count": 19,
+    "raw_sha256": "21528630b9b12c2f73bf1895c86ec9d5699f7b4920a1c1ba7e2dd553654e6da0",
+    "raw_bytes": 154999,
+    "fetched_at_utc": "2026-08-31T03:41:06+00:00"
+  },
+  {
+    "id": 5478,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5478",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on the Judiciary",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H1597",
+        "general_court": 194
+      },
+      {
+        "number": "H1652",
+        "general_court": 194
+      },
+      {
+        "number": "H1662",
+        "general_court": 194
+      },
+      {
+        "number": "H1663",
+        "general_court": 194
+      },
+      {
+        "number": "H1665",
+        "general_court": 194
+      },
+      {
+        "number": "H1697",
+        "general_court": 194
+      },
+      {
+        "number": "H1698",
+        "general_court": 194
+      },
+      {
+        "number": "H4261",
+        "general_court": 194
+      },
+      {
+        "number": "H1741",
+        "general_court": 194
+      },
+      {
+        "number": "H1749",
+        "general_court": 194
+      },
+      {
+        "number": "H1755",
+        "general_court": 194
+      },
+      {
+        "number": "H1756",
+        "general_court": 194
+      },
+      {
+        "number": "H1757",
+        "general_court": 194
+      },
+      {
+        "number": "H4218",
+        "general_court": 194
+      },
+      {
+        "number": "H2454",
+        "general_court": 194
+      },
+      {
+        "number": "H1793",
+        "general_court": 194
+      },
+      {
+        "number": "H1801",
+        "general_court": 194
+      },
+      {
+        "number": "H1812",
+        "general_court": 194
+      },
+      {
+        "number": "H1815",
+        "general_court": 194
+      },
+      {
+        "number": "H1867",
+        "general_court": 194
+      },
+      {
+        "number": "H1899",
+        "general_court": 194
+      },
+      {
+        "number": "H1913",
+        "general_court": 194
+      },
+      {
+        "number": "H1923",
+        "general_court": 194
+      },
+      {
+        "number": "H4412",
+        "general_court": 194
+      },
+      {
+        "number": "H1959",
+        "general_court": 194
+      },
+      {
+        "number": "H1985",
+        "general_court": 194
+      },
+      {
+        "number": "H1991",
+        "general_court": 194
+      },
+      {
+        "number": "H2003",
+        "general_court": 194
+      },
+      {
+        "number": "H2005",
+        "general_court": 194
+      },
+      {
+        "number": "H2017",
+        "general_court": 194
+      },
+      {
+        "number": "H2018",
+        "general_court": 194
+      },
+      {
+        "number": "H2051",
+        "general_court": 194
+      },
+      {
+        "number": "H2054",
+        "general_court": 194
+      },
+      {
+        "number": "H2063",
+        "general_court": 194
+      },
+      {
+        "number": "S1073",
+        "general_court": 194
+      },
+      {
+        "number": "S1087",
+        "general_court": 194
+      },
+      {
+        "number": "S1115",
+        "general_court": 194
+      },
+      {
+        "number": "S1117",
+        "general_court": 194
+      },
+      {
+        "number": "S1173",
+        "general_court": 194
+      },
+      {
+        "number": "S1176",
+        "general_court": 194
+      },
+      {
+        "number": "S1244",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on the Judiciary",
+    "bill_count": 41,
+    "raw_sha256": "717b2c459541072b349549396bc37c4d1e29169e1586e87ff886cb9c58743d06",
+    "raw_bytes": 117362,
+    "fetched_at_utc": "2026-08-31T03:41:03+00:00"
+  },
+  {
+    "id": 5479,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5479",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "10:00 AM",
+    "location": "Original Location A-1 and Virtual New Location B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H3010",
+        "general_court": 194
+      },
+      {
+        "number": "H3017",
+        "general_court": 194
+      },
+      {
+        "number": "H3044",
+        "general_court": 194
+      },
+      {
+        "number": "H3048",
+        "general_court": 194
+      },
+      {
+        "number": "H3059",
+        "general_court": 194
+      },
+      {
+        "number": "H3081",
+        "general_court": 194
+      },
+      {
+        "number": "H3087",
+        "general_court": 194
+      },
+      {
+        "number": "H3135",
+        "general_court": 194
+      },
+      {
+        "number": "H3137",
+        "general_court": 194
+      },
+      {
+        "number": "H3150",
+        "general_court": 194
+      },
+      {
+        "number": "H3151",
+        "general_court": 194
+      },
+      {
+        "number": "H3153",
+        "general_court": 194
+      },
+      {
+        "number": "H3169",
+        "general_court": 194
+      },
+      {
+        "number": "H3172",
+        "general_court": 194
+      },
+      {
+        "number": "H3173",
+        "general_court": 194
+      },
+      {
+        "number": "H3203",
+        "general_court": 194
+      },
+      {
+        "number": "H3210",
+        "general_court": 194
+      },
+      {
+        "number": "H3251",
+        "general_court": 194
+      },
+      {
+        "number": "H3262",
+        "general_court": 194
+      },
+      {
+        "number": "H3270",
+        "general_court": 194
+      },
+      {
+        "number": "H4128",
+        "general_court": 194
+      },
+      {
+        "number": "H4325",
+        "general_court": 194
+      },
+      {
+        "number": "S1944",
+        "general_court": 194
+      },
+      {
+        "number": "S1963",
+        "general_court": 194
+      },
+      {
+        "number": "S1976",
+        "general_court": 194
+      },
+      {
+        "number": "S1981",
+        "general_court": 194
+      },
+      {
+        "number": "S1983",
+        "general_court": 194
+      },
+      {
+        "number": "S1989",
+        "general_court": 194
+      },
+      {
+        "number": "S1990",
+        "general_court": 194
+      },
+      {
+        "number": "S1995",
+        "general_court": 194
+      },
+      {
+        "number": "S2032",
+        "general_court": 194
+      },
+      {
+        "number": "S2056",
+        "general_court": 194
+      },
+      {
+        "number": "S2066",
+        "general_court": 194
+      },
+      {
+        "number": "S2075",
+        "general_court": 194
+      },
+      {
+        "number": "S2088",
+        "general_court": 194
+      },
+      {
+        "number": "S2098",
+        "general_court": 194
+      },
+      {
+        "number": "H3062",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 37,
+    "raw_sha256": "ea7d9ee58f8980013d75c70083beafb55210416834cfbe6e98ea6d293b70e87e",
+    "raw_bytes": 115893,
+    "fetched_at_utc": "2026-08-31T03:41:00+00:00"
+  },
+  {
+    "id": 5480,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5480",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on the Census",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, December 8, 2025",
+    "start_time": "9:30 AM",
+    "location": "B-1",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on the Census",
+    "bill_count": 0,
+    "raw_sha256": "4a490aad9dbae5a35c1adaf0dd05f9c4c8c59a13afb9e5f8e9873394a3490872",
+    "raw_bytes": 88432,
+    "fetched_at_utc": "2026-08-31T03:40:58+00:00"
+  },
+  {
+    "id": 5481,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5481",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "9:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "a8140717a571c47c46e5a3878efe420ede49fee3cfa369782ab414cede00c4bd",
+    "raw_bytes": 84451,
+    "fetched_at_utc": "2026-08-31T03:40:56+00:00"
+  },
+  {
+    "id": 5482,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5482",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "2:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "9f7c7ea708ff245bcd487e2f7b33f7b3667380838c392e4afa1ab62381ba73a1",
+    "raw_bytes": 84402,
+    "fetched_at_utc": "2026-08-31T03:40:54+00:00"
+  },
+  {
+    "id": 5483,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5483",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "2:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "6e5f71059b6a50e5bec43aa259b36b66181d970da61e0738461ff3b7998ca574",
+    "raw_bytes": 88313,
+    "fetched_at_utc": "2026-08-31T03:40:52+00:00"
+  },
+  {
+    "id": 5484,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5484",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 13, 2025",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "a27ec4288d05d610e28dcca5c178af1a8f5bcef3f07275e944cd0dbd03e98a3b",
+    "raw_bytes": 97456,
+    "fetched_at_utc": "2026-08-31T03:40:50+00:00"
+  },
+  {
+    "id": 5485,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5485",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Housing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 10, 2025",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "S2701",
+        "general_court": 194
+      },
+      {
+        "number": "S2644",
+        "general_court": 194
+      },
+      {
+        "number": "H4378",
+        "general_court": 194
+      },
+      {
+        "number": "H4311",
+        "general_court": 194
+      },
+      {
+        "number": "H4288",
+        "general_court": 194
+      },
+      {
+        "number": "H4289",
+        "general_court": 194
+      },
+      {
+        "number": "H4290",
+        "general_court": 194
+      },
+      {
+        "number": "H4186",
+        "general_court": 194
+      },
+      {
+        "number": "H4318",
+        "general_court": 194
+      },
+      {
+        "number": "H3909",
+        "general_court": 194
+      },
+      {
+        "number": "H3921",
+        "general_court": 194
+      },
+      {
+        "number": "H3988",
+        "general_court": 194
+      },
+      {
+        "number": "H3934",
+        "general_court": 194
+      },
+      {
+        "number": "H4228",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Housing",
+    "bill_count": 14,
+    "raw_sha256": "ad8dd54a7b2099258fc57eced1b0be222d186be5a2ed01275374e071cfb71692",
+    "raw_bytes": 106428,
+    "fetched_at_utc": "2026-08-31T03:40:48+00:00"
+  },
+  {
+    "id": 5486,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5486",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H670",
+        "general_court": 194
+      },
+      {
+        "number": "S455",
+        "general_court": 194
+      },
+      {
+        "number": "H752",
+        "general_court": 194
+      },
+      {
+        "number": "H717",
+        "general_court": 194
+      },
+      {
+        "number": "S442",
+        "general_court": 194
+      },
+      {
+        "number": "H691",
+        "general_court": 194
+      },
+      {
+        "number": "H654",
+        "general_court": 194
+      },
+      {
+        "number": "H646",
+        "general_court": 194
+      },
+      {
+        "number": "H608",
+        "general_court": 194
+      },
+      {
+        "number": "H607",
+        "general_court": 194
+      },
+      {
+        "number": "H546",
+        "general_court": 194
+      },
+      {
+        "number": "S317",
+        "general_court": 194
+      },
+      {
+        "number": "H511",
+        "general_court": 194
+      },
+      {
+        "number": "H505",
+        "general_court": 194
+      },
+      {
+        "number": "S454",
+        "general_court": 194
+      },
+      {
+        "number": "S430",
+        "general_court": 194
+      },
+      {
+        "number": "S383",
+        "general_court": 194
+      },
+      {
+        "number": "S365",
+        "general_court": 194
+      },
+      {
+        "number": "S313",
+        "general_court": 194
+      },
+      {
+        "number": "H4217",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 20,
+    "raw_sha256": "ac1e3798340596ef09bfef4a57a501ad92ad9eb538cf61d61fab5403d23499fb",
+    "raw_bytes": 101003,
+    "fetched_at_utc": "2026-08-31T03:40:46+00:00"
+  },
+  {
+    "id": 5487,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5487",
+    "event_type": "Hearing",
+    "committee": "Combatting Antisemitism",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, November 14, 2025",
+    "start_time": "10:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Combatting Antisemitism",
+    "bill_count": 0,
+    "raw_sha256": "76f512f6efde2c758833ffd252aee8a97ccf776d7ca04acb7ed9615508ce7676",
+    "raw_bytes": 105242,
+    "fetched_at_utc": "2026-08-31T03:40:44+00:00"
+  },
+  {
+    "id": 5489,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5489",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 25, 2025",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4688",
+        "general_court": 194
+      },
+      {
+        "number": "H4737",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 2,
+    "raw_sha256": "e5dc93bfe9569e055f32d999d464c118480452c9e119f6913473829affb40c9b",
+    "raw_bytes": 176918,
+    "fetched_at_utc": "2026-08-31T03:40:39+00:00"
+  },
+  {
+    "id": 5490,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5490",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 25, 2025",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "afaf0d387d77033a884d7eb94071953ef43094c054a025c03b34c022e1ccdc08",
+    "raw_bytes": 86169,
+    "fetched_at_utc": "2026-08-31T03:40:37+00:00"
+  },
+  {
+    "id": 5491,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5491",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "9b3ea0f699a4b11d2f1265648b0d1fb52d805d28ca198ec6c58cc0409f5e81fd",
+    "raw_bytes": 97454,
+    "fetched_at_utc": "2026-08-31T03:40:35+00:00"
+  },
+  {
+    "id": 5492,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5492",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "fbd8940dd6ab63f5efe76caa5251920133d56fa90ac87fa569bca0c93e3f238e",
+    "raw_bytes": 98522,
+    "fetched_at_utc": "2026-08-31T03:40:33+00:00"
+  },
+  {
+    "id": 5493,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5493",
+    "event_type": "Hearing",
+    "committee": "250th Anniversary Celebration of the American Revolution",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "3:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - 250th Anniversary Celebration of the American Revolution",
+    "bill_count": 0,
+    "raw_sha256": "1a0b69dbe3dde519ee7265fa9da3e6240f833a63168b00925fa3929eb5a97c2a",
+    "raw_bytes": 84970,
+    "fetched_at_utc": "2026-08-31T03:40:31+00:00"
+  },
+  {
+    "id": 5494,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5494",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on the Judiciary",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 25, 2025",
+    "start_time": "10:00 AM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H1589",
+        "general_court": 194
+      },
+      {
+        "number": "H1635",
+        "general_court": 194
+      },
+      {
+        "number": "H1647",
+        "general_court": 194
+      },
+      {
+        "number": "H1683",
+        "general_court": 194
+      },
+      {
+        "number": "H1696",
+        "general_court": 194
+      },
+      {
+        "number": "H1728",
+        "general_court": 194
+      },
+      {
+        "number": "H1753",
+        "general_court": 194
+      },
+      {
+        "number": "H1804",
+        "general_court": 194
+      },
+      {
+        "number": "H1805",
+        "general_court": 194
+      },
+      {
+        "number": "H1820",
+        "general_court": 194
+      },
+      {
+        "number": "H1886",
+        "general_court": 194
+      },
+      {
+        "number": "H1889",
+        "general_court": 194
+      },
+      {
+        "number": "H1893",
+        "general_court": 194
+      },
+      {
+        "number": "H1919",
+        "general_court": 194
+      },
+      {
+        "number": "H1920",
+        "general_court": 194
+      },
+      {
+        "number": "H1922",
+        "general_court": 194
+      },
+      {
+        "number": "H1927",
+        "general_court": 194
+      },
+      {
+        "number": "H1954",
+        "general_court": 194
+      },
+      {
+        "number": "H4199",
+        "general_court": 194
+      },
+      {
+        "number": "H1973",
+        "general_court": 194
+      },
+      {
+        "number": "H1980",
+        "general_court": 194
+      },
+      {
+        "number": "H1981",
+        "general_court": 194
+      },
+      {
+        "number": "H1989",
+        "general_court": 194
+      },
+      {
+        "number": "H4115",
+        "general_court": 194
+      },
+      {
+        "number": "H1995",
+        "general_court": 194
+      },
+      {
+        "number": "H2009",
+        "general_court": 194
+      },
+      {
+        "number": "H2058",
+        "general_court": 194
+      },
+      {
+        "number": "H4684",
+        "general_court": 194
+      },
+      {
+        "number": "S1056",
+        "general_court": 194
+      },
+      {
+        "number": "S1059",
+        "general_court": 194
+      },
+      {
+        "number": "S1062",
+        "general_court": 194
+      },
+      {
+        "number": "S1064",
+        "general_court": 194
+      },
+      {
+        "number": "S1096",
+        "general_court": 194
+      },
+      {
+        "number": "S1113",
+        "general_court": 194
+      },
+      {
+        "number": "S1116",
+        "general_court": 194
+      },
+      {
+        "number": "S1119",
+        "general_court": 194
+      },
+      {
+        "number": "S1122",
+        "general_court": 194
+      },
+      {
+        "number": "S1126",
+        "general_court": 194
+      },
+      {
+        "number": "S1127",
+        "general_court": 194
+      },
+      {
+        "number": "S1175",
+        "general_court": 194
+      },
+      {
+        "number": "S1181",
+        "general_court": 194
+      },
+      {
+        "number": "S1246",
+        "general_court": 194
+      },
+      {
+        "number": "S1248",
+        "general_court": 194
+      },
+      {
+        "number": "S1249",
+        "general_court": 194
+      },
+      {
+        "number": "S1262",
+        "general_court": 194
+      },
+      {
+        "number": "H1588",
+        "general_court": 194
+      },
+      {
+        "number": "H4736",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on the Judiciary",
+    "bill_count": 47,
+    "raw_sha256": "ae144ee66b6fed6735b0962b5357c511ac33c6481121366c3a50a99d92145c3c",
+    "raw_bytes": 114000,
+    "fetched_at_utc": "2026-08-31T03:40:29+00:00"
+  },
+  {
+    "id": 5495,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5495",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "10:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4685",
+        "general_court": 194
+      },
+      {
+        "number": "H4701",
+        "general_court": 194
+      },
+      {
+        "number": "H4716",
+        "general_court": 194
+      },
+      {
+        "number": "H4717",
+        "general_court": 194
+      },
+      {
+        "number": "H4721",
+        "general_court": 194
+      },
+      {
+        "number": "H4739",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 6,
+    "raw_sha256": "2ade6a8d69a0c96aa689df485e4155fad9a22b971c4b94451b58fad936511e62",
+    "raw_bytes": 110519,
+    "fetched_at_utc": "2026-08-31T03:40:27+00:00"
+  },
+  {
+    "id": 5496,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5496",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 20, 2025",
+    "start_time": "5:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4747",
+        "general_court": 194
+      },
+      {
+        "number": "H4742",
+        "general_court": 194
+      },
+      {
+        "number": "S2712",
+        "general_court": 194
+      },
+      {
+        "number": "H4718",
+        "general_court": 194
+      },
+      {
+        "number": "H4702",
+        "general_court": 194
+      },
+      {
+        "number": "H4698",
+        "general_court": 194
+      },
+      {
+        "number": "H4632",
+        "general_court": 194
+      },
+      {
+        "number": "H4604",
+        "general_court": 194
+      },
+      {
+        "number": "S2638",
+        "general_court": 194
+      },
+      {
+        "number": "H4584",
+        "general_court": 194
+      },
+      {
+        "number": "H4583",
+        "general_court": 194
+      },
+      {
+        "number": "H4582",
+        "general_court": 194
+      },
+      {
+        "number": "H4573",
+        "general_court": 194
+      },
+      {
+        "number": "H4572",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 14,
+    "raw_sha256": "ca7bb068db0df4f88c6164d4bc7bd95d8bbf346baabad4cf815fbb53b2cab204",
+    "raw_bytes": 107204,
+    "fetched_at_utc": "2026-08-31T03:40:24+00:00"
+  },
+  {
+    "id": 5497,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5497",
+    "event_type": "Hearing",
+    "committee": "Combatting Antisemitism",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 20, 2025",
+    "start_time": "11:00 AM",
+    "location": "B-2 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Combatting Antisemitism",
+    "bill_count": 0,
+    "raw_sha256": "3c7bef3dbb9f388521fc329e3b7b84e608073447368f620e9cfd61bc61a27478",
+    "raw_bytes": 94444,
+    "fetched_at_utc": "2026-08-31T03:40:22+00:00"
+  },
+  {
+    "id": 5500,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5500",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, December 2, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H514",
+        "general_court": 194
+      },
+      {
+        "number": "S418",
+        "general_court": 194
+      },
+      {
+        "number": "H520",
+        "general_court": 194
+      },
+      {
+        "number": "S320",
+        "general_court": 194
+      },
+      {
+        "number": "H532",
+        "general_court": 194
+      },
+      {
+        "number": "S375",
+        "general_court": 194
+      },
+      {
+        "number": "H570",
+        "general_court": 194
+      },
+      {
+        "number": "H579",
+        "general_court": 194
+      },
+      {
+        "number": "H580",
+        "general_court": 194
+      },
+      {
+        "number": "H587",
+        "general_court": 194
+      },
+      {
+        "number": "H658",
+        "general_court": 194
+      },
+      {
+        "number": "H664",
+        "general_court": 194
+      },
+      {
+        "number": "H665",
+        "general_court": 194
+      },
+      {
+        "number": "H668",
+        "general_court": 194
+      },
+      {
+        "number": "H675",
+        "general_court": 194
+      },
+      {
+        "number": "S448",
+        "general_court": 194
+      },
+      {
+        "number": "H679",
+        "general_court": 194
+      },
+      {
+        "number": "H680",
+        "general_court": 194
+      },
+      {
+        "number": "H711",
+        "general_court": 194
+      },
+      {
+        "number": "H733",
+        "general_court": 194
+      },
+      {
+        "number": "H736",
+        "general_court": 194
+      },
+      {
+        "number": "H743",
+        "general_court": 194
+      },
+      {
+        "number": "H754",
+        "general_court": 194
+      },
+      {
+        "number": "S309",
+        "general_court": 194
+      },
+      {
+        "number": "S327",
+        "general_court": 194
+      },
+      {
+        "number": "S355",
+        "general_court": 194
+      },
+      {
+        "number": "S370",
+        "general_court": 194
+      },
+      {
+        "number": "S386",
+        "general_court": 194
+      },
+      {
+        "number": "S435",
+        "general_court": 194
+      },
+      {
+        "number": "S449",
+        "general_court": 194
+      },
+      {
+        "number": "S2682",
+        "general_court": 194
+      },
+      {
+        "number": "S2683",
+        "general_court": 194
+      },
+      {
+        "number": "H4720",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 33,
+    "raw_sha256": "d9bbd632992d1b755214cb62cefa07aa4040139469de36c673e2ec70afd39805",
+    "raw_bytes": 120880,
+    "fetched_at_utc": "2026-08-31T03:40:15+00:00"
+  },
+  {
+    "id": 5501,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5501",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Tuesday, January 27, 2026 New Start Date Tuesday, January 20, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "bill_count": 0,
+    "raw_sha256": "e98b0ec50075f43d577694f798eff6bbac889649225e5a3a3c1179269aac0f48",
+    "raw_bytes": 92252,
+    "fetched_at_utc": "2026-08-31T03:40:13+00:00"
+  },
+  {
+    "id": 5502,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5502",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Tuesday, January 13, 2026 New Start Date Tuesday, January 27, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "bill_count": 0,
+    "raw_sha256": "ad00420b5c35d8dd66e8c57cfbf52e17b3443204f7ef5284a3271a63cdb817bd",
+    "raw_bytes": 101533,
+    "fetched_at_utc": "2026-08-31T03:40:11+00:00"
+  },
+  {
+    "id": 5503,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5503",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, November 26, 2025",
+    "start_time": "10:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4751",
+        "general_court": 194
+      },
+      {
+        "number": "H4752",
+        "general_court": 194
+      },
+      {
+        "number": "H4753",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 3,
+    "raw_sha256": "72b0cd200a8582321636d5f826884c812641f19dbb5b86172ec9aab96328e829",
+    "raw_bytes": 104956,
+    "fetched_at_utc": "2026-08-31T03:40:08+00:00"
+  },
+  {
+    "id": 5505,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5505",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Transportation",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, December 10, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H4691",
+        "general_court": 194
+      },
+      {
+        "number": "H4723",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Transportation",
+    "bill_count": 2,
+    "raw_sha256": "4612eba6f7d316c59971134a2e86f4c11c3279d23b3a74d7633b9cc8ef57cbc7",
+    "raw_bytes": 100974,
+    "fetched_at_utc": "2026-08-31T03:40:04+00:00"
+  },
+  {
+    "id": 5506,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5506",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Health",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, December 8, 2025",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4686",
+        "general_court": 194
+      },
+      {
+        "number": "H586",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Health",
+    "bill_count": 2,
+    "raw_sha256": "27ec234ebcd36e2f886ee9b9eef71599b191cbfa8db22ec64273225af9d78385",
+    "raw_bytes": 94653,
+    "fetched_at_utc": "2026-08-31T03:40:02+00:00"
+  },
+  {
+    "id": 5507,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5507",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Monday, December 1, 2025 New Start Date Thursday, December 11, 2025",
+    "start_time": "10:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "fd2f664456d152548571548824fd83eab06c85c5bbf84172c22a51b6d22903e1",
+    "raw_bytes": 88961,
+    "fetched_at_utc": "2026-08-31T03:40:00+00:00"
+  },
+  {
+    "id": 5508,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5508",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Election Laws",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Friday, December 12, 2025 New Start Date Monday, December 15, 2025",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4763",
+        "general_court": 194
+      },
+      {
+        "number": "S2742",
+        "general_court": 194
+      },
+      {
+        "number": "S2789",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Election Laws",
+    "bill_count": 3,
+    "raw_sha256": "7d254362ec88c7faa2bb3c0c5f79e84b1571198a1a66e0db01cf9e5d3854b8b3",
+    "raw_bytes": 93852,
+    "fetched_at_utc": "2026-08-31T03:39:58+00:00"
+  },
+  {
+    "id": 5509,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5509",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, December 12, 2025",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4797",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 1,
+    "raw_sha256": "71ca828f689bc936e0f11d17ea16bd44dcc8d861b4094a62d51353d6ce16b23b",
+    "raw_bytes": 96906,
+    "fetched_at_utc": "2026-08-31T03:39:56+00:00"
+  },
+  {
+    "id": 5511,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5511",
+    "event_type": "Hearing",
+    "committee": "LGBT Aging Commission",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, December 9, 2025",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - LGBT Aging Commission",
+    "bill_count": 0,
+    "raw_sha256": "9bb3707ed6f0e6ea59d63843561e3d1246d4b342dd93c0d74415bbaee4923a47",
+    "raw_bytes": 82443,
+    "fetched_at_utc": "2026-08-31T03:39:51+00:00"
+  },
+  {
+    "id": 5512,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5512",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, December 10, 2025",
+    "start_time": "11:00 AM",
+    "location": "222 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "0d92cf6fcac3e61264f156c8b9b3288f24c8ecd21d0e579b914940e34ab7d337",
+    "raw_bytes": 102688,
+    "fetched_at_utc": "2026-08-31T03:39:49+00:00"
+  },
+  {
+    "id": 5513,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5513",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, December 12, 2025",
+    "start_time": "11:00 AM",
+    "location": "428 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "b9dc5b641a322217849343c3b53559b31cb26c90005cfa65aa12ebf699436101",
+    "raw_bytes": 84797,
+    "fetched_at_utc": "2026-08-31T03:39:47+00:00"
+  },
+  {
+    "id": 5515,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5515",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, December 16, 2025",
+    "start_time": "12:00 PM",
+    "location": "Gardner Auditorium",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "89d73fb4a495c00d21fd9eaf48cf1d87ca5b0d0cbaa86bd40970532257920147",
+    "raw_bytes": 84370,
+    "fetched_at_utc": "2026-08-31T03:39:43+00:00"
+  },
+  {
+    "id": 5516,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5516",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, December 11, 2025",
+    "start_time": "3:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4784",
+        "general_court": 194
+      },
+      {
+        "number": "H4795",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 2,
+    "raw_sha256": "cf74feec307bbb5b0ad4e8c93c1c90c190a0eec5c101b70f561f4da3707ce175",
+    "raw_bytes": 101694,
+    "fetched_at_utc": "2026-08-31T03:39:41+00:00"
+  },
+  {
+    "id": 5517,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5517",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on the Census",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, February 10, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on the Census",
+    "bill_count": 0,
+    "raw_sha256": "1649eb5a649ae2b9e9e458c2ac077f14f79a66110f99d3e9a8060d10a5b6c438",
+    "raw_bytes": 86395,
+    "fetched_at_utc": "2026-08-31T03:39:39+00:00"
+  },
+  {
+    "id": 5518,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5518",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, December 11, 2025",
+    "start_time": "4:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "S1933",
+        "general_court": 194
+      },
+      {
+        "number": "S1935",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Senate Committee on Ways and Means",
+    "bill_count": 2,
+    "raw_sha256": "1518388c537aec42cc67cdc7c68997a9271c92b7d9eb4c661261d7cef7a508ea",
+    "raw_bytes": 87358,
+    "fetched_at_utc": "2026-08-31T03:39:37+00:00"
+  },
+  {
+    "id": 5519,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5519",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Intergovernmental Affairs",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, February 4, 2026",
+    "start_time": "Original Start Time 1:00 PM New Start Time 12:00 PM",
+    "location": "Original Location B-1 New Location B-2",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Intergovernmental Affairs",
+    "bill_count": 0,
+    "raw_sha256": "31e7fe47a2bdc56497b3454273b7f375775cd20ff522906f534ceb5e2ca6afdc",
+    "raw_bytes": 84983,
+    "fetched_at_utc": "2026-08-31T03:39:35+00:00"
+  },
+  {
+    "id": 5520,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5520",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 13, 2026",
+    "start_time": "10:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "ac1c5a12bbc4a908da7be21ff7a43425178581e3dce42de18d4c2cd52fb2b7fb",
+    "raw_bytes": 86779,
+    "fetched_at_utc": "2026-08-31T03:39:33+00:00"
+  },
+  {
+    "id": 5521,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5521",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Health Care Financing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, January 15, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H4353",
+        "general_court": 194
+      },
+      {
+        "number": "H4425",
+        "general_court": 194
+      },
+      {
+        "number": "H4453",
+        "general_court": 194
+      },
+      {
+        "number": "H4623",
+        "general_court": 194
+      },
+      {
+        "number": "H4770",
+        "general_court": 194
+      },
+      {
+        "number": "S2587",
+        "general_court": 194
+      },
+      {
+        "number": "S2737",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Health Care Financing",
+    "bill_count": 7,
+    "raw_sha256": "c7c83a27af6c5cd7c55519d4dbb5af017b7dd4bacb220f2b4cf7229eca25da6b",
+    "raw_bytes": 105442,
+    "fetched_at_utc": "2026-08-31T03:39:31+00:00"
+  },
+  {
+    "id": 5522,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5522",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 13, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "bill_count": 0,
+    "raw_sha256": "16ef6856e3258822febca9f0ceb1889e894ecc21639f726f9b3a9a6a1b76e8f2",
+    "raw_bytes": 106038,
+    "fetched_at_utc": "2026-08-31T03:39:29+00:00"
+  },
+  {
+    "id": 5524,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5524",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Financial Services",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 13, 2026",
+    "start_time": "Original Start Time 10:00 AM New Start Time 10:30 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "S2732",
+        "general_court": 194
+      },
+      {
+        "number": "S2738",
+        "general_court": 194
+      },
+      {
+        "number": "S2739",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Financial Services",
+    "bill_count": 3,
+    "raw_sha256": "c8277dbaaef093917f95e017dc3891bad29d118e2d1165edf7f12f6c9916e122",
+    "raw_bytes": 105297,
+    "fetched_at_utc": "2026-08-31T03:39:25+00:00"
+  },
+  {
+    "id": 5526,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5526",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Housing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 6, 2026",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4842",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Housing",
+    "bill_count": 1,
+    "raw_sha256": "940e96f874cb340c6ada71d086bf35b8ddd9c6284772ce862215581821d39d57",
+    "raw_bytes": 101296,
+    "fetched_at_utc": "2026-08-31T03:39:20+00:00"
+  },
+  {
+    "id": 5530,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5530",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Cannabis Laws",
+    "status": "Completed",
+    "event_date": "Wednesday, January 14, 2026",
+    "start_time": "11:00 AM",
+    "location": "B-1",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Cannabis Laws",
+    "bill_count": 0,
+    "raw_sha256": "d06dd498579ddffd554ea7b4ecb8a30759b8d4671c3a73c585a749c44b557532",
+    "raw_bytes": 80956,
+    "fetched_at_utc": "2026-08-31T03:39:11+00:00"
+  },
+  {
+    "id": 5531,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5531",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, January 12, 2026",
+    "start_time": "1:00 PM",
+    "location": "428 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "66aceafc54fabe7e1fa0146943920f35085b2b9dc78225bbeb446a98f52def6e",
+    "raw_bytes": 88427,
+    "fetched_at_utc": "2026-08-31T03:39:09+00:00"
+  },
+  {
+    "id": 5532,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5532",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Health",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 27, 2026",
+    "start_time": "Original Start Time 9:00 AM New Start Time 11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H4796",
+        "general_court": 194
+      },
+      {
+        "number": "H4838",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Health",
+    "bill_count": 2,
+    "raw_sha256": "5af9ff64ffdbc6e714e95f79a281768bb5e66cc2d545f4c9f27a350c0ffa183b",
+    "raw_bytes": 112250,
+    "fetched_at_utc": "2026-08-31T03:39:07+00:00"
+  },
+  {
+    "id": 5534,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5534",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 27, 2026",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "S2907",
+        "general_court": 194
+      },
+      {
+        "number": "H4890",
+        "general_court": 194
+      },
+      {
+        "number": "H4909",
+        "general_court": 194
+      },
+      {
+        "number": "H4879",
+        "general_court": 194
+      },
+      {
+        "number": "H4846",
+        "general_court": 194
+      },
+      {
+        "number": "H4848",
+        "general_court": 194
+      },
+      {
+        "number": "H3924",
+        "general_court": 194
+      },
+      {
+        "number": "H4740",
+        "general_court": 194
+      },
+      {
+        "number": "H4741",
+        "general_court": 194
+      },
+      {
+        "number": "H4267",
+        "general_court": 194
+      },
+      {
+        "number": "H4799",
+        "general_court": 194
+      },
+      {
+        "number": "S2750",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 12,
+    "raw_sha256": "035a0150196a72c53dbdd410540b9043c63c1115228215eb5e39dead4dbce569",
+    "raw_bytes": 106197,
+    "fetched_at_utc": "2026-08-31T03:39:03+00:00"
+  },
+  {
+    "id": 5535,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5535",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 27, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 & A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H3012",
+        "general_court": 194
+      },
+      {
+        "number": "H4008",
+        "general_court": 194
+      },
+      {
+        "number": "H4435",
+        "general_court": 194
+      },
+      {
+        "number": "H4444",
+        "general_court": 194
+      },
+      {
+        "number": "H4526",
+        "general_court": 194
+      },
+      {
+        "number": "H4547",
+        "general_court": 194
+      },
+      {
+        "number": "H4574",
+        "general_court": 194
+      },
+      {
+        "number": "H4575",
+        "general_court": 194
+      },
+      {
+        "number": "H4576",
+        "general_court": 194
+      },
+      {
+        "number": "H4577",
+        "general_court": 194
+      },
+      {
+        "number": "H4585",
+        "general_court": 194
+      },
+      {
+        "number": "H4605",
+        "general_court": 194
+      },
+      {
+        "number": "H4687",
+        "general_court": 194
+      },
+      {
+        "number": "H4703",
+        "general_court": 194
+      },
+      {
+        "number": "H4722",
+        "general_court": 194
+      },
+      {
+        "number": "H4754",
+        "general_court": 194
+      },
+      {
+        "number": "H4755",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 17,
+    "raw_sha256": "74eafc772d6121583cb968f57d54ed1d192dc03e05a505855bdb4821c36febae",
+    "raw_bytes": 196786,
+    "fetched_at_utc": "2026-08-31T03:39:01+00:00"
+  },
+  {
+    "id": 5536,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5536",
+    "event_type": "Hearing",
+    "committee": "250th Anniversary Celebration of the American Revolution",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, January 27, 2026",
+    "start_time": "3:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - 250th Anniversary Celebration of the American Revolution",
+    "bill_count": 0,
+    "raw_sha256": "3bdb83f2d755824ac51b4a77f5777825382419b4e25ffbd0a4f2718a54fb4f8e",
+    "raw_bytes": 84708,
+    "fetched_at_utc": "2026-08-31T03:38:59+00:00"
+  },
+  {
+    "id": 5538,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5538",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, January 29, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "f64176e923906da734ceca4cdc0eda3019f9d0c658d1e21d06fd2b095dc1d736",
+    "raw_bytes": 96705,
+    "fetched_at_utc": "2026-08-31T03:38:54+00:00"
+  },
+  {
+    "id": 5539,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5539",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, January 26, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "aebb6be46fa1c435243928f7af694a21f26197c1140a89e973e7912d147cb222",
+    "raw_bytes": 96711,
+    "fetched_at_utc": "2026-08-31T03:38:52+00:00"
+  },
+  {
+    "id": 5540,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5540",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, January 26, 2026",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "0c18896a2c1623ed03b98be8a23e64c6d51c52dd81aa3e4cee7716b0ad9b5bb1",
+    "raw_bytes": 97039,
+    "fetched_at_utc": "2026-08-31T03:38:50+00:00"
+  },
+  {
+    "id": 5541,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5541",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, February 4, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "S2636",
+        "general_court": 194
+      },
+      {
+        "number": "S2628",
+        "general_court": 194
+      },
+      {
+        "number": "S2913",
+        "general_court": 194
+      },
+      {
+        "number": "H4907",
+        "general_court": 194
+      },
+      {
+        "number": "H4877",
+        "general_court": 194
+      },
+      {
+        "number": "H4661",
+        "general_court": 194
+      },
+      {
+        "number": "H4662",
+        "general_court": 194
+      },
+      {
+        "number": "H4597",
+        "general_court": 194
+      },
+      {
+        "number": "H4719",
+        "general_court": 194
+      },
+      {
+        "number": "H4019",
+        "general_court": 194
+      },
+      {
+        "number": "H559",
+        "general_court": 194
+      },
+      {
+        "number": "H4588",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 12,
+    "raw_sha256": "d726c433ecf0239117f8b041ff5e2919451fca4ccfa93d5484ec2b09c2dc7313",
+    "raw_bytes": 105982,
+    "fetched_at_utc": "2026-08-31T03:38:48+00:00"
+  },
+  {
+    "id": 5543,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5543",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, February 10, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H4867",
+        "general_court": 194
+      },
+      {
+        "number": "H4927",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 2,
+    "raw_sha256": "43577d0454581c00f5eddefdc985bdcffa1d9ab1126b93778bb5e1f3458e5e39",
+    "raw_bytes": 114717,
+    "fetched_at_utc": "2026-08-31T03:38:44+00:00"
+  },
+  {
+    "id": 5544,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5544",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, February 2, 2026",
+    "start_time": "3:30 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "0a51de912a443cdcee540eae70fcd12d12f0e78bfe755830acb24a55f06b31a6",
+    "raw_bytes": 86685,
+    "fetched_at_utc": "2026-08-31T03:38:41+00:00"
+  },
+  {
+    "id": 5545,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5545",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Election Laws",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, February 10, 2026",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H4916",
+        "general_court": 194
+      },
+      {
+        "number": "H4262",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Election Laws",
+    "bill_count": 2,
+    "raw_sha256": "3702a4dc90018a2ca6beb2efea3b6d30f7803418a2ffe494814c5e6268152896",
+    "raw_bytes": 117778,
+    "fetched_at_utc": "2026-08-31T03:38:39+00:00"
+  },
+  {
+    "id": 5546,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5546",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, February 11, 2026",
+    "start_time": "11:00 AM",
+    "location": "Gardner Auditorium",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "eec84ab3bc16d42975741eee209724de6b9d7ea434a0458ba66cd7516878191c",
+    "raw_bytes": 100604,
+    "fetched_at_utc": "2026-08-31T03:38:37+00:00"
+  },
+  {
+    "id": 5548,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5548",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, February 9, 2026",
+    "start_time": "10:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "1de1caa61b54f9d798faaf8a8a285ee4c046277d2bcf019488b1ce2c0620ac3c",
+    "raw_bytes": 94939,
+    "fetched_at_utc": "2026-08-31T03:38:32+00:00"
+  },
+  {
+    "id": 5549,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5549",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, February 12, 2026",
+    "start_time": "10:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H4975",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 1,
+    "raw_sha256": "72aebd5b6b3578280b02db8b04011c8a70d94380c3c2ec15ed477ab936603531",
+    "raw_bytes": 189980,
+    "fetched_at_utc": "2026-08-31T03:38:30+00:00"
+  },
+  {
+    "id": 5550,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5550",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, February 12, 2026",
+    "start_time": "2:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H3599",
+        "general_court": 194
+      },
+      {
+        "number": "H5047",
+        "general_court": 194
+      },
+      {
+        "number": "S2922",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 3,
+    "raw_sha256": "74bd1c0cd96bd6429b889c2f4095143a399ff09ad377caa19876a7b501debc6c",
+    "raw_bytes": 113812,
+    "fetched_at_utc": "2026-08-31T03:38:28+00:00"
+  },
+  {
+    "id": 5551,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5551",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, February 9, 2026",
+    "start_time": "1:00 PM",
+    "location": "428 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "de8ad03be0343efeff9b1f1f7d47e6479354a98155badb15f9b1b88dbe7c1a04",
+    "raw_bytes": 94189,
+    "fetched_at_utc": "2026-08-31T03:38:26+00:00"
+  },
+  {
+    "id": 5559,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5559",
+    "event_type": "Hearing",
+    "committee": "LGBT Aging Commission",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 10, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - LGBT Aging Commission",
+    "bill_count": 0,
+    "raw_sha256": "c89e6adb2dab4a3bd5d35b97cafa4cb2bb65e34ce9e7f5365fbdb6680668dc4c",
+    "raw_bytes": 85401,
+    "fetched_at_utc": "2026-08-31T03:38:07+00:00"
+  },
+  {
+    "id": 5571,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5571",
+    "event_type": "Hearing",
+    "committee": "LGBT Aging Commission",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, February 17, 2026",
+    "start_time": "11:00 AM",
+    "location": null,
+    "bills": [],
+    "page_title": "Hearing Details - LGBT Aging Commission",
+    "bill_count": 0,
+    "raw_sha256": "09837545392fc466579850e8127a58fdfe1ec65152b700158fad0a81842ef306",
+    "raw_bytes": 93513,
+    "fetched_at_utc": "2026-08-31T03:37:40+00:00"
+  },
+  {
+    "id": 5572,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5572",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 3, 2026",
+    "start_time": "1:00 PM",
+    "location": "222 and Virtual",
+    "bills": [
+      {
+        "number": "H4738",
+        "general_court": 194
+      },
+      {
+        "number": "H4843",
+        "general_court": 194
+      },
+      {
+        "number": "H4844",
+        "general_court": 194
+      },
+      {
+        "number": "H4845",
+        "general_court": 194
+      },
+      {
+        "number": "H4849",
+        "general_court": 194
+      },
+      {
+        "number": "H4878",
+        "general_court": 194
+      },
+      {
+        "number": "H4887",
+        "general_court": 194
+      },
+      {
+        "number": "H4924",
+        "general_court": 194
+      },
+      {
+        "number": "H5052",
+        "general_court": 194
+      },
+      {
+        "number": "H5053",
+        "general_court": 194
+      },
+      {
+        "number": "S2878",
+        "general_court": 194
+      },
+      {
+        "number": "S2894",
+        "general_court": 194
+      },
+      {
+        "number": "S2897",
+        "general_court": 194
+      },
+      {
+        "number": "H5102",
+        "general_court": 194
+      },
+      {
+        "number": "H5107",
+        "general_court": 194
+      },
+      {
+        "number": "H5108",
+        "general_court": 194
+      },
+      {
+        "number": "H5109",
+        "general_court": 194
+      },
+      {
+        "number": "H5128",
+        "general_court": 194
+      },
+      {
+        "number": "H5136",
+        "general_court": 194
+      },
+      {
+        "number": "S2963",
+        "general_court": 194
+      },
+      {
+        "number": "S2956",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 21,
+    "raw_sha256": "74c613b4ec2d42c282fec0014760cd18100f1d7f68baffb8eb28228e7e835c78",
+    "raw_bytes": 117594,
+    "fetched_at_utc": "2026-08-31T03:37:38+00:00"
+  },
+  {
+    "id": 5573,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5573",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Transportation",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 3, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H4987",
+        "general_court": 194
+      },
+      {
+        "number": "S2905",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Transportation",
+    "bill_count": 2,
+    "raw_sha256": "8c53b5afbe24fd146dd40e5e6cc39a96d0522c78eb8029701e68b332621f4641",
+    "raw_bytes": 95344,
+    "fetched_at_utc": "2026-08-31T03:37:36+00:00"
+  },
+  {
+    "id": 5574,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5574",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 31, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "bill_count": 0,
+    "raw_sha256": "e3ff72e03c5a6e898714d4b88c10acefe582f1e461cd93e14b24b8175921ae63",
+    "raw_bytes": 103981,
+    "fetched_at_utc": "2026-08-31T03:37:34+00:00"
+  },
+  {
+    "id": 5575,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5575",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 10, 2026",
+    "start_time": "11:00 AM",
+    "location": "UMass Amherst",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "b276782d7b0403b2fae10c0ef04be6e45bae3bcc0591d99aeb15e764d53284a8",
+    "raw_bytes": 91644,
+    "fetched_at_utc": "2026-08-31T03:37:32+00:00"
+  },
+  {
+    "id": 5576,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5576",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Financial Services",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, February 24, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5112",
+        "general_court": 194
+      },
+      {
+        "number": "S2921",
+        "general_court": 194
+      },
+      {
+        "number": "H4914",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Financial Services",
+    "bill_count": 3,
+    "raw_sha256": "eb734a0b7f96d9abd9657d1236280ef4b8d1781ba6eabd745c271aa2a985b093",
+    "raw_bytes": 106542,
+    "fetched_at_utc": "2026-08-31T03:37:30+00:00"
+  },
+  {
+    "id": 5577,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5577",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 24, 2026",
+    "start_time": "10:00 AM",
+    "location": "Foxboro Community Center",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "48d1d95ef8d8dedbb0972a979e528182ab5a1addd50266ed708041a51e58d8d7",
+    "raw_bytes": 96510,
+    "fetched_at_utc": "2026-08-31T03:37:28+00:00"
+  },
+  {
+    "id": 5578,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5578",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Canceled",
+    "event_date": "Monday, February 23, 2026",
+    "start_time": "3:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "f6d5cd0870167aea46467c556a06884cd129529a5350c308b0228b19ab83c23d",
+    "raw_bytes": 83792,
+    "fetched_at_utc": "2026-08-31T03:37:26+00:00"
+  },
+  {
+    "id": 5579,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5579",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Environment and Natural Resources",
+    "subject": null,
+    "status": "Canceled",
+    "event_date": "Wednesday, March 4, 2026",
+    "start_time": "10:00 AM",
+    "location": "222 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Environment and Natural Resources",
+    "bill_count": 0,
+    "raw_sha256": "2751eaac13b69cab703cf063e8665fee333f60d45b836e0ead383cbf3ee1d60e",
+    "raw_bytes": 88455,
+    "fetched_at_utc": "2026-08-31T03:37:24+00:00"
+  },
+  {
+    "id": 5580,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5580",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Canceled",
+    "event_date": "Monday, February 23, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "cba64afe5b6d727e5a71256d747d5cba65cc2146d625e9c511b52f2336f643cb",
+    "raw_bytes": 85953,
+    "fetched_at_utc": "2026-08-31T03:37:22+00:00"
+  },
+  {
+    "id": 5581,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5581",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Environment and Natural Resources",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 4, 2026",
+    "start_time": "10:00 AM",
+    "location": "222 and Virtual",
+    "bills": [
+      {
+        "number": "H5113",
+        "general_court": 194
+      },
+      {
+        "number": "H5076",
+        "general_court": 194
+      },
+      {
+        "number": "H4972",
+        "general_court": 194
+      },
+      {
+        "number": "H4917",
+        "general_court": 194
+      },
+      {
+        "number": "H4700",
+        "general_court": 194
+      },
+      {
+        "number": "S2896",
+        "general_court": 194
+      },
+      {
+        "number": "S2961",
+        "general_court": 194
+      },
+      {
+        "number": "S2933",
+        "general_court": 194
+      },
+      {
+        "number": "H5141",
+        "general_court": 194
+      },
+      {
+        "number": "H5140",
+        "general_court": 194
+      },
+      {
+        "number": "H5139",
+        "general_court": 194
+      },
+      {
+        "number": "S2877",
+        "general_court": 194
+      },
+      {
+        "number": "H3920",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Environment and Natural Resources",
+    "bill_count": 13,
+    "raw_sha256": "84ef541db3fd54fc87cfe6637237c9b641f33bc67423c568a9bdef33396beb09",
+    "raw_bytes": 109235,
+    "fetched_at_utc": "2026-08-31T03:37:20+00:00"
+  },
+  {
+    "id": 5582,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5582",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 23, 2026",
+    "start_time": "11:00 AM",
+    "location": "Lawrence High School Performing Arts Center",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "bc6b7bac4fb72c9cc7ba25cf381e901ff26948bd0c035dd45a9e3c799e38b1fe",
+    "raw_bytes": 91834,
+    "fetched_at_utc": "2026-08-31T03:37:17+00:00"
+  },
+  {
+    "id": 5583,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5583",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 9, 2026",
+    "start_time": "10:30 AM",
+    "location": "Barnstable Town Hall",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "387ed6540bb1bb641d3ac0107b72865702a05ad01eaa883d9e435262f1e75565",
+    "raw_bytes": 92090,
+    "fetched_at_utc": "2026-08-31T03:37:15+00:00"
+  },
+  {
+    "id": 5584,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5584",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, March 20, 2026",
+    "start_time": "10:00 AM",
+    "location": "Mattapan Library",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "0db2df50e2c760bc436bd917cc09e56f6bed6e84421a661bfead56d37e89f738",
+    "raw_bytes": 85682,
+    "fetched_at_utc": "2026-08-31T03:37:13+00:00"
+  },
+  {
+    "id": 5585,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5585",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, March 27, 2026",
+    "start_time": "11:00 AM",
+    "location": "Clinton Town Hall",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "5ceef3ee6a67be32d2f3abd72b7d3a5a6477ef5179269b43472b5233802d9087",
+    "raw_bytes": 91351,
+    "fetched_at_utc": "2026-08-31T03:37:11+00:00"
+  },
+  {
+    "id": 5586,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5586",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 11, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5159",
+        "general_court": 194
+      },
+      {
+        "number": "H5110",
+        "general_court": 194
+      },
+      {
+        "number": "H3900",
+        "general_court": 194
+      },
+      {
+        "number": "H5054",
+        "general_court": 194
+      },
+      {
+        "number": "H5034",
+        "general_court": 194
+      },
+      {
+        "number": "H4977",
+        "general_court": 194
+      },
+      {
+        "number": "S2939",
+        "general_court": 194
+      },
+      {
+        "number": "H4747",
+        "general_court": 194
+      },
+      {
+        "number": "S2942",
+        "general_court": 194
+      },
+      {
+        "number": "H4742",
+        "general_court": 194
+      },
+      {
+        "number": "H4698",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 11,
+    "raw_sha256": "f2b7a5dc8eef95a9e477c956c6cf764057c4ab779f97d2bdec9dbd25fd2c61c5",
+    "raw_bytes": 97534,
+    "fetched_at_utc": "2026-08-31T03:37:09+00:00"
+  },
+  {
+    "id": 5587,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5587",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Teacher Preparation and Student Literacy",
+    "status": "Completed",
+    "event_date": "Wednesday, February 25, 2026",
+    "start_time": "2:30 PM",
+    "location": "437",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Teacher Preparation and Student Literacy",
+    "bill_count": 0,
+    "raw_sha256": "5a8d6084d75d8d54f1fcb08e37b4c0c0b3ec9ae8cb5e12591f184a8c18680522",
+    "raw_bytes": 81139,
+    "fetched_at_utc": "2026-08-31T03:37:07+00:00"
+  },
+  {
+    "id": 5588,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5588",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, February 26, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "3236e6f8f5c6bef4bfcd5e7ea9b52ddff0b93b7e9b2c629c0578f8f77ec73bdb",
+    "raw_bytes": 96697,
+    "fetched_at_utc": "2026-08-31T03:37:05+00:00"
+  },
+  {
+    "id": 5589,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5589",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Tuesday, March 3, 2026 New Start Date Tuesday, March 17, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5010",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "b11a4e34f7e5e5c4809a4a33ac0adffae1cc5b6dff83a9a1c39cab9fa096e718",
+    "raw_bytes": 92428,
+    "fetched_at_utc": "2026-08-31T03:37:03+00:00"
+  },
+  {
+    "id": 5590,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5590",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 3, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5004",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "fdcb14768e311fec988b4271f9e86327aa21c71dc7d4d50312f9e82a76b76a0e",
+    "raw_bytes": 91954,
+    "fetched_at_utc": "2026-08-31T03:37:01+00:00"
+  },
+  {
+    "id": 5591,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5591",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Post Audit and Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 24, 2026",
+    "start_time": "Original Start Time 11:00 AM New Start Time 11:30 AM",
+    "location": "B-2",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Post Audit and Oversight",
+    "bill_count": 0,
+    "raw_sha256": "3658254add6091b410d0ddfc34b81477fa2224230a2a7f14e633de9817b4b148",
+    "raw_bytes": 84544,
+    "fetched_at_utc": "2026-08-31T03:36:59+00:00"
+  },
+  {
+    "id": 5592,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5592",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Higher Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, March 19, 2026",
+    "start_time": "12:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5012",
+        "general_court": 194
+      },
+      {
+        "number": "S2927",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Higher Education",
+    "bill_count": 2,
+    "raw_sha256": "d75543196e65b0104565eea9f738e51e0f936ae103dedf8c9a2c2881f95e3db1",
+    "raw_bytes": 122318,
+    "fetched_at_utc": "2026-08-31T03:36:56+00:00"
+  },
+  {
+    "id": 5594,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5594",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Ways and Means",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 31, 2026",
+    "start_time": "Original Start Time 11:00 AM New Start Time 12:00 PM",
+    "location": "Gardner Auditorium",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Ways and Means",
+    "bill_count": 0,
+    "raw_sha256": "dea8bf473b39cf38328c4cd0a75fa897ce0d70e85641b67a807798e2d21b727b",
+    "raw_bytes": 92237,
+    "fetched_at_utc": "2026-08-31T03:36:52+00:00"
+  },
+  {
+    "id": 5595,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5595",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 16, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5009",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "caf811fef41a702fa0176ac7f8f486947ceba6e50ef2b52946835a30a907f30c",
+    "raw_bytes": 95713,
+    "fetched_at_utc": "2026-08-31T03:36:49+00:00"
+  },
+  {
+    "id": 5596,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5596",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 9, 2026",
+    "start_time": "10:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "9ad03824af82e1791142fd97d2e4d1e815fa398b3a806b07fa57fb29c10bbf30",
+    "raw_bytes": 87315,
+    "fetched_at_utc": "2026-08-31T03:36:47+00:00"
+  },
+  {
+    "id": 5597,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5597",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 16, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5000",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "373370b416db4e3b1ffd16e4e5935ee1c7d26bebd89302af0ddcc482b74bab48",
+    "raw_bytes": 94000,
+    "fetched_at_utc": "2026-08-31T03:36:45+00:00"
+  },
+  {
+    "id": 5598,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5598",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 17, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5008",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "1e0ddfe935f4c72f11a71d117755bffcaff6969f3cf57b05e95383f35bd764a9",
+    "raw_bytes": 93799,
+    "fetched_at_utc": "2026-08-31T03:36:43+00:00"
+  },
+  {
+    "id": 5599,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5599",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 11, 2026",
+    "start_time": "3:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "c18dd428e1a20a9f424263e589c1bb1f09a923fb8e9468192411182bc1fbe2d2",
+    "raw_bytes": 87202,
+    "fetched_at_utc": "2026-08-31T03:36:41+00:00"
+  },
+  {
+    "id": 5600,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5600",
+    "event_type": "Hearing",
+    "committee": "Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 18, 2026",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "bill_count": 0,
+    "raw_sha256": "943d436a6eca43551fae2d32252db53289c6de1b66d938826bf1869a98cdc954",
+    "raw_bytes": 88253,
+    "fetched_at_utc": "2026-08-31T03:36:39+00:00"
+  },
+  {
+    "id": 5601,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5601",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 23, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5005",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "54e388b2d3480935ed955172650b30651d58d01f995208fab8783052284076c6",
+    "raw_bytes": 94023,
+    "fetched_at_utc": "2026-08-31T03:36:37+00:00"
+  },
+  {
+    "id": 5602,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5602",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 23, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5002",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "1c7091ca8d3dfa5c4847c25954147fd59bec84723a1d25527266b8c82b1e342f",
+    "raw_bytes": 94017,
+    "fetched_at_utc": "2026-08-31T03:36:35+00:00"
+  },
+  {
+    "id": 5603,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5603",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 31, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5001",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "7108a1ac5f286837502199a35cb6921bf3ee354e5536ea37e2ec22f2bcc0bcd4",
+    "raw_bytes": 95095,
+    "fetched_at_utc": "2026-08-31T03:36:33+00:00"
+  },
+  {
+    "id": 5604,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5604",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Safety and Homeland Security",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 18, 2026",
+    "start_time": "9:00 AM",
+    "location": "A-2",
+    "bills": [
+      {
+        "number": "H4697",
+        "general_court": 194
+      },
+      {
+        "number": "S2635",
+        "general_court": 194
+      },
+      {
+        "number": "S2680",
+        "general_court": 194
+      },
+      {
+        "number": "S2681",
+        "general_court": 194
+      },
+      {
+        "number": "H5158",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Safety and Homeland Security",
+    "bill_count": 5,
+    "raw_sha256": "dfc08ff29e907a32169ef24648bba9b6dabdff30be766d618e9d47de798d3564",
+    "raw_bytes": 114296,
+    "fetched_at_utc": "2026-08-31T03:36:31+00:00"
+  },
+  {
+    "id": 5605,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5605",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, March 11, 2026",
+    "start_time": "11:00 AM",
+    "location": "222 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "f84b8fa559b03d52a5f385d214cb435882251e2d58a2af6bb44328e9adbeb4a5",
+    "raw_bytes": 104140,
+    "fetched_at_utc": "2026-08-31T03:36:28+00:00"
+  },
+  {
+    "id": 5606,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5606",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on the Census",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 4, 2026",
+    "start_time": "Original Start Time 1:00 PM New Start Time 9:00 AM",
+    "location": "A-1",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on the Census",
+    "bill_count": 0,
+    "raw_sha256": "868e5b6a358acaae2b8e8e4f4d0a96a383aa0b69b326e4dd86418258030b710c",
+    "raw_bytes": 86991,
+    "fetched_at_utc": "2026-08-31T03:36:26+00:00"
+  },
+  {
+    "id": 5609,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5609",
+    "event_type": "Hearing",
+    "committee": "Public Health Effects of Xylazine",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 24, 2026",
+    "start_time": "10:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Public Health Effects of Xylazine",
+    "bill_count": 0,
+    "raw_sha256": "0eab12f0c762ce325997fb0bf36b3d75b1b5d1de1bc46f937165c5f841323832",
+    "raw_bytes": 86793,
+    "fetched_at_utc": "2026-08-31T03:36:19+00:00"
+  },
+  {
+    "id": 5626,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5626",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 24, 2026",
+    "start_time": "1:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 0,
+    "raw_sha256": "59c7faffe7560847831c43ae8c796ceb3def8716ffff97153779d65ffd4d812b",
+    "raw_bytes": 87680,
+    "fetched_at_utc": "2026-08-31T03:35:41+00:00"
+  },
+  {
+    "id": 5627,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5627",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Election Laws",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 24, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5227",
+        "general_court": 194
+      },
+      {
+        "number": "H5129",
+        "general_court": 194
+      },
+      {
+        "number": "H5086",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Election Laws",
+    "bill_count": 3,
+    "raw_sha256": "90ec4f0fb4cc5a08b0d4144b6292d8bef70ce44b8e99ad5539cd133c58c789df",
+    "raw_bytes": 103638,
+    "fetched_at_utc": "2026-08-31T03:35:39+00:00"
+  },
+  {
+    "id": 5628,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5628",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Health",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 23, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5013",
+        "general_court": 194
+      },
+      {
+        "number": "S2928",
+        "general_court": 194
+      },
+      {
+        "number": "H5087",
+        "general_court": 194
+      },
+      {
+        "number": "H5115",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Health",
+    "bill_count": 4,
+    "raw_sha256": "7c9e50be677d9bc102092eed8efa708a09b58718f7a8a4c6dc44ea101dff68a0",
+    "raw_bytes": 110962,
+    "fetched_at_utc": "2026-08-31T03:35:37+00:00"
+  },
+  {
+    "id": 5630,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5630",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, March 27, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4748",
+        "general_court": 194
+      },
+      {
+        "number": "H4964",
+        "general_court": 194
+      },
+      {
+        "number": "H5051",
+        "general_court": 194
+      },
+      {
+        "number": "H5075",
+        "general_court": 194
+      },
+      {
+        "number": "H5083",
+        "general_court": 194
+      },
+      {
+        "number": "H5084",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 6,
+    "raw_sha256": "e18cc9a64ef1bc40d7c9961dd6a6f7b7edf64db9d0beebd0f648243632fefd67",
+    "raw_bytes": 91411,
+    "fetched_at_utc": "2026-08-31T03:35:33+00:00"
+  },
+  {
+    "id": 5631,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5631",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, March 30, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5006",
+        "general_court": 194
+      },
+      {
+        "number": "H5007",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 2,
+    "raw_sha256": "f0eb9a2ad67b818812e054c220a2b8438ea9453b0b2ead7db75dd979856a8696",
+    "raw_bytes": 93759,
+    "fetched_at_utc": "2026-08-31T03:35:30+00:00"
+  },
+  {
+    "id": 5632,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5632",
+    "event_type": "Hearing",
+    "committee": "Special Joint Committee on Initiative Petitions",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, March 31, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5003",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Special Joint Committee on Initiative Petitions",
+    "bill_count": 1,
+    "raw_sha256": "6fecbc6d336646283fae3e609ab4e8788cd1a8a3262c06c080905987d1fd266b",
+    "raw_bytes": 95219,
+    "fetched_at_utc": "2026-08-31T03:35:28+00:00"
+  },
+  {
+    "id": 5633,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5633",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, April 7, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1",
+    "bills": [
+      {
+        "number": "H5279",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "bill_count": 1,
+    "raw_sha256": "3654981d59195ef263b7f1a6aac7d8b31e2279bb4cd451b8a0eb8757f40238d7",
+    "raw_bytes": 94310,
+    "fetched_at_utc": "2026-08-31T03:35:26+00:00"
+  },
+  {
+    "id": 5634,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5634",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Transportation",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, April 6, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5162",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Transportation",
+    "bill_count": 1,
+    "raw_sha256": "acf166b86bb6ee1ee55e677edc4f8c13ab5ae700fb44c1c71458828d17a8068a",
+    "raw_bytes": 88470,
+    "fetched_at_utc": "2026-08-31T03:35:24+00:00"
+  },
+  {
+    "id": 5635,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5635",
+    "event_type": "Hearing",
+    "committee": "Ellen Story Commission on Postpartum Depression",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, April 2, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Ellen Story Commission on Postpartum Depression",
+    "bill_count": 0,
+    "raw_sha256": "9ef6378f6aa30f4873f01e0072e50990cfa0fdfb0af7571e6b75c6473898594c",
+    "raw_bytes": 90172,
+    "fetched_at_utc": "2026-08-31T03:35:22+00:00"
+  },
+  {
+    "id": 5636,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5636",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Community Development and Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, May 7, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5187",
+        "general_court": 194
+      },
+      {
+        "number": "S3022",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Community Development and Small Businesses",
+    "bill_count": 2,
+    "raw_sha256": "7d6cb7c66cf02bbb07ef058eaf250ce0363612d5a9aa0213f5edbce0767c0589",
+    "raw_bytes": 109165,
+    "fetched_at_utc": "2026-08-31T03:35:20+00:00"
+  },
+  {
+    "id": 5637,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5637",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, April 8, 2026",
+    "start_time": "10:00 AM",
+    "location": "222 and Virtual",
+    "bills": [
+      {
+        "number": "H5171",
+        "general_court": 194
+      },
+      {
+        "number": "H5261",
+        "general_court": 194
+      },
+      {
+        "number": "H5294",
+        "general_court": 194
+      },
+      {
+        "number": "H5317",
+        "general_court": 194
+      },
+      {
+        "number": "S3026",
+        "general_court": 194
+      },
+      {
+        "number": "S3033",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 6,
+    "raw_sha256": "53dcdacf3bae7822981c6e5300388383ad8e6ad772dd165b622447f1a2de0d34",
+    "raw_bytes": 171249,
+    "fetched_at_utc": "2026-08-31T03:35:18+00:00"
+  },
+  {
+    "id": 5638,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5638",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Safety and Homeland Security",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, April 15, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1",
+    "bills": [
+      {
+        "number": "S2743",
+        "general_court": 194
+      },
+      {
+        "number": "S2861",
+        "general_court": 194
+      },
+      {
+        "number": "S3021",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Safety and Homeland Security",
+    "bill_count": 3,
+    "raw_sha256": "4c3fa07780af85d5c4d5deb07a15d11bc8e402ea7db0a67896859f65ebd31b8e",
+    "raw_bytes": 100684,
+    "fetched_at_utc": "2026-08-31T03:35:15+00:00"
+  },
+  {
+    "id": 5639,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5639",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on the Judiciary",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, April 7, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H4783",
+        "general_court": 194
+      },
+      {
+        "number": "H4826",
+        "general_court": 194
+      },
+      {
+        "number": "H4876",
+        "general_court": 194
+      },
+      {
+        "number": "H5111",
+        "general_court": 194
+      },
+      {
+        "number": "H5116",
+        "general_court": 194
+      },
+      {
+        "number": "H5244",
+        "general_court": 194
+      },
+      {
+        "number": "S2975",
+        "general_court": 194
+      },
+      {
+        "number": "S2976",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on the Judiciary",
+    "bill_count": 8,
+    "raw_sha256": "47d26ae08d36cf641228a8fa3dbe3c5dc077518b422b80392cfe5f3398e69617",
+    "raw_bytes": 102202,
+    "fetched_at_utc": "2026-08-31T03:35:13+00:00"
+  },
+  {
+    "id": 5655,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5655",
+    "event_type": "Hearing",
+    "committee": "House Committee on Intergovernmental Affairs",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, May 29, 2026",
+    "start_time": "1:00 PM",
+    "location": "Massachusetts Maritime Academy",
+    "bills": [],
+    "page_title": "Hearing Details - House Committee on Intergovernmental Affairs",
+    "bill_count": 0,
+    "raw_sha256": "391830ca0ebad327c2cc8c42c32314568c96b67c0584d5539e73afa3884d2f07",
+    "raw_bytes": 81054,
+    "fetched_at_utc": "2026-08-31T03:34:38+00:00"
+  },
+  {
+    "id": 5656,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5656",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, April 15, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5036",
+        "general_court": 194
+      },
+      {
+        "number": "H5138",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 2,
+    "raw_sha256": "5dfc141051a20f3d6b0f5b8d29d23375607f89730263284cfa7e3edda34177b6",
+    "raw_bytes": 96845,
+    "fetched_at_utc": "2026-08-31T03:34:36+00:00"
+  },
+  {
+    "id": 5657,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5657",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, April 6, 2026",
+    "start_time": "10:00 AM",
+    "location": "428 and Virtual",
+    "bills": [
+      {
+        "number": "S526",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 1,
+    "raw_sha256": "b9bec3ed16e1f7f6287ac61bf723b155d711e4ef44fadb54d7ca59313cd75d78",
+    "raw_bytes": 85511,
+    "fetched_at_utc": "2026-08-31T03:34:33+00:00"
+  },
+  {
+    "id": 5658,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5658",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, April 14, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "S3044",
+        "general_court": 194
+      },
+      {
+        "number": "S3031",
+        "general_court": 194
+      },
+      {
+        "number": "S3017",
+        "general_court": 194
+      },
+      {
+        "number": "H5189",
+        "general_court": 194
+      },
+      {
+        "number": "H5246",
+        "general_court": 194
+      },
+      {
+        "number": "H5297",
+        "general_court": 194
+      },
+      {
+        "number": "H5248",
+        "general_court": 194
+      },
+      {
+        "number": "H5359",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 8,
+    "raw_sha256": "d3fea6eac3a52e2ddceba7aa2a2c29245226a68859380fdf63f582afa6610270",
+    "raw_bytes": 102396,
+    "fetched_at_utc": "2026-08-31T03:34:31+00:00"
+  },
+  {
+    "id": 5668,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5668",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Cannabis Laws",
+    "status": "Completed",
+    "event_date": "Monday, April 6, 2026",
+    "start_time": "1:00 PM",
+    "location": "UMass Amherst Henry M. Thomas III Center",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Cannabis Laws",
+    "bill_count": 0,
+    "raw_sha256": "3fe806280d214c07f6832f98126a2f67713591e3025dd57d66dba6971c92535c",
+    "raw_bytes": 93280,
+    "fetched_at_utc": "2026-08-31T03:34:09+00:00"
+  },
+  {
+    "id": 5671,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5671",
+    "event_type": "Hearing",
+    "committee": "Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, April 7, 2026",
+    "start_time": "11:00 AM",
+    "location": "Gardner Auditorium and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "bill_count": 0,
+    "raw_sha256": "683e0d5acfb21dd1f231bdd9c85973a2ba05793ac78c470d2bbb4f9c6ce325c2",
+    "raw_bytes": 161132,
+    "fetched_at_utc": "2026-08-31T03:34:03+00:00"
+  },
+  {
+    "id": 5672,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5672",
+    "event_type": "Hearing",
+    "committee": "LGBT Aging Commission",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, May 26, 2026",
+    "start_time": "1:00 PM",
+    "location": "Northampton Senior Center",
+    "bills": [],
+    "page_title": "Hearing Details - LGBT Aging Commission",
+    "bill_count": 0,
+    "raw_sha256": "1f6ca52f0fdb8b8164a4be7a525da04d7634ee807000535fe5eec5bd14d884ed",
+    "raw_bytes": 82215,
+    "fetched_at_utc": "2026-08-31T03:34:01+00:00"
+  },
+  {
+    "id": 5675,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5675",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Post Audit and Oversight",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Monday, May 4, 2026 New Start Date Tuesday, May 5, 2026",
+    "start_time": "Original Start Time 10:30 AM New Start Time 11:00 AM",
+    "location": "B-2",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Post Audit and Oversight",
+    "bill_count": 0,
+    "raw_sha256": "a33b6ed0e4b5afe72ae9ed5e82873d7305094de8eb7620dfd809ea061cd67601",
+    "raw_bytes": 84866,
+    "fetched_at_utc": "2026-08-31T03:33:54+00:00"
+  },
+  {
+    "id": 5676,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5676",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Intergovernmental Affairs",
+    "subject": null,
+    "status": "Rescheduled",
+    "event_date": "Original Start Date Monday, May 4, 2026 New Start Date Tuesday, May 5, 2026",
+    "start_time": "Original Start Time 10:30 AM New Start Time 11:00 AM",
+    "location": "B-2",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Intergovernmental Affairs",
+    "bill_count": 0,
+    "raw_sha256": "0a196c1127720c93c8512c4d8c59cc3ff292cc8672bfac964ee529ca1436e4ec",
+    "raw_bytes": 84980,
+    "fetched_at_utc": "2026-08-31T03:33:52+00:00"
+  },
+  {
+    "id": 5677,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5677",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, April 13, 2026",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "b8054c232848f34bc5df58102b8e9162790a31349c8ae9dbb350325ab43ca9c1",
+    "raw_bytes": 85208,
+    "fetched_at_utc": "2026-08-31T03:33:50+00:00"
+  },
+  {
+    "id": 5679,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5679",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Labor and Workforce Development",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, April 29, 2026",
+    "start_time": "11:00 AM",
+    "location": "Original Location B-2 and Virtual New Location B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5188",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Labor and Workforce Development",
+    "bill_count": 1,
+    "raw_sha256": "cca239a47689dac727a75fabedd93317779b58a435f6013424248cadc444c2bd",
+    "raw_bytes": 88878,
+    "fetched_at_utc": "2026-08-31T03:33:46+00:00"
+  },
+  {
+    "id": 5680,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5680",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "FY26 Supplemental Appropriations",
+    "status": "Completed",
+    "event_date": "Thursday, April 23, 2026",
+    "start_time": "11:00 AM",
+    "location": "212",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - FY26 Supplemental Appropriations",
+    "bill_count": 0,
+    "raw_sha256": "0c19b26cbe505a659670004af82bda5abef50ed47de538227fe1d40d7d3e4890",
+    "raw_bytes": 81118,
+    "fetched_at_utc": "2026-08-31T03:33:44+00:00"
+  },
+  {
+    "id": 5681,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5681",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, May 5, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H3895",
+        "general_court": 194
+      },
+      {
+        "number": "H5157",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 2,
+    "raw_sha256": "a3c7bc580ff3f672224b40ab17d14c146b7b96c89da3c99051c4419caacce4b0",
+    "raw_bytes": 116505,
+    "fetched_at_utc": "2026-08-31T03:33:41+00:00"
+  },
+  {
+    "id": 5682,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5682",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, April 27, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "746b24322039bc73fc5d8a850161d4560a1c486931ea05de80565f347ca9a598",
+    "raw_bytes": 95995,
+    "fetched_at_utc": "2026-08-31T03:33:39+00:00"
+  },
+  {
+    "id": 5683,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5683",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, April 27, 2026",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "276f9c3cd757861e469ba57368ac257b531da26b15e2769df769428c848aca44",
+    "raw_bytes": 87516,
+    "fetched_at_utc": "2026-08-31T03:33:38+00:00"
+  },
+  {
+    "id": 5684,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5684",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, May 13, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5332",
+        "general_court": 194
+      },
+      {
+        "number": "H5333",
+        "general_court": 194
+      },
+      {
+        "number": "H5358",
+        "general_court": 194
+      },
+      {
+        "number": "H5364",
+        "general_court": 194
+      },
+      {
+        "number": "H5365",
+        "general_court": 194
+      },
+      {
+        "number": "H5379",
+        "general_court": 194
+      },
+      {
+        "number": "H5387",
+        "general_court": 194
+      },
+      {
+        "number": "H5388",
+        "general_court": 194
+      },
+      {
+        "number": "H5416",
+        "general_court": 194
+      },
+      {
+        "number": "S3055",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 10,
+    "raw_sha256": "e7a33301ffb958838d8658507a13da602e0c5d0cf03ce17dc69b5626ab795eb7",
+    "raw_bytes": 109328,
+    "fetched_at_utc": "2026-08-31T03:33:35+00:00"
+  },
+  {
+    "id": 5685,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5685",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, April 30, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "f80c1171ce6c3a070808e63e943cc2cf1cb2beb7d840f6e82b8e2f553fa51cdc",
+    "raw_bytes": 94424,
+    "fetched_at_utc": "2026-08-31T03:33:33+00:00"
+  },
+  {
+    "id": 5686,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5686",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Aging and Independence",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 11, 2026",
+    "start_time": "10:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5243",
+        "general_court": 194
+      },
+      {
+        "number": "H5376",
+        "general_court": 194
+      },
+      {
+        "number": "S3056",
+        "general_court": 194
+      },
+      {
+        "number": "S3057",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Aging and Independence",
+    "bill_count": 4,
+    "raw_sha256": "61683c14953c430d137647470583df9a15bcfeffd7e008a3022c6eaa492e4bc0",
+    "raw_bytes": 106460,
+    "fetched_at_utc": "2026-08-31T03:33:31+00:00"
+  },
+  {
+    "id": 5687,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5687",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 4, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H3931",
+        "general_court": 194
+      },
+      {
+        "number": "H5035",
+        "general_court": 194
+      },
+      {
+        "number": "H5103",
+        "general_court": 194
+      },
+      {
+        "number": "H5160",
+        "general_court": 194
+      },
+      {
+        "number": "H5260",
+        "general_court": 194
+      },
+      {
+        "number": "H5298",
+        "general_court": 194
+      },
+      {
+        "number": "H5334",
+        "general_court": 194
+      },
+      {
+        "number": "H5374",
+        "general_court": 194
+      },
+      {
+        "number": "S2694",
+        "general_court": 194
+      },
+      {
+        "number": "S2994",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 10,
+    "raw_sha256": "e6d2aa7c042a048c2de0714d0b8bd026f25e51429e6e6fdf2889f0ddd77f976d",
+    "raw_bytes": 147276,
+    "fetched_at_utc": "2026-08-31T03:33:28+00:00"
+  },
+  {
+    "id": 5688,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5688",
+    "event_type": "Hearing",
+    "committee": "Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, May 6, 2026",
+    "start_time": "12:00 PM",
+    "location": "Gardner Auditorium and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "bill_count": 0,
+    "raw_sha256": "3ab30142f6eb8ab66aa667431d1e3304df7653ad4fede8df0aa18da2dc60dcb1",
+    "raw_bytes": 87087,
+    "fetched_at_utc": "2026-08-31T03:33:26+00:00"
+  },
+  {
+    "id": 5689,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5689",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 4, 2026",
+    "start_time": "1:00 PM",
+    "location": "428 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "c028abbdd269f91ad40ebb805932fec86f36acf59f4b649d5ca6bf62106da387",
+    "raw_bytes": 85566,
+    "fetched_at_utc": "2026-08-31T03:33:24+00:00"
+  },
+  {
+    "id": 5690,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5690",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Climate Change and Global Warming",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, May 27, 2026",
+    "start_time": "10:30 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Climate Change and Global Warming",
+    "bill_count": 0,
+    "raw_sha256": "c48188d5a294be5020dbb3d481616816f6b3810c202184ed29ff68f0aafcf730",
+    "raw_bytes": 83731,
+    "fetched_at_utc": "2026-08-31T03:33:22+00:00"
+  },
+  {
+    "id": 5691,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5691",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Economic Development and Emerging Technologies",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, May 19, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5386",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Economic Development and Emerging Technologies",
+    "bill_count": 1,
+    "raw_sha256": "7f1a6b77bc74a0821640c8f195d3960fc3b17f308603c1b82794ab428ea5505e",
+    "raw_bytes": 104319,
+    "fetched_at_utc": "2026-08-31T03:33:20+00:00"
+  },
+  {
+    "id": 5692,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5692",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, May 15, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5378",
+        "general_court": 194
+      },
+      {
+        "number": "H5383",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 2,
+    "raw_sha256": "fb8edfd9fc68f8545aa33073e66207166230cd1074d91b5d73fe4c1a32d418c9",
+    "raw_bytes": 89328,
+    "fetched_at_utc": "2026-08-31T03:33:18+00:00"
+  },
+  {
+    "id": 5693,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5693",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, May 20, 2026",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5088",
+        "general_court": 194
+      },
+      {
+        "number": "H5315",
+        "general_court": 194
+      },
+      {
+        "number": "H5335",
+        "general_court": 194
+      },
+      {
+        "number": "S3061",
+        "general_court": 194
+      },
+      {
+        "number": "S3073",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 5,
+    "raw_sha256": "985cf4ff73869e1453d340d4945d60719aa6a633f38d2ef2657c6c3b2988a316",
+    "raw_bytes": 113350,
+    "fetched_at_utc": "2026-08-31T03:33:16+00:00"
+  },
+  {
+    "id": 5694,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5694",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Transportation",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, May 28, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5400",
+        "general_court": 194
+      },
+      {
+        "number": "H5421",
+        "general_court": 194
+      },
+      {
+        "number": "H5430",
+        "general_court": 194
+      },
+      {
+        "number": "S3077",
+        "general_court": 194
+      },
+      {
+        "number": "S3089",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Transportation",
+    "bill_count": 5,
+    "raw_sha256": "f3b8497d24bc06a1f50b5230a76f96f9c9c4a481fc291a22496793974f4cbcb3",
+    "raw_bytes": 98020,
+    "fetched_at_utc": "2026-08-31T03:33:13+00:00"
+  },
+  {
+    "id": 5695,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5695",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 11, 2026",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "076c6fdc6bd846a11a70460d531da69ea6a4ded02a4369221c7d36547aa21fdd",
+    "raw_bytes": 84497,
+    "fetched_at_utc": "2026-08-31T03:33:11+00:00"
+  },
+  {
+    "id": 5696,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5696",
+    "event_type": "Hearing",
+    "committee": "House Committee on Intergovernmental Affairs",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Monday, September 21, 2026",
+    "start_time": "1:00 PM",
+    "location": "437",
+    "bills": [],
+    "page_title": "Hearing Details - House Committee on Intergovernmental Affairs",
+    "bill_count": 0,
+    "raw_sha256": "2e661daf339e7598862120b6bf2379f6e10b325062a69e6150cc37fbc74bbcd4",
+    "raw_bytes": 81728,
+    "fetched_at_utc": "2026-08-31T03:33:09+00:00"
+  },
+  {
+    "id": 5697,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5697",
+    "event_type": "Hearing",
+    "committee": "House Committee on Intergovernmental Affairs",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Tuesday, October 20, 2026",
+    "start_time": "1:00 PM",
+    "location": "437",
+    "bills": [],
+    "page_title": "Hearing Details - House Committee on Intergovernmental Affairs",
+    "bill_count": 0,
+    "raw_sha256": "e6f32acb5ff1868fd69fa92031c7500becaac2f81544950248b84022ae003589",
+    "raw_bytes": 81740,
+    "fetched_at_utc": "2026-08-31T03:33:07+00:00"
+  },
+  {
+    "id": 5698,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5698",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 18, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "163bdfdf0b73fde72a09d6b18a8b95c4cfdb550ebdbb63bf079f3a30a66ebd65",
+    "raw_bytes": 88584,
+    "fetched_at_utc": "2026-08-31T03:33:05+00:00"
+  },
+  {
+    "id": 5699,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5699",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, May 18, 2026",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "ec3e11f2ec75a2fbf332ff04880b0001941009e9adf4c46aee0c2934fb4e350c",
+    "raw_bytes": 88018,
+    "fetched_at_utc": "2026-08-31T03:33:03+00:00"
+  },
+  {
+    "id": 5700,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5700",
+    "event_type": "Hearing",
+    "committee": "Youth Sports",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, May 21, 2026",
+    "start_time": "1:00 PM",
+    "location": "437 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Youth Sports",
+    "bill_count": 0,
+    "raw_sha256": "e81af42c17a9f1b6695d87985198aee3934e047341b3a82032856f8c9e08563e",
+    "raw_bytes": 89702,
+    "fetched_at_utc": "2026-08-31T03:33:01+00:00"
+  },
+  {
+    "id": 5701,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5701",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, June 3, 2026",
+    "start_time": "11:00 AM",
+    "location": "B-2 and Virtual",
+    "bills": [
+      {
+        "number": "S3051",
+        "general_court": 194
+      },
+      {
+        "number": "H5380",
+        "general_court": 194
+      },
+      {
+        "number": "H5384",
+        "general_court": 194
+      },
+      {
+        "number": "H5389",
+        "general_court": 194
+      },
+      {
+        "number": "H5420",
+        "general_court": 194
+      },
+      {
+        "number": "H5428",
+        "general_court": 194
+      },
+      {
+        "number": "H5427",
+        "general_court": 194
+      },
+      {
+        "number": "H5429",
+        "general_court": 194
+      },
+      {
+        "number": "H5435",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 9,
+    "raw_sha256": "81f57f216cdf295fb96ec3d30df838703624f7c484de94f1a34bdb468ee1cd88",
+    "raw_bytes": 96026,
+    "fetched_at_utc": "2026-08-31T03:32:59+00:00"
+  },
+  {
+    "id": 5702,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5702",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Protect Act",
+    "status": "Completed",
+    "event_date": "Wednesday, May 27, 2026",
+    "start_time": "1:00 PM",
+    "location": "Room 210",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Protect Act",
+    "bill_count": 0,
+    "raw_sha256": "bcb2d2750839a31d861eecd4f51e40b9b25c85f73057fbb0c8231ff8c313cda3",
+    "raw_bytes": 83635,
+    "fetched_at_utc": "2026-08-31T03:32:57+00:00"
+  },
+  {
+    "id": 5703,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5703",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, May 28, 2026",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "af3d9fa51f38675e54162bd913da38376441d83a5fcd26e9839f12f59f0326e9",
+    "raw_bytes": 87530,
+    "fetched_at_utc": "2026-08-31T03:32:55+00:00"
+  },
+  {
+    "id": 5704,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5704",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Safety and Homeland Security",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, June 8, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "S1662",
+        "general_court": 194
+      },
+      {
+        "number": "H5431",
+        "general_court": 194
+      },
+      {
+        "number": "S3099",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Safety and Homeland Security",
+    "bill_count": 3,
+    "raw_sha256": "e47ccf6bc585d4738c515f5e705b991f1b389af6db21481c925fc331138f7319",
+    "raw_bytes": 84713,
+    "fetched_at_utc": "2026-08-31T03:32:53+00:00"
+  },
+  {
+    "id": 5705,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5705",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Economic Development and Emerging Technologies",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, May 29, 2026",
+    "start_time": "1:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5465",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Economic Development and Emerging Technologies",
+    "bill_count": 1,
+    "raw_sha256": "d79abb4cda555dfecfbe5e1cc4dfc237633ed63f4d57778f08e86495525a7916",
+    "raw_bytes": 96843,
+    "fetched_at_utc": "2026-08-31T03:32:51+00:00"
+  },
+  {
+    "id": 5706,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5706",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "FY27 General Appropriation",
+    "status": "Completed",
+    "event_date": "Wednesday, June 3, 2026",
+    "start_time": "10:00 AM",
+    "location": "Room 212 (SWM Conference Room)",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - FY27 General Appropriation",
+    "bill_count": 0,
+    "raw_sha256": "849e0597e6b4373268558ec2a8fab70a630179bcd4e96b4982076c71412896ce",
+    "raw_bytes": 81339,
+    "fetched_at_utc": "2026-08-31T03:32:49+00:00"
+  },
+  {
+    "id": 5707,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5707",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "FY26 Supplemental Appropriations",
+    "status": "Completed",
+    "event_date": "Tuesday, June 2, 2026",
+    "start_time": "10:30 AM",
+    "location": "Room 243",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - FY26 Supplemental Appropriations",
+    "bill_count": 0,
+    "raw_sha256": "71dd2a1dc938122df6a72345478656c88850ba286b8984f0f109cd7da4c45339",
+    "raw_bytes": 83095,
+    "fetched_at_utc": "2026-08-31T03:32:47+00:00"
+  },
+  {
+    "id": 5708,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5708",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, June 3, 2026",
+    "start_time": "11:00 AM",
+    "location": "222 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "c47875fe6b6810bc0b12a0e99f3371c8fed87128139d4a168e071e7b57a6af49",
+    "raw_bytes": 104790,
+    "fetched_at_utc": "2026-08-31T03:32:45+00:00"
+  },
+  {
+    "id": 5709,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5709",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, June 8, 2026",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "001324264d80f911f3cc607a676c6593c052d9d777c187ae53d6d992035aaea4",
+    "raw_bytes": 84448,
+    "fetched_at_utc": "2026-08-31T03:32:43+00:00"
+  },
+  {
+    "id": 5710,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5710",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "To promote student learning and mental health",
+    "status": "Completed",
+    "event_date": "Thursday, June 4, 2026",
+    "start_time": "1:00 PM",
+    "location": "Room 348",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - To promote student learning and mental health",
+    "bill_count": 0,
+    "raw_sha256": "da7854c5c9eeb4a2b1eb8bc000167f217e29dc9cc8676900e4785705d172d493",
+    "raw_bytes": 82630,
+    "fetched_at_utc": "2026-08-31T03:32:40+00:00"
+  },
+  {
+    "id": 5711,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5711",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Protect Act",
+    "status": "Completed",
+    "event_date": "Wednesday, June 3, 2026",
+    "start_time": "3:00 PM",
+    "location": "Room 313",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Protect Act",
+    "bill_count": 0,
+    "raw_sha256": "13a3a5055c844f0739744190cd2db4895eeae24d5130f6a41c3066524a088a60",
+    "raw_bytes": 81823,
+    "fetched_at_utc": "2026-08-31T03:32:38+00:00"
+  },
+  {
+    "id": 5712,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5712",
+    "event_type": "Hearing",
+    "committee": "LGBT Aging Commission",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, June 9, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - LGBT Aging Commission",
+    "bill_count": 0,
+    "raw_sha256": "b184c5f16fa5c586430c646ba11dd084dfbe9dea1a11856b9e9d217ddfad2a59",
+    "raw_bytes": 91722,
+    "fetched_at_utc": "2026-08-31T03:32:36+00:00"
+  },
+  {
+    "id": 5713,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5713",
+    "event_type": "Hearing",
+    "committee": "Ellen Story Commission on Postpartum Depression",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, June 11, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Ellen Story Commission on Postpartum Depression",
+    "bill_count": 0,
+    "raw_sha256": "752b101dc22879c22288f5da4b34a78609051f157da3cdfb39bebb00d095b9c8",
+    "raw_bytes": 84088,
+    "fetched_at_utc": "2026-08-31T03:32:35+00:00"
+  },
+  {
+    "id": 5714,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5714",
+    "event_type": "Hearing",
+    "committee": "Correctional Consolidation and Collaboration",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, June 15, 2026",
+    "start_time": "1:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Correctional Consolidation and Collaboration",
+    "bill_count": 0,
+    "raw_sha256": "9989be2dd8da9292f6b121f09127b94a33ac42058dedb6dfba3f419a8291504e",
+    "raw_bytes": 90848,
+    "fetched_at_utc": "2026-08-31T03:32:32+00:00"
+  },
+  {
+    "id": 5715,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5715",
+    "event_type": "Hearing",
+    "committee": "Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, June 15, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "bill_count": 0,
+    "raw_sha256": "0f6cad91b1ed2fb9b067faa9e0dcf96d3a7abac72efb9e1446f084d6bf44ad21",
+    "raw_bytes": 87039,
+    "fetched_at_utc": "2026-08-31T03:32:30+00:00"
+  },
+  {
+    "id": 5716,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5716",
+    "event_type": "Hearing",
+    "committee": "250th Anniversary Celebration of the American Revolution",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, June 9, 2026",
+    "start_time": "3:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - 250th Anniversary Celebration of the American Revolution",
+    "bill_count": 0,
+    "raw_sha256": "61dda2f4cf74a2dc1e9a2d348d5625cb22488a28746b25dc01d3e2b16cacee59",
+    "raw_bytes": 107361,
+    "fetched_at_utc": "2026-08-31T03:32:28+00:00"
+  },
+  {
+    "id": 5717,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5717",
+    "event_type": "Hearing",
+    "committee": "Special legislative commission to conduct a comprehensive investigation and study into the future of the Pappas Rehabilitation Hospital for Children",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, June 17, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-2 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Special legislative commission to conduct a comprehensive investigation and study into the future of the Pappas Rehabilitation Hospital for Children",
+    "bill_count": 0,
+    "raw_sha256": "afd4a6decba7f60eb5303603dd95a2caae9a273756cbb8ab8e6e1978d0459fe2",
+    "raw_bytes": 116898,
+    "fetched_at_utc": "2026-08-31T03:32:26+00:00"
+  },
+  {
+    "id": 5718,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5718",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Housing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, June 18, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5447",
+        "general_court": 194
+      },
+      {
+        "number": "H5314",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Housing",
+    "bill_count": 2,
+    "raw_sha256": "71cb8de61016390c68dccb59442c972e38db7e5fd68e5818f2e9f1b32337d962",
+    "raw_bytes": 97157,
+    "fetched_at_utc": "2026-08-31T03:32:24+00:00"
+  },
+  {
+    "id": 5719,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5719",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, June 23, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5426",
+        "general_court": 194
+      },
+      {
+        "number": "H5434",
+        "general_court": 194
+      },
+      {
+        "number": "H5448",
+        "general_court": 194
+      },
+      {
+        "number": "H5449",
+        "general_court": 194
+      },
+      {
+        "number": "H5456",
+        "general_court": 194
+      },
+      {
+        "number": "H5463",
+        "general_court": 194
+      },
+      {
+        "number": "H5467",
+        "general_court": 194
+      },
+      {
+        "number": "H5476",
+        "general_court": 194
+      },
+      {
+        "number": "S3084",
+        "general_court": 194
+      },
+      {
+        "number": "S3087",
+        "general_court": 194
+      },
+      {
+        "number": "S3088",
+        "general_court": 194
+      },
+      {
+        "number": "S3092",
+        "general_court": 194
+      },
+      {
+        "number": "S3097",
+        "general_court": 194
+      },
+      {
+        "number": "S3098",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 14,
+    "raw_sha256": "fb86098a942c0d81dcae040e21aae5b62c5e16aec8a12ba073b410f6053f4ccc",
+    "raw_bytes": 180475,
+    "fetched_at_utc": "2026-08-31T03:32:21+00:00"
+  },
+  {
+    "id": 5720,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5720",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, June 23, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "S3082",
+        "general_court": 194
+      },
+      {
+        "number": "S3090",
+        "general_court": 194
+      },
+      {
+        "number": "S3094",
+        "general_court": 194
+      },
+      {
+        "number": "H5425",
+        "general_court": 194
+      },
+      {
+        "number": "H5445",
+        "general_court": 194
+      },
+      {
+        "number": "H5461",
+        "general_court": 194
+      },
+      {
+        "number": "H5130",
+        "general_court": 194
+      },
+      {
+        "number": "H5114",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 8,
+    "raw_sha256": "a3320c41e0e9659d93649c5ce686b6a94e85244cb99d4e84a02ccdf35e4f6d37",
+    "raw_bytes": 103181,
+    "fetched_at_utc": "2026-08-31T03:32:19+00:00"
+  },
+  {
+    "id": 5721,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5721",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Financial Services",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, June 22, 2026",
+    "start_time": "10:30 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "S3091",
+        "general_court": 194
+      },
+      {
+        "number": "H5477",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Financial Services",
+    "bill_count": 2,
+    "raw_sha256": "255d18cfab0bd580cd0e24d8085d79a537e9320999410f9c9be0d2a87861b4a3",
+    "raw_bytes": 97863,
+    "fetched_at_utc": "2026-08-31T03:32:17+00:00"
+  },
+  {
+    "id": 5722,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5722",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, June 25, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5417",
+        "general_court": 194
+      },
+      {
+        "number": "H5418",
+        "general_court": 194
+      },
+      {
+        "number": "H5457",
+        "general_court": 194
+      },
+      {
+        "number": "H5487",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 4,
+    "raw_sha256": "90080a015248a27f1c11119148443381e739871df6f2f26db98cd3f9d57675c4",
+    "raw_bytes": 143232,
+    "fetched_at_utc": "2026-08-31T03:32:15+00:00"
+  },
+  {
+    "id": 5723,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5723",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Economic Development and Emerging Technologies",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, June 23, 2026",
+    "start_time": "11:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5436",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Economic Development and Emerging Technologies",
+    "bill_count": 1,
+    "raw_sha256": "13bf2c6e4a829223c36e647f98ac2d51aa48e4174a1161f335c9f9ce93060ebe",
+    "raw_bytes": 94729,
+    "fetched_at_utc": "2026-08-31T03:32:13+00:00"
+  },
+  {
+    "id": 5725,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5725",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Teacher Preparation and Student Literacy",
+    "status": "Completed",
+    "event_date": "Tuesday, June 16, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Teacher Preparation and Student Literacy",
+    "bill_count": 0,
+    "raw_sha256": "0f55f7dff680f0771fe7d916f1eb943aff70bfa38fff0d1b688a35aa0e8cace7",
+    "raw_bytes": 86724,
+    "fetched_at_utc": "2026-08-31T03:32:09+00:00"
+  },
+  {
+    "id": 5726,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5726",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Telecommunications, Utilities and Energy",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, June 26, 2026",
+    "start_time": "11:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5161",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Telecommunications, Utilities and Energy",
+    "bill_count": 1,
+    "raw_sha256": "363e7f1d567378dea14f30e37a5ed2d4dc67c02d5f0f9fcd97707fe1a2a29bb9",
+    "raw_bytes": 86878,
+    "fetched_at_utc": "2026-08-31T03:32:07+00:00"
+  },
+  {
+    "id": 5727,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5727",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Environment and Natural Resources",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 1, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5432",
+        "general_court": 194
+      },
+      {
+        "number": "H5433",
+        "general_court": 194
+      },
+      {
+        "number": "H5446",
+        "general_court": 194
+      },
+      {
+        "number": "H5475",
+        "general_court": 194
+      },
+      {
+        "number": "H5483",
+        "general_court": 194
+      },
+      {
+        "number": "H5484",
+        "general_court": 194
+      },
+      {
+        "number": "S3093",
+        "general_court": 194
+      },
+      {
+        "number": "S3110",
+        "general_court": 194
+      },
+      {
+        "number": "S3117",
+        "general_court": 194
+      },
+      {
+        "number": "H5363",
+        "general_court": 194
+      },
+      {
+        "number": "H5137",
+        "general_court": 194
+      },
+      {
+        "number": "H5247",
+        "general_court": 194
+      },
+      {
+        "number": "S3137",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Environment and Natural Resources",
+    "bill_count": 13,
+    "raw_sha256": "2fb30df57ca5f6cb71d2971e68540d998771e81112cac7fd260c6a8bbf1cef29",
+    "raw_bytes": 175414,
+    "fetched_at_utc": "2026-08-31T03:32:04+00:00"
+  },
+  {
+    "id": 5728,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5728",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Children, Families and Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 1, 2026",
+    "start_time": "10:00 AM",
+    "location": "B-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5085",
+        "general_court": 194
+      },
+      {
+        "number": "H5286",
+        "general_court": 194
+      },
+      {
+        "number": "S3095",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Children, Families and Persons with Disabilities",
+    "bill_count": 3,
+    "raw_sha256": "4408f87ac191e67b7f9381a2701fa8dc5de0d51e31e0f9ea988c7d7d475a5dbf",
+    "raw_bytes": 103490,
+    "fetched_at_utc": "2026-08-31T03:32:02+00:00"
+  },
+  {
+    "id": 5729,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5729",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, July 2, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1",
+    "bills": [
+      {
+        "number": "H5527",
+        "general_court": 194
+      },
+      {
+        "number": "H5519",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "bill_count": 2,
+    "raw_sha256": "47a4791450cafc7663751e45cb23f7d0e27d6e179430e260778aabebb2b936ea",
+    "raw_bytes": 99399,
+    "fetched_at_utc": "2026-08-31T03:32:00+00:00"
+  },
+  {
+    "id": 5731,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5731",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on the Census",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 7, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-1",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on the Census",
+    "bill_count": 0,
+    "raw_sha256": "f7be0c68fbb0b745896d6ac986523f84bda2d85a554b5a8309359e79b9c353ae",
+    "raw_bytes": 85789,
+    "fetched_at_utc": "2026-08-31T03:31:56+00:00"
+  },
+  {
+    "id": 5732,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5732",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 14, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5468",
+        "general_court": 194
+      },
+      {
+        "number": "H5498",
+        "general_court": 194
+      },
+      {
+        "number": "H5507",
+        "general_court": 194
+      },
+      {
+        "number": "H5513",
+        "general_court": 194
+      },
+      {
+        "number": "H5514",
+        "general_court": 194
+      },
+      {
+        "number": "H5517",
+        "general_court": 194
+      },
+      {
+        "number": "H5520",
+        "general_court": 194
+      },
+      {
+        "number": "S3108",
+        "general_court": 194
+      },
+      {
+        "number": "S3120",
+        "general_court": 194
+      },
+      {
+        "number": "S3139",
+        "general_court": 194
+      },
+      {
+        "number": "H5499",
+        "general_court": 194
+      },
+      {
+        "number": "S3155",
+        "general_court": 194
+      },
+      {
+        "number": "S3165",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 13,
+    "raw_sha256": "b769ebb7dc1645351709fd9fe56aa7138eadf27f133c9e06077273c9df5a10d5",
+    "raw_bytes": 123431,
+    "fetched_at_utc": "2026-08-31T03:31:54+00:00"
+  },
+  {
+    "id": 5733,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5733",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, July 13, 2026",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "12f7d44ca4dff0a9ec5a6765676d05202777f9289e24760fe6a02f78822d9ab5",
+    "raw_bytes": 83258,
+    "fetched_at_utc": "2026-08-31T03:31:52+00:00"
+  },
+  {
+    "id": 5734,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5734",
+    "event_type": "Hearing",
+    "committee": "Senate Committee on Juvenile and Emerging Adult Justice",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 7, 2026",
+    "start_time": "1:00 PM",
+    "location": "222 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Senate Committee on Juvenile and Emerging Adult Justice",
+    "bill_count": 0,
+    "raw_sha256": "da1c82542f099cb7c5e0938d701e31d2a902918e146ebfc1f816291cdbfb865f",
+    "raw_bytes": 88454,
+    "fetched_at_utc": "2026-08-31T03:31:50+00:00"
+  },
+  {
+    "id": 5735,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5735",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Election Laws",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 21, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "S3148",
+        "general_court": 194
+      },
+      {
+        "number": "H5462",
+        "general_court": 194
+      },
+      {
+        "number": "H5521",
+        "general_court": 194
+      },
+      {
+        "number": "H5539",
+        "general_court": 194
+      },
+      {
+        "number": "H5542",
+        "general_court": 194
+      },
+      {
+        "number": "H5556",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Election Laws",
+    "bill_count": 6,
+    "raw_sha256": "befe2edd21681656a0e9368692509823d3600ecec88d8a7f72cf94a7af5ee908",
+    "raw_bytes": 99835,
+    "fetched_at_utc": "2026-08-31T03:31:47+00:00"
+  },
+  {
+    "id": 5736,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5736",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "FY27 General Appropriation",
+    "status": "Completed",
+    "event_date": "Tuesday, June 30, 2026",
+    "start_time": "4:00 PM",
+    "location": "Room 212 (SWM Conference Room)",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - FY27 General Appropriation",
+    "bill_count": 0,
+    "raw_sha256": "7210792d599a46b1d93abf9d6eab330c3c879c9a95564989026d4be0d826e147",
+    "raw_bytes": 81329,
+    "fetched_at_utc": "2026-08-31T03:31:45+00:00"
+  },
+  {
+    "id": 5738,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5738",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Transportation",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 14, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5504",
+        "general_court": 194
+      },
+      {
+        "number": "H5529",
+        "general_court": 194
+      },
+      {
+        "number": "H5503",
+        "general_court": 194
+      },
+      {
+        "number": "S3169",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Transportation",
+    "bill_count": 4,
+    "raw_sha256": "7ea4f2a9460b6a5313351f10e89c50ded7e017cfb1383a324683a2523d65c764",
+    "raw_bytes": 90699,
+    "fetched_at_utc": "2026-08-31T03:31:41+00:00"
+  },
+  {
+    "id": 5739,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5739",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Massachusetts Data Privacy Act",
+    "status": "Completed",
+    "event_date": "Tuesday, July 7, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-2",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Massachusetts Data Privacy Act",
+    "bill_count": 0,
+    "raw_sha256": "e12038d83c3018bce5ed40bbb59d4404708880670fa5f21fb7160b29dc28c55e",
+    "raw_bytes": 84047,
+    "fetched_at_utc": "2026-08-31T03:31:38+00:00"
+  },
+  {
+    "id": 5740,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5740",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Environmental Bond",
+    "status": "Completed",
+    "event_date": "Wednesday, July 8, 2026",
+    "start_time": "2:30 PM",
+    "location": "428A",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Environmental Bond",
+    "bill_count": 0,
+    "raw_sha256": "06bcc0c77c7519c311a5961cf328250d76c02b86cc98f60fafb8a765e29452bf",
+    "raw_bytes": 81760,
+    "fetched_at_utc": "2026-08-31T03:31:36+00:00"
+  },
+  {
+    "id": 5741,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5741",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 22, 2026",
+    "start_time": "10:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5485",
+        "general_court": 194
+      },
+      {
+        "number": "H5486",
+        "general_court": 194
+      },
+      {
+        "number": "H5497",
+        "general_court": 194
+      },
+      {
+        "number": "H5512",
+        "general_court": 194
+      },
+      {
+        "number": "H5524",
+        "general_court": 194
+      },
+      {
+        "number": "H5544",
+        "general_court": 194
+      },
+      {
+        "number": "H5545",
+        "general_court": 194
+      },
+      {
+        "number": "H5564",
+        "general_court": 194
+      },
+      {
+        "number": "H5571",
+        "general_court": 194
+      },
+      {
+        "number": "S3118",
+        "general_court": 194
+      },
+      {
+        "number": "S3138",
+        "general_court": 194
+      },
+      {
+        "number": "S3144",
+        "general_court": 194
+      },
+      {
+        "number": "S3147",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 13,
+    "raw_sha256": "060878295a73afffb4169ab1cee6a81b175f245fed909fb2cba23bf4cabac637",
+    "raw_bytes": 109585,
+    "fetched_at_utc": "2026-08-31T03:31:34+00:00"
+  },
+  {
+    "id": 5742,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5742",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Child Welfare Protection",
+    "status": "Completed",
+    "event_date": "Wednesday, July 8, 2026",
+    "start_time": "2:00 PM",
+    "location": "437",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Child Welfare Protection",
+    "bill_count": 0,
+    "raw_sha256": "6e689d0239912988655c14a38eb97c3c63df30e7f2cefa3f9d230ea8fbf8bdc1",
+    "raw_bytes": 81012,
+    "fetched_at_utc": "2026-08-31T03:31:32+00:00"
+  },
+  {
+    "id": 5743,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5743",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Veterans and Federal Affairs",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 21, 2026",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5508",
+        "general_court": 194
+      },
+      {
+        "number": "H5458",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Veterans and Federal Affairs",
+    "bill_count": 2,
+    "raw_sha256": "831063b81d224553b71baa4151ce3c73c9fe8d5c4ae85f7a157c941b6d650263",
+    "raw_bytes": 94539,
+    "fetched_at_utc": "2026-08-31T03:31:30+00:00"
+  },
+  {
+    "id": 5744,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5744",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Environment and Natural Resources",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 22, 2026",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5522",
+        "general_court": 194
+      },
+      {
+        "number": "H5523",
+        "general_court": 194
+      },
+      {
+        "number": "H5533",
+        "general_court": 194
+      },
+      {
+        "number": "H5532",
+        "general_court": 194
+      },
+      {
+        "number": "H5563",
+        "general_court": 194
+      },
+      {
+        "number": "H5570",
+        "general_court": 194
+      },
+      {
+        "number": "H5587",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Environment and Natural Resources",
+    "bill_count": 7,
+    "raw_sha256": "8e1a91e00eb883d7938e50affa5d4962be4467f93a91bf6983164cf7c0bb6421",
+    "raw_bytes": 99720,
+    "fetched_at_utc": "2026-08-31T03:31:28+00:00"
+  },
+  {
+    "id": 5747,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5747",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, July 14, 2026",
+    "start_time": "1:00 PM",
+    "location": "Northampton Senior Center",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "90adff3188e6a8e40f5ddacf70dfcbf05b84805ea899291458d9fb70a3a1c1ff",
+    "raw_bytes": 87771,
+    "fetched_at_utc": "2026-08-31T03:31:21+00:00"
+  },
+  {
+    "id": 5748,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5748",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, July 20, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5515",
+        "general_court": 194
+      },
+      {
+        "number": "H5526",
+        "general_court": 194
+      },
+      {
+        "number": "H5537",
+        "general_court": 194
+      },
+      {
+        "number": "H5538",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 4,
+    "raw_sha256": "1783f987b6aaecdea8bebfa5256e2a9b692dfa7f4ad3d9e557fa6ed5b2ee22ed",
+    "raw_bytes": 143723,
+    "fetched_at_utc": "2026-08-31T03:31:19+00:00"
+  },
+  {
+    "id": 5749,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5749",
+    "event_type": "Hearing",
+    "committee": "Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 22, 2026",
+    "start_time": "2:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Future of Payments and Sales Transactions by Credit Card and the Impacts for Small Businesses",
+    "bill_count": 0,
+    "raw_sha256": "b0f867d8cbc62ade3219e539a3ff34eb0929182987196b60aff6db2ea5100153",
+    "raw_bytes": 86753,
+    "fetched_at_utc": "2026-08-31T03:31:17+00:00"
+  },
+  {
+    "id": 5750,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5750",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Housing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, July 24, 2026",
+    "start_time": "12:00 PM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5554",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Housing",
+    "bill_count": 1,
+    "raw_sha256": "477599921b598e982159f978383b8b53471b591f86dd87abf409b8256ae4c86d",
+    "raw_bytes": 101240,
+    "fetched_at_utc": "2026-08-31T03:30:20+00:00"
+  },
+  {
+    "id": 5751,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5751",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, July 22, 2026",
+    "start_time": "12:00 PM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5577",
+        "general_court": 194
+      },
+      {
+        "number": "H5578",
+        "general_court": 194
+      },
+      {
+        "number": "S3188",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 3,
+    "raw_sha256": "22b09dbcd15f948c47e2363432d71e91cbd606d1d34ee10482867d390dcee43a",
+    "raw_bytes": 116684,
+    "fetched_at_utc": "2026-08-31T03:31:15+00:00"
+  },
+  {
+    "id": 5752,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5752",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Massachusetts Data Privacy Act",
+    "status": "Completed",
+    "event_date": "Thursday, July 30, 2026",
+    "start_time": "2:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Massachusetts Data Privacy Act",
+    "bill_count": 0,
+    "raw_sha256": "305fc5f1fd1013d77d7a54c92fdccc3bda62a83efa388a25c7291adb38a139a4",
+    "raw_bytes": 82117,
+    "fetched_at_utc": "2026-08-31T03:31:13+00:00"
+  },
+  {
+    "id": 5756,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5756",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on the Judiciary",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, July 31, 2026",
+    "start_time": "10:00 AM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H5437",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on the Judiciary",
+    "bill_count": 1,
+    "raw_sha256": "e1ae23d1c46237440eb17b90d558cc0d10db2326b7afb4247fa23e4b96e33dee",
+    "raw_bytes": 98112,
+    "fetched_at_utc": "2026-08-31T03:31:04+00:00"
+  },
+  {
+    "id": 5757,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5757",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, July 27, 2026",
+    "start_time": "4:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H5592",
+        "general_court": 194
+      },
+      {
+        "number": "S3187",
+        "general_court": 194
+      },
+      {
+        "number": "S3189",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 3,
+    "raw_sha256": "b2039142f03319e9c1af5582cad6ac1a3f3bfbedc01e9827c365498469999962",
+    "raw_bytes": 90385,
+    "fetched_at_utc": "2026-08-31T03:31:02+00:00"
+  },
+  {
+    "id": 5758,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5758",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Energy",
+    "status": "Completed",
+    "event_date": "Wednesday, July 29, 2026",
+    "start_time": "1:00 PM",
+    "location": "428A",
+    "bills": [
+      {
+        "number": "H5175",
+        "general_court": 194
+      },
+      {
+        "number": "S3166",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Conference Committee Meeting Details - Energy",
+    "bill_count": 2,
+    "raw_sha256": "0b27f651591fe36971b0eb02f1639ce6f24bfbadd9037a8d8ccae8d846041434",
+    "raw_bytes": 81331,
+    "fetched_at_utc": "2026-08-31T03:31:00+00:00"
+  },
+  {
+    "id": 5759,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5759",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Home Care",
+    "status": "Completed",
+    "event_date": "Wednesday, July 29, 2026",
+    "start_time": "11:00 AM",
+    "location": "319",
+    "bills": [
+      {
+        "number": "H4706",
+        "general_court": 194
+      },
+      {
+        "number": "S3183",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Conference Committee Meeting Details - Home Care",
+    "bill_count": 2,
+    "raw_sha256": "3df78a2a3055d36825b39f1e15cba9725b64fde0809dcda6fcac2a1c4dd46822",
+    "raw_bytes": 82359,
+    "fetched_at_utc": "2026-08-31T03:30:58+00:00"
+  },
+  {
+    "id": 5760,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5760",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on State Administration and Regulatory Oversight",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, July 30, 2026",
+    "start_time": "4:00 PM",
+    "location": "A-1",
+    "bills": [
+      {
+        "number": "S3230",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on State Administration and Regulatory Oversight",
+    "bill_count": 1,
+    "raw_sha256": "4f453f37ccf4d12c4e31a9e36a6da8841110291a2cfb41f75d73b9e481896af4",
+    "raw_bytes": 108937,
+    "fetched_at_utc": "2026-08-31T03:30:56+00:00"
+  },
+  {
+    "id": 5762,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5762",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Pet equity, treatment and safety",
+    "status": "Completed",
+    "event_date": "Friday, July 31, 2026",
+    "start_time": "12:30 PM",
+    "location": "222",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Pet equity, treatment and safety",
+    "bill_count": 0,
+    "raw_sha256": "c2d1054c4b385bd479fd402fb0937ca4036fcb02e04f08f7aa8ae25861ccbc0c",
+    "raw_bytes": 84170,
+    "fetched_at_utc": "2026-08-31T03:30:26+00:00"
+  },
+  {
+    "id": 5765,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5765",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Improving campaign finance reporting for statewide ballot questions",
+    "status": "Completed",
+    "event_date": "Friday, July 31, 2026",
+    "start_time": "10:30 AM",
+    "location": "405",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Improving campaign finance reporting for statewide ballot questions",
+    "bill_count": 0,
+    "raw_sha256": "00615affb4b9eaa618e2bfd4882e5f8436def03a3bbb38c9d1bf2f7849ce6049",
+    "raw_bytes": 81261,
+    "fetched_at_utc": "2026-08-31T03:30:47+00:00"
+  },
+  {
+    "id": 5766,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5766",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Teachers Benefits",
+    "status": "Completed",
+    "event_date": "Friday, July 31, 2026",
+    "start_time": "1:30 PM",
+    "location": "212",
+    "bills": [
+      {
+        "number": "H4361",
+        "general_court": 194
+      },
+      {
+        "number": "S3109",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Conference Committee Meeting Details - Teachers Benefits",
+    "bill_count": 2,
+    "raw_sha256": "bf8463e76297419027adeffab0bf4b2e8fd6078bcbf426c131971b8cdd735646",
+    "raw_bytes": 81968,
+    "fetched_at_utc": "2026-08-31T03:30:45+00:00"
+  },
+  {
+    "id": 5767,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5767",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "State Government Transparency and Access",
+    "status": "Completed",
+    "event_date": "Friday, July 31, 2026",
+    "start_time": "4:00 PM",
+    "location": "State House -- Room 312A",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - State Government Transparency and Access",
+    "bill_count": 0,
+    "raw_sha256": "2e3ca3f6debe48265e4fae8609ff5a84cd85f9e85db4bcc9d6453ecf7dacef04",
+    "raw_bytes": 81164,
+    "fetched_at_utc": "2026-08-31T03:30:43+00:00"
+  },
+  {
+    "id": 5768,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5768",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, August 17, 2026",
+    "start_time": "4:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "0abfdaeef36e31425a55a022912bc80a5e6f1fe8fe9837d597dcb5495a5c2a40",
+    "raw_bytes": 83065,
+    "fetched_at_utc": "2026-08-31T03:30:29+00:00"
+  },
+  {
+    "id": 5769,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5769",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Consumer Protection and Professional Licensure",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Thursday, September 10, 2026",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H5516",
+        "general_court": 194
+      },
+      {
+        "number": "H5583",
+        "general_court": 194
+      },
+      {
+        "number": "H5602",
+        "general_court": 194
+      },
+      {
+        "number": "H5605",
+        "general_court": 194
+      },
+      {
+        "number": "S3234",
+        "general_court": 194
+      },
+      {
+        "number": "H5481",
+        "general_court": 194
+      },
+      {
+        "number": "S3261",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Consumer Protection and Professional Licensure",
+    "bill_count": 7,
+    "raw_sha256": "1529708bdfcd0070115c01be88e9c277dc65a0ae7dbccdc743cb4464cf79dd60",
+    "raw_bytes": 92497,
+    "fetched_at_utc": "2026-08-31T03:30:41+00:00"
+  },
+  {
+    "id": 5770,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5770",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Service",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Wednesday, September 9, 2026",
+    "start_time": "11:00 AM",
+    "location": "A-1 and Virtual",
+    "bills": [
+      {
+        "number": "S3263",
+        "general_court": 194
+      },
+      {
+        "number": "H5642",
+        "general_court": 194
+      },
+      {
+        "number": "H5606",
+        "general_court": 194
+      },
+      {
+        "number": "S3201",
+        "general_court": 194
+      },
+      {
+        "number": "H5609",
+        "general_court": 194
+      },
+      {
+        "number": "H5597",
+        "general_court": 194
+      },
+      {
+        "number": "H5579",
+        "general_court": 194
+      },
+      {
+        "number": "H5566",
+        "general_court": 194
+      },
+      {
+        "number": "H5565",
+        "general_court": 194
+      },
+      {
+        "number": "H5557",
+        "general_court": 194
+      },
+      {
+        "number": "H5525",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Service",
+    "bill_count": 11,
+    "raw_sha256": "2771775a52d881a889645d43f0338d89cce166c602e751071e3af613ed347aa3",
+    "raw_bytes": 96684,
+    "fetched_at_utc": "2026-08-31T03:30:39+00:00"
+  },
+  {
+    "id": 5771,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5771",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Monday, August 31, 2026",
+    "start_time": "11:00 AM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "1dd26182b1f1f96f9e6407400ea4321cfb6949f164f39c0398b695af388bfd6e",
+    "raw_bytes": 94112,
+    "fetched_at_utc": "2026-08-31T03:30:31+00:00"
+  },
+  {
+    "id": 5772,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5772",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Monday, August 31, 2026",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "c310be740e7995b29f21377cb98eda176abf618c75d8f41fb101533b5d6b05a9",
+    "raw_bytes": 92961,
+    "fetched_at_utc": "2026-08-31T03:30:37+00:00"
+  },
+  {
+    "id": 5773,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5773",
+    "event_type": "Hearing",
+    "committee": "Status of Persons with Disabilities",
+    "subject": null,
+    "status": "Upcoming",
+    "event_date": "Monday, August 31, 2026",
+    "start_time": "2:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Status of Persons with Disabilities",
+    "bill_count": 0,
+    "raw_sha256": "15b4b188dd3b350366d21ae19d89ad68f90e20bcd6af50a6119b64427ae6a273",
+    "raw_bytes": 91181,
+    "fetched_at_utc": "2026-08-31T03:30:33+00:00"
+  },
+  {
+    "id": 5774,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5774",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "Health Care Workplace Violence",
+    "status": "Upcoming",
+    "event_date": "Thursday, September 3, 2026",
+    "start_time": "2:00 PM",
+    "location": "428A",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - Health Care Workplace Violence",
+    "bill_count": 0,
+    "raw_sha256": "74148af42902cdb875f84ac1d4af8b95e4552a06f861811069af20d731370032",
+    "raw_bytes": 82027,
+    "fetched_at_utc": "2026-08-31T03:30:35+00:00"
+  }
+]
