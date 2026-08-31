@@ -17,6 +17,7 @@ Commands:
   python3 runner.py seed-run <monitor>  reconstruct the first run record from
                                         the request log of the initial collection
   python3 runner.py runs <monitor>      show run history
+  python3 runner.py snapshots <monitor> rebuild the archived-bytes ledger
   python3 runner.py monitors            list installed monitors
 
 A run is recorded whether or not anything moved. A pass that finds no changes
@@ -290,16 +291,21 @@ class Fetcher:
         tmp.write_bytes(body)
         tmp.replace(dest)
 
+    def probe(self, page_id):
+        """Retrieve without archiving. The caller decides what to keep."""
+        status, body = self.fetch(page_id)
+        self.record(page_id, status, len(body))
+        time.sleep(self.delay)
+        return status, body
+
     def get(self, page_id, refetch=False):
-        """Fetch one id. Without refetch, an archived id is left alone."""
+        """Fetch one id and archive it. Without refetch, an archived id is left alone."""
         dest = self.m.archive / f"{page_id}.html"
         if dest.exists() and dest.stat().st_size > 0 and not refetch:
             return 200, None
-        status, body = self.fetch(page_id)
+        status, body = self.probe(page_id)
         if status == 200 and body:
             self.save(page_id, body)
-        self.record(page_id, status, len(body))
-        time.sleep(self.delay)
         return status, body
 
 
@@ -345,6 +351,12 @@ def confirm_frontier(fetcher, frontier):
 # --- extract -------------------------------------------------------------
 
 def fetch_times(monitor):
+    """When the archived bytes were observed — from the snapshot ledger when it
+    exists, since the request log's newest row may describe a re-fetch that was
+    not archived."""
+    snaps = load_snapshots(monitor)
+    if snaps:
+        return {i: r["first_seen_utc"] for i, r in snaps.items() if r["first_seen_utc"]}
     times = {}
     path = monitor.request_log
     if path and path.exists():
@@ -468,6 +480,69 @@ def check(monitor, sample_size=20):
 
 # --- runs and change detection -------------------------------------------
 
+def content_hash(monitor, raw_bytes):
+    """Hash of what the parser reads, not of the bytes.
+
+    Pages carry markup that changes on every request without the page saying
+    anything different — this source ships a weather widget and a per-request
+    ASP.NET verification token. Comparing raw bytes would report all of them as
+    changes on every run. Hashing the parsed fields compares what the page says.
+    """
+    parsed = monitor.parser.parse(raw_bytes.decode("utf-8", errors="replace"))
+    return sha256(json.dumps(parsed, sort_keys=True, ensure_ascii=False).encode("utf-8"))
+
+
+def snapshot_path(monitor):
+    return (monitor.path("storage", "snapshot_log")
+            or monitor.data_dir / f"{monitor.name}-snapshots.tsv")
+
+
+def load_snapshots(monitor):
+    """id -> {raw_sha256, content_sha256, first_seen_utc} for the archived bytes."""
+    path = snapshot_path(monitor)
+    out = {}
+    if path.exists():
+        with path.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                out[int(row["id"])] = row
+    return out
+
+
+def save_snapshots(monitor, snaps):
+    path = snapshot_path(monitor)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, delimiter="\t")
+        w.writerow(["id", "raw_sha256", "content_sha256", "first_seen_utc"])
+        for page_id in sorted(snaps):
+            r = snaps[page_id]
+            w.writerow([page_id, r["raw_sha256"], r["content_sha256"], r["first_seen_utc"]])
+
+
+def seed_snapshots(monitor):
+    """Build the ledger from the archive, dating each page by its first 200."""
+    first = {}
+    log_path = monitor.request_log
+    if log_path.exists():
+        with log_path.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row["http_status"] == "200":
+                    page_id = int(row["id"])
+                    stamp = row["fetched_at_utc"]
+                    if page_id not in first or stamp < first[page_id]:
+                        first[page_id] = stamp
+    snaps = {}
+    for page_id in monitor.archived_ids():
+        raw = (monitor.archive / f"{page_id}.html").read_bytes()
+        snaps[page_id] = {
+            "raw_sha256": sha256(raw),
+            "content_sha256": content_hash(monitor, raw),
+            "first_seen_utc": first.get(page_id, ""),
+        }
+    save_snapshots(monitor, snaps)
+    print(f"wrote {snapshot_path(monitor).relative_to(ROOT)} for {len(snaps)} archived pages")
+    return snaps
+
 def field_diff(monitor, before_bytes, after_bytes):
     """Which of the monitor's diff_fields changed between two snapshots."""
     keys = monitor.get("diff_fields") or [f["key"] for f in monitor.fields]
@@ -499,6 +574,7 @@ def write_run(monitor, record):
 def run(monitor):
     """One monitoring pass over the whole id space, recording what moved."""
     fetcher = Fetcher(monitor)
+    snaps = load_snapshots(monitor) or seed_snapshots(monitor)
     started = now()
     log(f"monitor {monitor.name}; run started {started}")
     frontier = find_frontier(fetcher)
@@ -506,29 +582,50 @@ def run(monitor):
 
     checked = 0
     new_pages, changed, removed, errors = [], [], [], []
-    unchanged = absent = 0
+    unchanged = absent = chrome_only = 0
 
     for page_id in range(frontier, floor - 1, -1):
         dest = monitor.archive / f"{page_id}.html"
         known = dest.exists() and dest.stat().st_size > 0
-        before = dest.read_bytes() if known else None
-        status, body = fetcher.get(page_id, refetch=True)
+        status, body = fetcher.probe(page_id)
         checked += 1
 
         if status == 200 and body:
+            new_content = content_hash(monitor, body)
             if not known:
+                fetcher.save(page_id, body)
+                snaps[page_id] = {"raw_sha256": sha256(body),
+                                  "content_sha256": new_content,
+                                  "first_seen_utc": now()}
                 new_pages.append(page_id)
-            elif sha256(body) != sha256(before):
+                log(f"  {page_id}: new page archived")
+                continue
+            before = dest.read_bytes()
+            prior = snaps.get(page_id, {})
+            old_content = prior.get("content_sha256") or content_hash(monitor, before)
+            if new_content != old_content:
                 stamp = now()
                 kept = supersede(monitor, page_id, before, stamp)
+                fetcher.save(page_id, body)
+                fields = field_diff(monitor, before, body)
+                snaps[page_id] = {"raw_sha256": sha256(body),
+                                  "content_sha256": new_content,
+                                  "first_seen_utc": stamp}
                 changed.append({
                     "id": page_id,
-                    "sha256_before": sha256(before),
-                    "sha256_after": sha256(body),
+                    "content_sha256_before": old_content,
+                    "content_sha256_after": new_content,
+                    "raw_sha256_before": sha256(before),
+                    "raw_sha256_after": sha256(body),
                     "previous_snapshot": kept,
-                    "fields_changed": field_diff(monitor, before, body),
+                    "fields_changed": fields,
                 })
-                log(f"  {page_id}: CHANGED ({len(changed[-1]['fields_changed'])} fields)")
+                log(f"  {page_id}: CHANGED — {', '.join(f['field'] for f in fields) or 'no diffed field'}")
+            elif sha256(body) != sha256(before):
+                # Same content, different bytes: per-request markup only. The
+                # archived snapshot is left alone rather than churning the
+                # archive with re-fetches that say nothing new.
+                chrome_only += 1
             else:
                 unchanged += 1
         elif status == 404:
@@ -542,8 +639,9 @@ def run(monitor):
         done = frontier - page_id + 1
         if done % 100 == 0:
             log(f"progress {done}/{frontier - floor + 1} at id {page_id}; "
-                f"{len(changed)} changed, {len(new_pages)} new")
+                f"{len(changed)} changed, {len(new_pages)} new, {chrome_only} chrome-only")
 
+    save_snapshots(monitor, snaps)
     record = {
         "run_id": started.replace(":", "").replace("-", ""),
         "monitor": monitor.name,
@@ -558,15 +656,21 @@ def run(monitor):
         "changed_pages": changed,
         "removed_pages": removed,
         "unchanged_pages": unchanged,
+        "chrome_only_differences": chrome_only,
         "ids_absent": absent,
         "errors": errors,
+        "compared_fields": monitor.get("diff_fields") or [f["key"] for f in monitor.fields],
+        "change_detection": (
+            "A page counts as changed when the hash of its parsed fields differs from the "
+            "previous run. Pages whose bytes differ only in per-request markup (this source "
+            "ships a weather widget and an ASP.NET verification token) are counted under "
+            "chrome_only_differences and are not changes."),
     }
     record["summary"] = (
-        f"{checked} pages checked, {len(new_pages)} new, {len(changed)} changed, "
+        f"{checked} ids checked, {len(new_pages)} new, {len(changed)} changed, "
         f"{len(removed)} removed, {len(errors)} errors"
         if (new_pages or changed or removed or errors) else
-        f"{checked} pages checked; no page changed since the previous run"
-    )
+        f"{checked} ids checked; no page changed since the previous run")
     path = write_run(monitor, record)
     log(f"run recorded: {path.relative_to(ROOT)} — {record['summary']}")
     return record
@@ -680,6 +784,8 @@ def main():
         seed_run(monitor)
     elif cmd == "runs":
         show_runs(monitor)
+    elif cmd == "snapshots":
+        seed_snapshots(monitor)
     elif cmd == "extract":
         extract(monitor)
     elif cmd == "check":

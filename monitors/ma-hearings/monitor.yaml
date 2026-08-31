@@ -35,6 +35,7 @@ storage:
   superseded_dir: raw/_superseded # prior bytes kept when a page changes
   request_log: fetch_status.tsv   # every request, status, and UTC timestamp
   data_dir: data                  # extracted json/csv
+  snapshot_log: data/ma-hearings-snapshots.tsv  # which bytes are archived, and when first seen
 
 # Columns for the extract and the rendered table, in order.
 fields:
