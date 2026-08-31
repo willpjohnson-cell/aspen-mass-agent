@@ -1,0 +1,119 @@
+{
+  "run_id": "20260831T221652+0000",
+  "monitor": "ma-hearings",
+  "kind": "recheck",
+  "started_utc": "2026-08-31T22:16:52+00:00",
+  "finished_utc": "2026-08-31T22:46:26+00:00",
+  "frontier": 5774,
+  "id_range": [
+    5000,
+    5774
+  ],
+  "pages_checked": 775,
+  "pages_archived_after_run": 643,
+  "new_pages": [],
+  "changed_pages": [
+    {
+      "id": 5773,
+      "content_sha256_before": "46fa8d5e25d369aad545ca87b31323d608a84a91ac58e9f2d923fe281a6cde58",
+      "content_sha256_after": "961aa7cf7678e956d53cbd98a04ac8e2738c6822d7d9a6d17c0b1bedfed0c9b4",
+      "raw_sha256_before": "15b4b188dd3b350366d21ae19d89ad68f90e20bcd6af50a6119b64427ae6a273",
+      "raw_sha256_after": "830e780c291aed67465979f232f9503a2844f0db19ca9977481a435c63342647",
+      "previous_snapshot": "raw/_superseded/5773/20260831T221830+0000.html",
+      "fields_changed": [
+        {
+          "field": "status",
+          "before": "Upcoming",
+          "after": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 5772,
+      "content_sha256_before": "0a45db2708254e0504ee80c75264bf696e845d4fc68ed89bd3ccf4587ed151a3",
+      "content_sha256_after": "a5da20b7cfb4ef91698a943c7bb37ca8b83d3445f982b41f7b76e4c476ffb4a8",
+      "raw_sha256_before": "c310be740e7995b29f21377cb98eda176abf618c75d8f41fb101533b5d6b05a9",
+      "raw_sha256_after": "b768b33ad09e47d746ce60eb9b4dada1eead9e506884e456dd73f1d2b224bc65",
+      "previous_snapshot": "raw/_superseded/5772/20260831T221832+0000.html",
+      "fields_changed": [
+        {
+          "field": "status",
+          "before": "Upcoming",
+          "after": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 5771,
+      "content_sha256_before": "6a83dac385b1b4d2dee9a6fe7e68bb6f8b6b209d9ba1d44cf887b30e6a2dd743",
+      "content_sha256_after": "66f612310f7ed8ab79d9e74b1045c7410b4c92bc6bdf04411ba2edf9f71b1508",
+      "raw_sha256_before": "1dd26182b1f1f96f9e6407400ea4321cfb6949f164f39c0398b695af388bfd6e",
+      "raw_sha256_after": "ca81605e10a3717dcd14ca52ee065760b620865bc4123d4cb2aa6d9d959fdc56",
+      "previous_snapshot": "raw/_superseded/5771/20260831T221834+0000.html",
+      "fields_changed": [
+        {
+          "field": "status",
+          "before": "Upcoming",
+          "after": "Completed"
+        }
+      ]
+    },
+    {
+      "id": 5770,
+      "content_sha256_before": "bb3ed628c9b1003793d197aa77bc532418111da958fef83c2a8b6542ea48829b",
+      "content_sha256_after": "4340ee140cd78fe0bd0aa188576b9154dca48fb608ae3469bf27eca62e7efa4f",
+      "raw_sha256_before": "2771775a52d881a889645d43f0338d89cce166c602e751071e3af613ed347aa3",
+      "raw_sha256_after": "8cfe76143ca791a86acd759a4700abfb63eb4bbcc88e6df26c5293b926ea4665",
+      "previous_snapshot": "raw/_superseded/5770/20260831T221836+0000.html",
+      "fields_changed": [
+        {
+          "field": "bills",
+          "before": [
+            "S3263",
+            "H5642",
+            "H5606",
+            "S3201",
+            "H5609",
+            "H5597",
+            "H5579",
+            "H5566",
+            "H5565",
+            "H5557",
+            "H5525"
+          ],
+          "after": [
+            "S3201",
+            "S3263",
+            "S3268",
+            "H5642",
+            "H5606",
+            "H5609",
+            "H5597",
+            "H5579",
+            "H5566",
+            "H5565",
+            "H5557",
+            "H5525"
+          ]
+        }
+      ]
+    }
+  ],
+  "removed_pages": [],
+  "unchanged_pages": 0,
+  "chrome_only_differences": 639,
+  "ids_absent": 132,
+  "errors": [],
+  "compared_fields": [
+    "event_type",
+    "committee",
+    "subject",
+    "event_date",
+    "start_time",
+    "status",
+    "location",
+    "bills"
+  ],
+  "change_detection": "A page counts as changed when the hash of its parsed fields differs from the previous run. Pages whose bytes differ only in per-request markup (this source ships a weather widget and an ASP.NET verification token) are counted under chrome_only_differences and are not changes.",
+  "summary": "775 ids checked, 0 new, 4 changed, 0 removed, 0 errors"
+}
