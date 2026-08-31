@@ -10,9 +10,17 @@ particular government. A monitor is a directory under monitors/ holding:
 
 Commands:
   python3 runner.py collect <monitor>   fill the archive (resumable)
+  python3 runner.py run <monitor>       a monitoring pass: re-check every page,
+                                        pick up new ones, record what changed
   python3 runner.py extract <monitor>   archived pages -> json + csv
   python3 runner.py check <monitor>     cross-check the parser against itself
+  python3 runner.py seed-run <monitor>  reconstruct the first run record from
+                                        the request log of the initial collection
+  python3 runner.py runs <monitor>      show run history
   python3 runner.py monitors            list installed monitors
+
+A run is recorded whether or not anything moved. A pass that finds no changes
+is a result about the source, not an empty state, and is written out as such.
 """
 import csv
 import hashlib
@@ -30,6 +38,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 MONITORS = ROOT / "monitors"
+RUNS = ROOT / "runs"
 
 
 # --- a small YAML subset -------------------------------------------------
@@ -181,6 +190,11 @@ class Monitor:
     @property
     def data_dir(self):
         return self.path("storage", "data_dir", default="data")
+
+    @property
+    def superseded(self):
+        return self.path("storage", "superseded_dir",
+                         default=f"{self.get('storage', 'archive_dir', default='raw')}/_superseded")
 
     @property
     def delay(self):
@@ -452,6 +466,178 @@ def check(monitor, sample_size=20):
     return bad
 
 
+# --- runs and change detection -------------------------------------------
+
+def field_diff(monitor, before_bytes, after_bytes):
+    """Which of the monitor's diff_fields changed between two snapshots."""
+    keys = monitor.get("diff_fields") or [f["key"] for f in monitor.fields]
+    old = monitor.parser.parse(before_bytes.decode("utf-8", errors="replace"))
+    new = monitor.parser.parse(after_bytes.decode("utf-8", errors="replace"))
+    changes = []
+    for key in keys:
+        if old.get(key) != new.get(key):
+            changes.append({"field": key, "before": old.get(key), "after": new.get(key)})
+    return changes
+
+
+def supersede(monitor, page_id, old_bytes, stamp):
+    """Keep the bytes we are about to replace. The archive never loses a version."""
+    folder = monitor.superseded / str(page_id)
+    folder.mkdir(parents=True, exist_ok=True)
+    dest = folder / f"{stamp.replace(':', '').replace('-', '')}.html"
+    dest.write_bytes(old_bytes)
+    return str(dest.relative_to(ROOT))
+
+
+def write_run(monitor, record):
+    RUNS.mkdir(exist_ok=True)
+    path = RUNS / f"{record['run_id']}.json"
+    path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    return path
+
+
+def run(monitor):
+    """One monitoring pass over the whole id space, recording what moved."""
+    fetcher = Fetcher(monitor)
+    started = now()
+    log(f"monitor {monitor.name}; run started {started}")
+    frontier = find_frontier(fetcher)
+    floor = int(monitor.get("discovery", "floor"))
+
+    checked = 0
+    new_pages, changed, removed, errors = [], [], [], []
+    unchanged = absent = 0
+
+    for page_id in range(frontier, floor - 1, -1):
+        dest = monitor.archive / f"{page_id}.html"
+        known = dest.exists() and dest.stat().st_size > 0
+        before = dest.read_bytes() if known else None
+        status, body = fetcher.get(page_id, refetch=True)
+        checked += 1
+
+        if status == 200 and body:
+            if not known:
+                new_pages.append(page_id)
+            elif sha256(body) != sha256(before):
+                stamp = now()
+                kept = supersede(monitor, page_id, before, stamp)
+                changed.append({
+                    "id": page_id,
+                    "sha256_before": sha256(before),
+                    "sha256_after": sha256(body),
+                    "previous_snapshot": kept,
+                    "fields_changed": field_diff(monitor, before, body),
+                })
+                log(f"  {page_id}: CHANGED ({len(changed[-1]['fields_changed'])} fields)")
+            else:
+                unchanged += 1
+        elif status == 404:
+            absent += 1
+            if known:
+                removed.append(page_id)
+                log(f"  {page_id}: was archived, now returns 404")
+        else:
+            errors.append({"id": page_id, "status": status})
+
+        done = frontier - page_id + 1
+        if done % 100 == 0:
+            log(f"progress {done}/{frontier - floor + 1} at id {page_id}; "
+                f"{len(changed)} changed, {len(new_pages)} new")
+
+    record = {
+        "run_id": started.replace(":", "").replace("-", ""),
+        "monitor": monitor.name,
+        "kind": "recheck",
+        "started_utc": started,
+        "finished_utc": now(),
+        "frontier": frontier,
+        "id_range": [floor, frontier],
+        "pages_checked": checked,
+        "pages_archived_after_run": len(monitor.archived_ids()),
+        "new_pages": new_pages,
+        "changed_pages": changed,
+        "removed_pages": removed,
+        "unchanged_pages": unchanged,
+        "ids_absent": absent,
+        "errors": errors,
+    }
+    record["summary"] = (
+        f"{checked} pages checked, {len(new_pages)} new, {len(changed)} changed, "
+        f"{len(removed)} removed, {len(errors)} errors"
+        if (new_pages or changed or removed or errors) else
+        f"{checked} pages checked; no page changed since the previous run"
+    )
+    path = write_run(monitor, record)
+    log(f"run recorded: {path.relative_to(ROOT)} — {record['summary']}")
+    return record
+
+
+def seed_run(monitor):
+    """Reconstruct the initial collection as a run record, from the request log.
+
+    Marked reconstructed: it is assembled from the request log written during
+    the first collection, not observed by a run of this code.
+    """
+    path = monitor.request_log
+    if not path.exists():
+        sys.exit(f"no request log at {path}")
+    rows = list(csv.DictReader(path.open(encoding="utf-8"), delimiter="\t"))
+    ok = [r for r in rows if r["http_status"] == "200"]
+    missing = [r for r in rows if r["http_status"] == "404"]
+    stamps = sorted(r["fetched_at_utc"] for r in rows)
+    ids = sorted({int(r["id"]) for r in ok})
+    record = {
+        "run_id": stamps[0].replace(":", "").replace("-", ""),
+        "monitor": monitor.name,
+        "kind": "initial-collection",
+        "reconstructed": True,
+        "reconstructed_from": str(path.relative_to(ROOT)),
+        "started_utc": stamps[0],
+        "finished_utc": stamps[-1],
+        "frontier": max(ids),
+        "id_range": [int(monitor.get("discovery", "floor")), max(ids)],
+        "pages_checked": len({int(r["id"]) for r in rows}),
+        "pages_archived_after_run": len(ids),
+        "new_pages": ids,
+        "changed_pages": [],
+        "removed_pages": [],
+        "unchanged_pages": 0,
+        "ids_absent": len({int(r["id"]) for r in missing}),
+        "errors": [],
+        "summary": (f"initial collection: {len(ids)} pages archived, "
+                    f"{len({int(r['id']) for r in missing})} ids absent"),
+        "note": ("Assembled from the request log, which covers the initial walk and the "
+                 "contiguous scan run above the frontier to confirm it, so the id count "
+                 "is larger than the walked range alone."),
+    }
+    p = write_run(monitor, record)
+    print(f"wrote {p.relative_to(ROOT)} — {record['summary']}")
+    return record
+
+
+def load_runs(monitor=None):
+    if not RUNS.exists():
+        return []
+    out = []
+    for p in sorted(RUNS.glob("*.json")):
+        rec = json.loads(p.read_text(encoding="utf-8"))
+        if monitor is None or rec.get("monitor") == monitor:
+            out.append(rec)
+    out.sort(key=lambda r: r["started_utc"])
+    return out
+
+
+def show_runs(monitor):
+    runs = load_runs(monitor.name)
+    if not runs:
+        print("no runs recorded yet")
+        return
+    print(f"{'started (UTC)':<27}{'kind':<20}{'checked':>8}{'new':>6}{'changed':>9}")
+    for r in runs:
+        print(f"{r['started_utc']:<27}{r['kind']:<20}{r['pages_checked']:>8}"
+              f"{len(r['new_pages']):>6}{len(r['changed_pages']):>9}")
+
+
 # --- collect -------------------------------------------------------------
 
 def collect(monitor):
@@ -488,6 +674,12 @@ def main():
     monitor = Monitor(args[1])
     if cmd == "collect":
         collect(monitor)
+    elif cmd == "run":
+        run(monitor)
+    elif cmd == "seed-run":
+        seed_run(monitor)
+    elif cmd == "runs":
+        show_runs(monitor)
     elif cmd == "extract":
         extract(monitor)
     elif cmd == "check":
