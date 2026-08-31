@@ -1,119 +1,182 @@
-# Massachusetts Legislature Hearing Page Archive
+# Aspen
 
-A byte-for-byte archive of `malegislature.gov/Events/Hearings/Detail/{id}` pages,
-plus a parsed extract of the fields each page displayed at the moment it was
-fetched.
+A platform for hosting monitors that watch state and local governments.
 
-## What is here
+A monitor watches one source. It archives the pages it watches byte for byte,
+extracts a small set of fields from them, and records what changed between runs.
+The platform supplies everything that is not specific to a government; a monitor
+supplies the two files that are.
 
-| Path | What it is |
-| --- | --- |
-| `raw/{id}.html` | The page exactly as the server sent it. Never edited, cleaned, or reformatted. |
-| `fetch_status.tsv` | One row per id requested: HTTP status, byte count, UTC fetch time. |
-| `hearings.json` / `hearings.csv` | Fields extracted from `raw/`, with the SHA-256 of the file each row came from. |
-| `index.html` | A self-contained browsable table of the extract. |
-| `collect.py` / `parse.py` / `page.py` / `spotcheck.py` | Fetch, extract, render, and cross-check. |
+**Monitors running: 1** — `ma-hearings`, watching Massachusetts Legislature
+committee hearing and conference committee meeting pages.
 
-## How it was collected
+## Layout
 
-Ids are dense integers and monotonic with event date. The collector binary-searched
-the upper frontier — the largest id still returning 200 — and then walked downward
-to id 5000, one request at a time.
-
-- **Frontier found:** 5774, and confirmed rather than assumed. About a fifth
-  of ids inside the range are absent, in runs of up to 16 consecutive ids, so a
-  single 404 above the last page proves nothing. `verify_frontier.py` scanned
-  upward until 40 consecutive 404s had accumulated (ids 5775-5814, all absent).
-- **Range walked:** 5000 to 5774 (775 ids).
-- **Pages archived:** 643. **Ids returning 404:** 132 (gaps inside the range; recorded in `fetch_status.tsv`).
-- **Errors or retries:** none. Every request resolved to a 200 or a 404 first try.
-- **Fetch window:** 2026-08-31T03:30:20+00:00 to 2026-08-31T03:58:20+00:00 UTC.
-- **Rate:** strictly sequential, 1.5 s between requests, no parallelism.
-- **User-Agent:** `MA-Hearing-Archive/1.0 (public records archiving; +https://github.com/willpjohnson-cell/aspen-mass-agent)`
-- `robots.txt` disallows nothing for this path. Pages are server-rendered, so plain
-  `urllib` retrieves the same bytes a browser would; no headless browser was used.
-
-Re-running `collect.py` is safe: an id whose file already exists is skipped, so an
-interrupted run resumes where it stopped.
-
-```bash
-ARCHIVE_CONTACT="+https://github.com/willpjohnson-cell/aspen-mass-agent" python3 scrape.py fetch   # fetch (resumable)
-python3 scrape.py parse                                 # -> hearings.json, hearings.csv
-python3 scrape.py page                                  # -> index.html
-python3 scrape.py check                                 # cross-check the parser
+```
+runner.py                       source-agnostic: fetch, archive, hash, timestamp, diff
+site.py                         renders index.html from monitors/, runs/ and data/
+monitors/
+  ma-hearings/
+    monitor.yaml                what to fetch, how politely, how to present it
+    parse.py                    the only Massachusetts-specific code
+runs/{timestamp}.json           one record per run
+raw/{id}.html                   byte-for-byte page snapshots
+raw/_superseded/{id}/…          prior bytes, kept when a page's content changes
+data/                           extracted json + csv, and the snapshot ledger
+fetch_status.tsv                every request made: id, status, bytes, UTC time
+index.html                      the rendered page
 ```
 
-## What the extract contains
+## Commands
 
-The id space serves more than one kind of event. Titles read
-`<event type> Details - <name>`, and the name means different things:
+```bash
+ARCHIVE_CONTACT="+https://github.com/you/your-repo" python3 runner.py collect ma-hearings
+python3 runner.py run ma-hearings        # a monitoring pass; writes runs/{timestamp}.json
+python3 runner.py extract ma-hearings    # archived pages -> data/ma-hearings.{json,csv}
+python3 runner.py check ma-hearings      # cross-check the parser against a second reader
+python3 runner.py runs ma-hearings       # run history
+python3 runner.py monitors               # installed monitors
+python3 site.py                          # rebuild index.html
+```
 
-- **Hearing** — 613 pages
-- **Conference Committee Meeting** — 30 pages
+`ARCHIVE_CONTACT` is substituted into the monitor's User-Agent. The runner
+refuses to send an anonymous one.
 
-For a hearing the name is the **committee**; for a conference committee meeting it
-is the **bill subject**, and no committee is named on the page. These land in
-separate columns rather than a single one, so the data never asserts a committee
-that a page did not name.
+## How a monitor is defined
 
-Fields taken from the page: `status`, `event_date`, `start_time`, `location`
-(from `<dt>`/`<dd>` pairs) and bill references (from `/Bills/{court}/{number}`
-links). A field that is absent from a page is null, and every null is counted in
-the report `parse.py` prints — nothing is inferred or filled in.
+Two files. Nothing else.
 
-### Field coverage over 643 pages
+### `monitor.yaml`
 
-| Field | Resolved | Null | What the null means |
-| --- | --- | --- | --- |
-| `event_type`, `status`, `event_date`, `start_time` | all 643 | 0 | — |
-| `location` | 641 | 2 | The page ships an empty `<dd>` for Location. |
-| `committee` | 613 | 30 | Null on non-hearing pages, which name no committee. |
-| `subject` | 30 | 613 | Null on hearing pages, which name a committee instead. |
-| bill references | 374 | 269 | The page carries no bill table at all, only a linked agenda PDF. |
+Declares the source and how to treat it. The keys the runner reads:
 
-Each null above was checked against the markup rather than assumed: the empty
-`Location` values really are empty elements, and the bill-less pages really have
-no bill rows. The `/Bills/` links on those pages are site navigation
-(`/Bills/Search`, `/Bills/RecentBills`), excluded deliberately.
+| Key | Meaning |
+| --- | --- |
+| `source.url_pattern` | URL with `{id}` substituted per page |
+| `discovery.kind` | id-space strategy; `integer-ids` is implemented |
+| `discovery.floor` / `anchor` / `probe` | walk down to `floor`; bracket the frontier from `anchor` and `probe` |
+| `discovery.clear_run` | consecutive absences required before calling a frontier |
+| `politeness.delay_seconds` | seconds between requests |
+| `politeness.parallel` | must be false; the runner refuses to parallelise |
+| `politeness.user_agent` | `{contact}` is filled from `ARCHIVE_CONTACT` |
+| `storage.*` | archive, superseded, request log, data, snapshot ledger paths |
+| `fields` | ordered `key` / `label` pairs for the extract and the table |
+| `diff_fields` | fields compared between runs to describe a change |
+| `report_group_by` | groups the extraction report, so absences expected for one kind of page are legible |
+| `schedule`, `title`, `jurisdiction`, `description` | shown on the page |
 
-### Verification
+Config is read by a small YAML-subset parser in `runner.py` (comments, nested
+maps, lists, folded `>` blocks, scalars) so the platform needs no third-party
+packages. It raises on anything outside that subset rather than guessing.
 
-`spotcheck.py` re-extracts every field with a second, structurally different
-reader (`html.parser`'s tokenizer instead of regexes) on 20 pages spread
-across the id range and diffs the two. Result: the two readers agreed on every field of every sampled page.
+### `parse.py`
+
+One required function:
+
+```python
+def parse(html: str) -> dict:
+    """Raw HTML of one page -> flat dict of scalars and lists of scalars."""
+```
+
+A field that is not on the page must come back `None`. Do not infer, default, or
+backfill anything — the runner counts every null and reports it, and that report
+is only meaningful if a null means the page did not say.
+
+One optional function:
+
+```python
+def crosscheck(html: str) -> dict:
+    """The same fields, read a different way."""
+```
+
+`runner.py check` diffs `parse` against `crosscheck` over a spread of archived
+pages. Two structurally different readers agreeing is what turns "this field is
+null" into "this field is absent from the page" rather than "the parser missed
+it". For `ma-hearings`, `parse` uses regexes and `crosscheck` uses
+`html.parser`'s tokenizer.
+
+The runner wraps whatever the parser returns with the id, source URL, raw
+SHA-256, byte count, and observation timestamp. Parsers do not fetch, hash,
+write files, or know that runs exist.
+
+### Adding a jurisdiction
+
+```bash
+mkdir -p monitors/<name>
+$EDITOR monitors/<name>/monitor.yaml     # copy ma-hearings' and edit
+$EDITOR monitors/<name>/parse.py         # parse(html) -> dict
+ARCHIVE_CONTACT="…" python3 runner.py collect <name>
+python3 runner.py check <name> && python3 runner.py extract <name>
+python3 site.py
+```
+
+The runner has no per-monitor branches; it lists whatever is in `monitors/` and
+renders whatever `fields` a config declares. A source whose pages are not
+addressed by integer ids needs a new `discovery.kind` in the runner — that is a
+new strategy in the platform, deliberately, rather than a fork of it.
+
+## How pages are collected
+
+Sequentially, one request at a time, with the configured delay and no
+parallelism. `robots.txt` for malegislature.gov disallows nothing on this path,
+and pages are server-rendered, so plain `urllib` retrieves what a browser would.
+
+The frontier — the highest live id — is not taken from a single 404. Roughly a
+fifth of the ids in this range are absent, in runs of up to 16 consecutive, so
+the runner requires `clear_run` consecutive absences before concluding.
+
+Every request is appended to `fetch_status.tsv` with its status and UTC
+timestamp, including the ones that 404. Gaps are part of the record.
+
+## How change detection works
+
+Each run re-fetches every id in the range and compares the hash of the **parsed
+fields** against the previous run, not the hash of the bytes.
+
+This matters here: every page on this source ships a weather widget and a
+per-request ASP.NET verification token, so the raw bytes differ on every fetch of
+every page. Comparing raw hashes would report all 643 pages as changed on every
+run. Pages whose bytes differ while their content does not are counted as
+`chrome_only_differences` and their archived snapshot is left alone.
+
+When a page's content does change, the bytes being replaced move to
+`raw/_superseded/{id}/{timestamp}.html` before the new ones are written, and the
+run record names the fields that differ and their before and after values.
+
+A run that finds nothing still writes a record. "No page changed since the
+previous run" is an observation about the source, not an empty state.
+
+Run records also carry new pages, pages that were archived and now return 404,
+errors, and the list of fields compared.
 
 ## What this establishes, and what it does not
 
-**It establishes** what each archived page displayed at the timestamp recorded for
-it in `fetch_status.tsv`. The raw HTML is unmodified and each parsed row carries
-the SHA-256 of the file it was derived from, so any extract can be checked against
-the bytes it came from:
+**It establishes** what each archived page displayed at the timestamp recorded
+for it. The raw HTML is unmodified, each extracted row carries the SHA-256 of the
+file it came from, and each snapshot's first-seen time is recorded:
 
 ```bash
-shasum -a 256 raw/5637.html          # compare against raw_sha256 for id 5637
+shasum -a 256 raw/5637.html      # compare against raw_sha256 in data/ma-hearings.json
 ```
 
-Note that this ties a row to the bytes in this repository. It is not a third-party
+That ties a row to the bytes in this repository. It is not a third-party
 attestation that those bytes came from the Commonwealth; for that, pair this
 archive with an independent capture such as a Wayback Machine snapshot.
 
-**It does not establish when anything was posted or announced.** The site does not
-publish a posting, noticing, or announcement date for these events, and this
-archive therefore contains none. No column here should be read as evidence about
-notice timing or notice compliance — the data needed for that claim is not present,
-and it cannot be recovered by inference from event dates or id ordering.
+**It does not establish when anything was posted or announced.** The site does
+not publish a posting, noticing, or announcement date for these events, and this
+archive contains none. Nothing here supports a claim about notice timing or
+notice compliance, and no such value is derived from event dates or id ordering.
 
-Further limits worth stating plainly:
+Further limits, stated plainly:
 
-- **A single observation per page.** Each page was fetched once. If a page changed
-  before or after that moment, this archive cannot show it. Values such as `status`
-  are as of the fetch, not final.
+- **Change detection begins at the first run, not at the event.** The archive can
+  show that a page differs from the previous run. It cannot show what a page said
+  before this monitor started watching it.
 - **Absence is page absence.** A null means the field was not on the page. It is
-  not a statement that the Legislature lacked the information.
-- **Linked documents were not captured.** Some pages link agenda or minutes PDFs;
+  not a statement that the government lacked the information.
+- **Linked documents are not captured.** Some pages link agenda or minutes PDFs;
   the archive stores the page, not the files it links to.
-- **404s inside the range** are recorded as such. Whether an id never existed or was
-  withdrawn is not something these pages reveal.
-- **Ids above 5774** returned 404 during the scan. Whether they were never
-  assigned, or simply not yet published, is not something these responses reveal.
-  The frontier is a fact about this fetch window, not a permanent ceiling.
+- **404s inside the range** are recorded as such. Whether an id was never assigned
+  or was withdrawn is not something these responses reveal.
+- **The frontier is a fact about a fetch window,** not a permanent ceiling.
