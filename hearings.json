@@ -1,5 +1,1481 @@
 [
   {
+    "id": 5458,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5458",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Revenue",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, November 7, 2025",
+    "start_time": "10:00 AM",
+    "location": "Gardner Auditorium and Virtual",
+    "bills": [
+      {
+        "number": "H3005",
+        "general_court": 194
+      },
+      {
+        "number": "H3006",
+        "general_court": 194
+      },
+      {
+        "number": "H3011",
+        "general_court": 194
+      },
+      {
+        "number": "H3022",
+        "general_court": 194
+      },
+      {
+        "number": "H3068",
+        "general_court": 194
+      },
+      {
+        "number": "H3088",
+        "general_court": 194
+      },
+      {
+        "number": "H3093",
+        "general_court": 194
+      },
+      {
+        "number": "H3106",
+        "general_court": 194
+      },
+      {
+        "number": "H3112",
+        "general_court": 194
+      },
+      {
+        "number": "H3113",
+        "general_court": 194
+      },
+      {
+        "number": "H3132",
+        "general_court": 194
+      },
+      {
+        "number": "H3139",
+        "general_court": 194
+      },
+      {
+        "number": "H3141",
+        "general_court": 194
+      },
+      {
+        "number": "H3158",
+        "general_court": 194
+      },
+      {
+        "number": "H3162",
+        "general_court": 194
+      },
+      {
+        "number": "H3176",
+        "general_court": 194
+      },
+      {
+        "number": "H3205",
+        "general_court": 194
+      },
+      {
+        "number": "H3211",
+        "general_court": 194
+      },
+      {
+        "number": "H3212",
+        "general_court": 194
+      },
+      {
+        "number": "H3215",
+        "general_court": 194
+      },
+      {
+        "number": "H3219",
+        "general_court": 194
+      },
+      {
+        "number": "H3229",
+        "general_court": 194
+      },
+      {
+        "number": "H3238",
+        "general_court": 194
+      },
+      {
+        "number": "H3239",
+        "general_court": 194
+      },
+      {
+        "number": "H3244",
+        "general_court": 194
+      },
+      {
+        "number": "H3253",
+        "general_court": 194
+      },
+      {
+        "number": "H3266",
+        "general_court": 194
+      },
+      {
+        "number": "H3271",
+        "general_court": 194
+      },
+      {
+        "number": "H3280",
+        "general_court": 194
+      },
+      {
+        "number": "H3965",
+        "general_court": 194
+      },
+      {
+        "number": "H3966",
+        "general_court": 194
+      },
+      {
+        "number": "H4051",
+        "general_court": 194
+      },
+      {
+        "number": "H4094",
+        "general_court": 194
+      },
+      {
+        "number": "H4143",
+        "general_court": 194
+      },
+      {
+        "number": "H4225",
+        "general_court": 194
+      },
+      {
+        "number": "H4239",
+        "general_court": 194
+      },
+      {
+        "number": "H4269",
+        "general_court": 194
+      },
+      {
+        "number": "H56",
+        "general_court": 194
+      },
+      {
+        "number": "S1928",
+        "general_court": 194
+      },
+      {
+        "number": "S1929",
+        "general_court": 194
+      },
+      {
+        "number": "S1940",
+        "general_court": 194
+      },
+      {
+        "number": "S1961",
+        "general_court": 194
+      },
+      {
+        "number": "S1964",
+        "general_court": 194
+      },
+      {
+        "number": "S1966",
+        "general_court": 194
+      },
+      {
+        "number": "S1972",
+        "general_court": 194
+      },
+      {
+        "number": "S1980",
+        "general_court": 194
+      },
+      {
+        "number": "S2027",
+        "general_court": 194
+      },
+      {
+        "number": "S2052",
+        "general_court": 194
+      },
+      {
+        "number": "S2094",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Revenue",
+    "bill_count": 49,
+    "raw_sha256": "7ad11bb2b8612be6f93dc2e272d20525c416d601f2a309ec403dda7881ca620d",
+    "raw_bytes": 228227,
+    "fetched_at_utc": "2026-08-31T03:41:47+00:00"
+  },
+  {
+    "id": 5459,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5459",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Education",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, November 12, 2025",
+    "start_time": "11:00 AM",
+    "location": "Gardner Auditorium",
+    "bills": [
+      {
+        "number": "H734",
+        "general_court": 194
+      },
+      {
+        "number": "S343",
+        "general_court": 194
+      },
+      {
+        "number": "H617",
+        "general_court": 194
+      },
+      {
+        "number": "H612",
+        "general_court": 194
+      },
+      {
+        "number": "H660",
+        "general_court": 194
+      },
+      {
+        "number": "H659",
+        "general_court": 194
+      },
+      {
+        "number": "H527",
+        "general_court": 194
+      },
+      {
+        "number": "S431",
+        "general_court": 194
+      },
+      {
+        "number": "S398",
+        "general_court": 194
+      },
+      {
+        "number": "S379",
+        "general_court": 194
+      },
+      {
+        "number": "H738",
+        "general_court": 194
+      },
+      {
+        "number": "H525",
+        "general_court": 194
+      },
+      {
+        "number": "S374",
+        "general_court": 194
+      },
+      {
+        "number": "H729",
+        "general_court": 194
+      },
+      {
+        "number": "S443",
+        "general_court": 194
+      },
+      {
+        "number": "S377",
+        "general_court": 194
+      },
+      {
+        "number": "H726",
+        "general_court": 194
+      },
+      {
+        "number": "S409",
+        "general_court": 194
+      },
+      {
+        "number": "S50",
+        "general_court": 194
+      },
+      {
+        "number": "H694",
+        "general_court": 194
+      },
+      {
+        "number": "H614",
+        "general_court": 194
+      },
+      {
+        "number": "S429",
+        "general_court": 194
+      },
+      {
+        "number": "H582",
+        "general_court": 194
+      },
+      {
+        "number": "H693",
+        "general_court": 194
+      },
+      {
+        "number": "S356",
+        "general_court": 194
+      },
+      {
+        "number": "H568",
+        "general_court": 194
+      },
+      {
+        "number": "S367",
+        "general_court": 194
+      },
+      {
+        "number": "H535",
+        "general_court": 194
+      },
+      {
+        "number": "H552",
+        "general_court": 194
+      },
+      {
+        "number": "H537",
+        "general_court": 194
+      },
+      {
+        "number": "H504",
+        "general_court": 194
+      },
+      {
+        "number": "H3980",
+        "general_court": 194
+      },
+      {
+        "number": "H3941",
+        "general_court": 194
+      },
+      {
+        "number": "S457",
+        "general_court": 194
+      },
+      {
+        "number": "H4207",
+        "general_court": 194
+      },
+      {
+        "number": "S428",
+        "general_court": 194
+      },
+      {
+        "number": "S346",
+        "general_court": 194
+      },
+      {
+        "number": "H4038",
+        "general_court": 194
+      },
+      {
+        "number": "H4059",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Education",
+    "bill_count": 39,
+    "raw_sha256": "9d8ebbd61a306ea1359066d7926aaf484c71664da74f83b223f39535d604cbe9",
+    "raw_bytes": 134916,
+    "fetched_at_utc": "2026-08-31T03:41:44+00:00"
+  },
+  {
+    "id": 5460,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5460",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 13, 2025",
+    "start_time": "11:00 AM",
+    "location": "A-1",
+    "bills": [
+      {
+        "number": "H4693",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Bonding, Capital Expenditures and State Assets",
+    "bill_count": 1,
+    "raw_sha256": "8faa23ab5be0ec67fd483a4effb5b65c48db88daa855c339ed50bc95c8fee845",
+    "raw_bytes": 94224,
+    "fetched_at_utc": "2026-08-31T03:41:42+00:00"
+  },
+  {
+    "id": 5461,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5461",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Economic Development and Emerging Technologies",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 13, 2025",
+    "start_time": "11:00 AM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H4431",
+        "general_court": 194
+      },
+      {
+        "number": "H4238",
+        "general_court": 194
+      },
+      {
+        "number": "H4037",
+        "general_court": 194
+      },
+      {
+        "number": "H496",
+        "general_court": 194
+      },
+      {
+        "number": "H488",
+        "general_court": 194
+      },
+      {
+        "number": "H483",
+        "general_court": 194
+      },
+      {
+        "number": "H481",
+        "general_court": 194
+      },
+      {
+        "number": "H480",
+        "general_court": 194
+      },
+      {
+        "number": "S308",
+        "general_court": 194
+      },
+      {
+        "number": "S302",
+        "general_court": 194
+      },
+      {
+        "number": "S301",
+        "general_court": 194
+      },
+      {
+        "number": "S298",
+        "general_court": 194
+      },
+      {
+        "number": "S294",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Economic Development and Emerging Technologies",
+    "bill_count": 13,
+    "raw_sha256": "011aea3fc1bb063b9a56590ff8921427ef2b13ca17a4dfaaffb86479e2bca330",
+    "raw_bytes": 118824,
+    "fetched_at_utc": "2026-08-31T03:41:40+00:00"
+  },
+  {
+    "id": 5462,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5462",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Municipalities and Regional Government",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Friday, October 31, 2025",
+    "start_time": "11:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "H4007",
+        "general_court": 194
+      },
+      {
+        "number": "H4602",
+        "general_court": 194
+      },
+      {
+        "number": "S2668",
+        "general_court": 194
+      },
+      {
+        "number": "H4603",
+        "general_court": 194
+      },
+      {
+        "number": "H4614",
+        "general_court": 194
+      },
+      {
+        "number": "H4621",
+        "general_court": 194
+      },
+      {
+        "number": "S2648",
+        "general_court": 194
+      },
+      {
+        "number": "H4663",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Municipalities and Regional Government",
+    "bill_count": 8,
+    "raw_sha256": "4cc26a768a0ea1743fbcc6a5716514d34b67317514ec67a1f99e943559cc8cf9",
+    "raw_bytes": 105195,
+    "fetched_at_utc": "2026-08-31T03:41:38+00:00"
+  },
+  {
+    "id": 5463,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5463",
+    "event_type": "Conference Committee Meeting",
+    "committee": null,
+    "subject": "FY25 Supplemental Appropriations",
+    "status": "Completed",
+    "event_date": "Monday, November 3, 2025",
+    "start_time": "11:00 AM",
+    "location": "212",
+    "bills": [],
+    "page_title": "Conference Committee Meeting Details - FY25 Supplemental Appropriations",
+    "bill_count": 0,
+    "raw_sha256": "9b6f434821ef1155f04c650960526f95647e38f8e5657365639649a1b20d2bcf",
+    "raw_bytes": 81097,
+    "fetched_at_utc": "2026-08-31T03:41:36+00:00"
+  },
+  {
+    "id": 5464,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5464",
+    "event_type": "Hearing",
+    "committee": "Cabo Verdean Cultural Center",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 6, 2025",
+    "start_time": "12:00 PM",
+    "location": "Virtual Hearing",
+    "bills": [],
+    "page_title": "Hearing Details - Cabo Verdean Cultural Center",
+    "bill_count": 0,
+    "raw_sha256": "a136a40ea3e19dc2adb98ec04c033518c0c6c1e8ac8a17d59b450ed790215848",
+    "raw_bytes": 87004,
+    "fetched_at_utc": "2026-08-31T03:41:34+00:00"
+  },
+  {
+    "id": 5465,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5465",
+    "event_type": "Hearing",
+    "committee": "Combatting Antisemitism",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, November 5, 2025",
+    "start_time": "11:00 AM",
+    "location": "Gardner Auditorium",
+    "bills": [],
+    "page_title": "Hearing Details - Combatting Antisemitism",
+    "bill_count": 0,
+    "raw_sha256": "48216e486c6633815d249ff0151a25fc9454edb8ce60b965dd45abb5fc946eb1",
+    "raw_bytes": 97790,
+    "fetched_at_utc": "2026-08-31T03:41:32+00:00"
+  },
+  {
+    "id": 5466,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5466",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Mental Health, Substance Use and Recovery",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 10, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [
+      {
+        "number": "H2192",
+        "general_court": 194
+      },
+      {
+        "number": "H2193",
+        "general_court": 194
+      },
+      {
+        "number": "S1394",
+        "general_court": 194
+      },
+      {
+        "number": "H2203",
+        "general_court": 194
+      },
+      {
+        "number": "H2204",
+        "general_court": 194
+      },
+      {
+        "number": "S1398",
+        "general_court": 194
+      },
+      {
+        "number": "H2214",
+        "general_court": 194
+      },
+      {
+        "number": "H2223",
+        "general_court": 194
+      },
+      {
+        "number": "H2231",
+        "general_court": 194
+      },
+      {
+        "number": "S1383",
+        "general_court": 194
+      },
+      {
+        "number": "H4200",
+        "general_court": 194
+      },
+      {
+        "number": "H2241",
+        "general_court": 194
+      },
+      {
+        "number": "S1379",
+        "general_court": 194
+      },
+      {
+        "number": "S1395",
+        "general_court": 194
+      },
+      {
+        "number": "S1405",
+        "general_court": 194
+      },
+      {
+        "number": "H4696",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Mental Health, Substance Use and Recovery",
+    "bill_count": 16,
+    "raw_sha256": "e7586bf0225368c69466abdaba5d7fbcaf3a8d4cc94895a664921d814adaaef5",
+    "raw_bytes": 140406,
+    "fetched_at_utc": "2026-08-31T03:41:30+00:00"
+  },
+  {
+    "id": 5467,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5467",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Telecommunications, Utilities and Energy",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 13, 2025",
+    "start_time": "1:00 PM",
+    "location": "Original Location A-1 and Virtual New Location B-2 and Virtual",
+    "bills": [
+      {
+        "number": "S2271",
+        "general_court": 194
+      },
+      {
+        "number": "S2272",
+        "general_court": 194
+      },
+      {
+        "number": "S2290",
+        "general_court": 194
+      },
+      {
+        "number": "S2291",
+        "general_court": 194
+      },
+      {
+        "number": "S2300",
+        "general_court": 194
+      },
+      {
+        "number": "S2310",
+        "general_court": 194
+      },
+      {
+        "number": "S2312",
+        "general_court": 194
+      },
+      {
+        "number": "S2319",
+        "general_court": 194
+      },
+      {
+        "number": "H3471",
+        "general_court": 194
+      },
+      {
+        "number": "H3517",
+        "general_court": 194
+      },
+      {
+        "number": "H3518",
+        "general_court": 194
+      },
+      {
+        "number": "H3530",
+        "general_court": 194
+      },
+      {
+        "number": "H3531",
+        "general_court": 194
+      },
+      {
+        "number": "H3533",
+        "general_court": 194
+      },
+      {
+        "number": "H3547",
+        "general_court": 194
+      },
+      {
+        "number": "H3550",
+        "general_court": 194
+      },
+      {
+        "number": "H3582",
+        "general_court": 194
+      },
+      {
+        "number": "H3583",
+        "general_court": 194
+      },
+      {
+        "number": "H3584",
+        "general_court": 194
+      },
+      {
+        "number": "H3974",
+        "general_court": 194
+      },
+      {
+        "number": "H4084",
+        "general_court": 194
+      },
+      {
+        "number": "H2346",
+        "general_court": 194
+      },
+      {
+        "number": "S2612",
+        "general_court": 194
+      },
+      {
+        "number": "S2652",
+        "general_court": 194
+      },
+      {
+        "number": "H4690",
+        "general_court": 194
+      },
+      {
+        "number": "H4689",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Telecommunications, Utilities and Energy",
+    "bill_count": 26,
+    "raw_sha256": "7f9b5c1b4c24eca10619eca294c60ebaed67c92fa1ac8f305b8bac548cfa4b0f",
+    "raw_bytes": 116672,
+    "fetched_at_utc": "2026-08-31T03:41:28+00:00"
+  },
+  {
+    "id": 5468,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5468",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Labor and Workforce Development",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "11:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "S1319",
+        "general_court": 194
+      },
+      {
+        "number": "S1320",
+        "general_court": 194
+      },
+      {
+        "number": "S1336",
+        "general_court": 194
+      },
+      {
+        "number": "S1349",
+        "general_court": 194
+      },
+      {
+        "number": "S1359",
+        "general_court": 194
+      },
+      {
+        "number": "S1363",
+        "general_court": 194
+      },
+      {
+        "number": "S1376",
+        "general_court": 194
+      },
+      {
+        "number": "H2071",
+        "general_court": 194
+      },
+      {
+        "number": "H2072",
+        "general_court": 194
+      },
+      {
+        "number": "H2074",
+        "general_court": 194
+      },
+      {
+        "number": "H2081",
+        "general_court": 194
+      },
+      {
+        "number": "H2107",
+        "general_court": 194
+      },
+      {
+        "number": "H2118",
+        "general_court": 194
+      },
+      {
+        "number": "H2124",
+        "general_court": 194
+      },
+      {
+        "number": "H2126",
+        "general_court": 194
+      },
+      {
+        "number": "H2134",
+        "general_court": 194
+      },
+      {
+        "number": "H2145",
+        "general_court": 194
+      },
+      {
+        "number": "H2148",
+        "general_court": 194
+      },
+      {
+        "number": "H2150",
+        "general_court": 194
+      },
+      {
+        "number": "H2159",
+        "general_court": 194
+      },
+      {
+        "number": "H2161",
+        "general_court": 194
+      },
+      {
+        "number": "H2168",
+        "general_court": 194
+      },
+      {
+        "number": "H2174",
+        "general_court": 194
+      },
+      {
+        "number": "H2178",
+        "general_court": 194
+      },
+      {
+        "number": "H2191",
+        "general_court": 194
+      },
+      {
+        "number": "H4291",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Labor and Workforce Development",
+    "bill_count": 26,
+    "raw_sha256": "deb7aa6393aff35371d2de8df0608895c91eaa459e61d7c084147496c74635ac",
+    "raw_bytes": 112350,
+    "fetched_at_utc": "2026-08-31T03:41:25+00:00"
+  },
+  {
+    "id": 5469,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5469",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Veterans and Federal Affairs",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 13, 2025",
+    "start_time": "1:00 PM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "H3827",
+        "general_court": 194
+      },
+      {
+        "number": "H3842",
+        "general_court": 194
+      },
+      {
+        "number": "H3843",
+        "general_court": 194
+      },
+      {
+        "number": "H3844",
+        "general_court": 194
+      },
+      {
+        "number": "H3845",
+        "general_court": 194
+      },
+      {
+        "number": "H3846",
+        "general_court": 194
+      },
+      {
+        "number": "H3851",
+        "general_court": 194
+      },
+      {
+        "number": "H3888",
+        "general_court": 194
+      },
+      {
+        "number": "H4002",
+        "general_court": 194
+      },
+      {
+        "number": "H4479",
+        "general_court": 194
+      },
+      {
+        "number": "H4692",
+        "general_court": 194
+      },
+      {
+        "number": "S2457",
+        "general_court": 194
+      },
+      {
+        "number": "S2463",
+        "general_court": 194
+      },
+      {
+        "number": "S2464",
+        "general_court": 194
+      },
+      {
+        "number": "S2472",
+        "general_court": 194
+      },
+      {
+        "number": "S2474",
+        "general_court": 194
+      },
+      {
+        "number": "S2475",
+        "general_court": 194
+      },
+      {
+        "number": "S2476",
+        "general_court": 194
+      },
+      {
+        "number": "S2684",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Veterans and Federal Affairs",
+    "bill_count": 19,
+    "raw_sha256": "9f6087dbd28fe49503d2b9230800ebe176cea365be097d027b8a5f47d1545b02",
+    "raw_bytes": 103948,
+    "fetched_at_utc": "2026-08-31T03:41:23+00:00"
+  },
+  {
+    "id": 5470,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5470",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Labor and Workforce Development",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Thursday, November 20, 2025",
+    "start_time": "10:00 AM",
+    "location": "B-1 and Virtual",
+    "bills": [
+      {
+        "number": "S1360",
+        "general_court": 194
+      },
+      {
+        "number": "S1364",
+        "general_court": 194
+      },
+      {
+        "number": "S1372",
+        "general_court": 194
+      },
+      {
+        "number": "S1374",
+        "general_court": 194
+      },
+      {
+        "number": "H2066",
+        "general_court": 194
+      },
+      {
+        "number": "H2067",
+        "general_court": 194
+      },
+      {
+        "number": "H2069",
+        "general_court": 194
+      },
+      {
+        "number": "H2082",
+        "general_court": 194
+      },
+      {
+        "number": "H2098",
+        "general_court": 194
+      },
+      {
+        "number": "H2128",
+        "general_court": 194
+      },
+      {
+        "number": "H2131",
+        "general_court": 194
+      },
+      {
+        "number": "H2133",
+        "general_court": 194
+      },
+      {
+        "number": "H2182",
+        "general_court": 194
+      },
+      {
+        "number": "H4545",
+        "general_court": 194
+      },
+      {
+        "number": "S2665",
+        "general_court": 194
+      },
+      {
+        "number": "S1305",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Labor and Workforce Development",
+    "bill_count": 16,
+    "raw_sha256": "73282589f9db2b2bfd5133a7232a2698aad882486fdcef054450a9bf32d34a73",
+    "raw_bytes": 102899,
+    "fetched_at_utc": "2026-08-31T03:41:21+00:00"
+  },
+  {
+    "id": 5471,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5471",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Public Safety and Homeland Security",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 25, 2025",
+    "start_time": "11:30 AM",
+    "location": "Gardner Auditorium and Virtual",
+    "bills": [
+      {
+        "number": "H2573",
+        "general_court": 194
+      },
+      {
+        "number": "H2575",
+        "general_court": 194
+      },
+      {
+        "number": "H2580",
+        "general_court": 194
+      },
+      {
+        "number": "H2584",
+        "general_court": 194
+      },
+      {
+        "number": "H2648",
+        "general_court": 194
+      },
+      {
+        "number": "H2701",
+        "general_court": 194
+      },
+      {
+        "number": "S1666",
+        "general_court": 194
+      },
+      {
+        "number": "S1675",
+        "general_court": 194
+      },
+      {
+        "number": "S1681",
+        "general_court": 194
+      },
+      {
+        "number": "S1683",
+        "general_court": 194
+      },
+      {
+        "number": "S1776",
+        "general_court": 194
+      },
+      {
+        "number": "S2736",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Public Safety and Homeland Security",
+    "bill_count": 12,
+    "raw_sha256": "2d37d2090579487947bbcae576a24cb7fd5b40d46e44082874ed8e83ecca0a32",
+    "raw_bytes": 241451,
+    "fetched_at_utc": "2026-08-31T03:41:19+00:00"
+  },
+  {
+    "id": 5472,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5472",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Monday, November 17, 2025",
+    "start_time": "1:00 PM",
+    "location": "A-2 and Virtual",
+    "bills": [],
+    "page_title": "Hearing Details - Joint Committee on Racial Equity, Civil Rights, and Inclusion",
+    "bill_count": 0,
+    "raw_sha256": "1bdb6baf9e701f91ee9cd4b97d89a4f9ae7e44739343350f2a8d1d110a8f29b2",
+    "raw_bytes": 106436,
+    "fetched_at_utc": "2026-08-31T03:41:17+00:00"
+  },
+  {
+    "id": 5473,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5473",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Financial Services",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "10:30 AM",
+    "location": "Original Location A-2 and Virtual New Location B-2 and Virtual",
+    "bills": [
+      {
+        "number": "H1106",
+        "general_court": 194
+      },
+      {
+        "number": "H1114",
+        "general_court": 194
+      },
+      {
+        "number": "H1122",
+        "general_court": 194
+      },
+      {
+        "number": "H1145",
+        "general_court": 194
+      },
+      {
+        "number": "H1177",
+        "general_court": 194
+      },
+      {
+        "number": "H1183",
+        "general_court": 194
+      },
+      {
+        "number": "H1221",
+        "general_court": 194
+      },
+      {
+        "number": "H1264",
+        "general_court": 194
+      },
+      {
+        "number": "H1329",
+        "general_court": 194
+      },
+      {
+        "number": "H1332",
+        "general_court": 194
+      },
+      {
+        "number": "H1335",
+        "general_court": 194
+      },
+      {
+        "number": "H1348",
+        "general_court": 194
+      },
+      {
+        "number": "H1349",
+        "general_court": 194
+      },
+      {
+        "number": "H3937",
+        "general_court": 194
+      },
+      {
+        "number": "H4622",
+        "general_court": 194
+      },
+      {
+        "number": "S705",
+        "general_court": 194
+      },
+      {
+        "number": "S721",
+        "general_court": 194
+      },
+      {
+        "number": "S731",
+        "general_court": 194
+      },
+      {
+        "number": "S736",
+        "general_court": 194
+      },
+      {
+        "number": "S767",
+        "general_court": 194
+      },
+      {
+        "number": "S786",
+        "general_court": 194
+      },
+      {
+        "number": "S815",
+        "general_court": 194
+      },
+      {
+        "number": "S816",
+        "general_court": 194
+      },
+      {
+        "number": "S833",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Financial Services",
+    "bill_count": 24,
+    "raw_sha256": "50ea80f13e96bcdbff5e1309de7c8c69207d5e97d080b4461ebf4d9823d2eba2",
+    "raw_bytes": 119334,
+    "fetched_at_utc": "2026-08-31T03:41:15+00:00"
+  },
+  {
+    "id": 5474,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5474",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Housing",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Wednesday, November 19, 2025",
+    "start_time": "11:00 AM",
+    "location": "Gardner Auditorium",
+    "bills": [
+      {
+        "number": "S22",
+        "general_court": 194
+      },
+      {
+        "number": "S960",
+        "general_court": 194
+      },
+      {
+        "number": "S968",
+        "general_court": 194
+      },
+      {
+        "number": "S973",
+        "general_court": 194
+      },
+      {
+        "number": "S982",
+        "general_court": 194
+      },
+      {
+        "number": "S984",
+        "general_court": 194
+      },
+      {
+        "number": "S994",
+        "general_court": 194
+      },
+      {
+        "number": "S995",
+        "general_court": 194
+      },
+      {
+        "number": "S997",
+        "general_court": 194
+      },
+      {
+        "number": "S998",
+        "general_court": 194
+      },
+      {
+        "number": "S1012",
+        "general_court": 194
+      },
+      {
+        "number": "S1013",
+        "general_court": 194
+      },
+      {
+        "number": "S1016",
+        "general_court": 194
+      },
+      {
+        "number": "H1477",
+        "general_court": 194
+      },
+      {
+        "number": "H1480",
+        "general_court": 194
+      },
+      {
+        "number": "H1483",
+        "general_court": 194
+      },
+      {
+        "number": "H1489",
+        "general_court": 194
+      },
+      {
+        "number": "H1490",
+        "general_court": 194
+      },
+      {
+        "number": "H1497",
+        "general_court": 194
+      },
+      {
+        "number": "H1507",
+        "general_court": 194
+      },
+      {
+        "number": "H1510",
+        "general_court": 194
+      },
+      {
+        "number": "H1526",
+        "general_court": 194
+      },
+      {
+        "number": "H1532",
+        "general_court": 194
+      },
+      {
+        "number": "H1544",
+        "general_court": 194
+      },
+      {
+        "number": "H1553",
+        "general_court": 194
+      },
+      {
+        "number": "H1557",
+        "general_court": 194
+      },
+      {
+        "number": "H1561",
+        "general_court": 194
+      },
+      {
+        "number": "H1562",
+        "general_court": 194
+      },
+      {
+        "number": "H1564",
+        "general_court": 194
+      },
+      {
+        "number": "H1571",
+        "general_court": 194
+      },
+      {
+        "number": "H1573",
+        "general_court": 194
+      },
+      {
+        "number": "H1577",
+        "general_court": 194
+      },
+      {
+        "number": "H2328",
+        "general_court": 194
+      },
+      {
+        "number": "H3910",
+        "general_court": 194
+      },
+      {
+        "number": "H3990",
+        "general_court": 194
+      },
+      {
+        "number": "H3922",
+        "general_court": 194
+      },
+      {
+        "number": "H4145",
+        "general_court": 194
+      },
+      {
+        "number": "H4099",
+        "general_court": 194
+      },
+      {
+        "number": "H4063",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Housing",
+    "bill_count": 39,
+    "raw_sha256": "5f4c12f0500e2b76f3889089b883706571a1c672eae3fdf4837d8972f57ac3fd",
+    "raw_bytes": 110417,
+    "fetched_at_utc": "2026-08-31T03:41:12+00:00"
+  },
+  {
+    "id": 5475,
+    "source_url": "https://malegislature.gov/Events/Hearings/Detail/5475",
+    "event_type": "Hearing",
+    "committee": "Joint Committee on Agriculture and Fisheries",
+    "subject": null,
+    "status": "Completed",
+    "event_date": "Tuesday, November 18, 2025",
+    "start_time": "9:00 AM",
+    "location": "Written Testimony Only",
+    "bills": [
+      {
+        "number": "S602",
+        "general_court": 194
+      }
+    ],
+    "page_title": "Hearing Details - Joint Committee on Agriculture and Fisheries",
+    "bill_count": 1,
+    "raw_sha256": "a5a70c7a18bb9d3559d1d4feb8ffafdb5c1e616a6d66429f04bc7eaf60e48006",
+    "raw_bytes": 89960,
+    "fetched_at_utc": "2026-08-31T03:41:10+00:00"
+  },
+  {
     "id": 5477,
     "source_url": "https://malegislature.gov/Events/Hearings/Detail/5477",
     "event_type": "Hearing",
