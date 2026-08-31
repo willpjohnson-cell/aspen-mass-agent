@@ -61,6 +61,27 @@ fields:
   - key: bill_count
     label: Bill count
 
+# How this monitor's data is presented. The renderer reads these rather than
+# knowing anything about hearings; the scope disclosure belongs to the monitor
+# because only the monitor knows what its source does and does not publish.
+presentation:
+  filter_placeholder: Filter by committee, date, status, bill number…
+  hide_columns: [bill_count, general_court]
+  summary_stat:
+    field: bill_count
+    label: bill references
+  scope:
+    heading: What this shows
+    establishes: >
+      what each hearing page said when it was fetched, at the timestamp shown in
+      the last column. The raw HTML is kept byte-for-byte and each row carries
+      the SHA-256 of the file it came from.
+    does_not_establish: >
+      when a hearing was announced or posted. The site does not publish a posting
+      or announcement date, so this archive contains none and no notice-timing
+      conclusion can be drawn from it. Blank cells mean the field was absent from
+      the page, not that it was zero or unknown to the Legislature.
+
 # Group the extraction report by this field, so absences expected for one kind
 # of page are distinguishable from real extraction misses.
 report_group_by: event_type

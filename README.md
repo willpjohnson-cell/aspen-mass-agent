@@ -14,7 +14,7 @@ committee hearing and conference committee meeting pages.
 
 ```
 runner.py                       source-agnostic: fetch, archive, hash, timestamp, diff
-site.py                         renders index.html from monitors/, runs/ and data/
+render.py                       renders index.html from monitors/, runs/ and data/
 monitors/
   ma-hearings/
     monitor.yaml                what to fetch, how politely, how to present it
@@ -36,7 +36,7 @@ python3 runner.py extract ma-hearings    # archived pages -> data/ma-hearings.{j
 python3 runner.py check ma-hearings      # cross-check the parser against a second reader
 python3 runner.py runs ma-hearings       # run history
 python3 runner.py monitors               # installed monitors
-python3 site.py                          # rebuild index.html
+python3 render.py                        # rebuild index.html
 ```
 
 `ARCHIVE_CONTACT` is substituted into the monitor's User-Agent. The runner
@@ -63,7 +63,12 @@ Declares the source and how to treat it. The keys the runner reads:
 | `fields` | ordered `key` / `label` pairs for the extract and the table |
 | `diff_fields` | fields compared between runs to describe a change |
 | `report_group_by` | groups the extraction report, so absences expected for one kind of page are legible |
+| `presentation.*` | filter placeholder, hidden columns, a summary stat, and the monitor's scope disclosure |
 | `schedule`, `title`, `jurisdiction`, `description` | shown on the page |
+
+The scope disclosure lives in the monitor's config rather than in the renderer:
+only the monitor knows what its source does and does not publish, so a new
+jurisdiction states its own limits instead of inheriting Massachusetts'.
 
 Config is read by a small YAML-subset parser in `runner.py` (comments, nested
 maps, lists, folded `>` blocks, scalars) so the platform needs no third-party
@@ -107,7 +112,7 @@ $EDITOR monitors/<name>/monitor.yaml     # copy ma-hearings' and edit
 $EDITOR monitors/<name>/parse.py         # parse(html) -> dict
 ARCHIVE_CONTACT="…" python3 runner.py collect <name>
 python3 runner.py check <name> && python3 runner.py extract <name>
-python3 site.py
+python3 render.py
 ```
 
 The runner has no per-monitor branches; it lists whatever is in `monitors/` and

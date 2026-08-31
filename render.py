@@ -22,12 +22,17 @@ TAGLINE = ("A platform for hosting monitors that watch state and local governmen
            "Each monitor archives the pages it watches, byte for byte, and records "
            "what changed between runs.")
 
-# Preserved verbatim from the first version of this page.
-SCOPE_BOX = """<div class="scope">
-  <h2>What this shows</h2>
-  <p><strong>Establishes:</strong> what each hearing page said when it was fetched, at the timestamp shown in the last column. The raw HTML is kept byte-for-byte and each row carries the SHA-256 of the file it came from.</p>
-  <p><strong>Does not establish:</strong> when a hearing was announced or posted. The site does not publish a posting or announcement date, so this archive contains none and no notice-timing conclusion can be drawn from it. Blank cells mean the field was absent from the page, not that it was zero or unknown to the Legislature.</p>
-</div>"""
+def scope_box(m):
+    """The monitor's own scope disclosure. A source the platform has never seen
+    cannot have its limits described here, so the words come from its config."""
+    scope = m.get("presentation", "scope") or {}
+    if not scope.get("establishes") and not scope.get("does_not_establish"):
+        return ""
+    return (f'<div class="scope">\n'
+            f'  <h2>{esc(scope.get("heading", "What this shows"))}</h2>\n'
+            f'  <p><strong>Establishes:</strong> {scope["establishes"]}</p>\n'
+            f'  <p><strong>Does not establish:</strong> {scope["does_not_establish"]}</p>\n'
+            f'</div>')
 
 STYLE = """<style>
   :root { color-scheme: light dark; --line:#d7d7d2; --muted:#6b6b66; --bg:#fbfbf9; --fg:#1b1b19; }
@@ -62,7 +67,7 @@ STYLE = """<style>
             vertical-align:top; white-space:nowrap; }
   th { position:sticky; top:0; background:var(--bg); font-size:.78rem;
         text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
-  td.bills { white-space:normal; min-width:14rem; color:var(--muted); }
+  td.listcell { white-space:normal; min-width:14rem; color:var(--muted); }
   td.stamp { color:var(--muted); font-variant-numeric:tabular-nums; }
   .missing { color:var(--muted); font-style:italic; }
   .runs td.n { font-variant-numeric:tabular-nums; }
@@ -82,18 +87,18 @@ def cell(v):
 
 
 def monitor_card(m, records, runs):
-    bill_refs = sum(r.get("bill_count") or 0 for r in records)
+    stat = m.get("presentation", "summary_stat") or {}
+    stat_total = sum(r.get(stat.get("field")) or 0 for r in records) if stat.get("field") else None
     since = runs[0]["started_utc"][:10] if runs else None
     last = runs[-1] if runs else None
     data_json = f"data/{m.name}.json"
     data_csv = f"data/{m.name}.csv"
     cfg = f"monitors/{m.name}/monitor.yaml"
-    stats = [
-        (f"{len(records)}", "pages archived"),
-        (f"{bill_refs:,}", "bill references"),
-        (esc(since or "—"), "running since"),
-        (esc(m.get("schedule", default="—")), "schedule"),
-    ]
+    stats = [(f"{len(records)}", "pages archived")]
+    if stat_total is not None:
+        stats.append((f"{stat_total:,}", esc(stat.get("label", stat["field"]))))
+    stats += [(esc(since or "—"), "running since"),
+              (esc(m.get("schedule", default="—")), "schedule")]
     stat_html = "".join(f"<div><span>{v}</span><small>{k}</small></div>" for v, k in stats)
     last_line = (f"Last run {esc(last['started_utc'])} — {esc(last['summary'])}."
                  if last else "No runs recorded yet.")
@@ -135,7 +140,8 @@ run{'s' if len(runs) != 1 else ''}. One JSON record per run lives in <code>runs/
 
 
 def data_table(m, records):
-    fields = [f for f in m.fields if f["key"] not in ("bill_count", "general_court")]
+    hidden = set(m.get("presentation", "hide_columns") or [])
+    fields = [f for f in m.fields if f["key"] not in hidden]
     head = "".join(f"<th>{esc(f['label'])}</th>" for f in fields)
     rows = []
     for r in sorted(records, key=lambda r: r["id"], reverse=True):
@@ -143,14 +149,15 @@ def data_table(m, records):
         for f in fields:
             v = r.get(f["key"])
             if f.get("list"):
-                cells.append(f'<td class="bills">{esc(", ".join(v))}</td>' if v
+                cells.append(f'<td class="listcell">{esc(", ".join(str(x) for x in v))}</td>' if v
                              else '<td class="missing">none listed</td>')
             else:
                 cells.append(cell(v))
         rows.append(f'<tr><td><a href="{esc(r["source_url"])}">{r["id"]}</a></td>'
                     + "".join(cells)
                     + f'<td class="stamp">{esc(r.get("fetched_at_utc") or "")}</td></tr>')
-    return f"""<input id="q" type="search" placeholder="Filter by committee, date, status, bill number…" autocomplete="off">
+    placeholder = m.get("presentation", "filter_placeholder", default="Filter…")
+    return f"""<input id="q" type="search" placeholder="{esc(placeholder)}" autocomplete="off">
 <div class="tablewrap">
 <table id="t">
 <thead><tr><th>ID</th>{head}<th>Fetched (UTC)</th></tr></thead>
@@ -199,7 +206,7 @@ def build():
 {runs_table(all_runs)}
 
 <h2 class="section">{esc(m.get('title', default=m.name))}</h2>
-{SCOPE_BOX}
+{scope_box(m)}
 {data_table(m, records)}
 <footer>Fetch window for the archived pages: {esc(window)}.
 Built {esc(built)} from data/{esc(m.name)}.json and runs/.

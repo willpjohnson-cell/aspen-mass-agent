@@ -483,10 +483,10 @@ def check(monitor, sample_size=20):
 def content_hash(monitor, raw_bytes):
     """Hash of what the parser reads, not of the bytes.
 
-    Pages carry markup that changes on every request without the page saying
-    anything different — this source ships a weather widget and a per-request
-    ASP.NET verification token. Comparing raw bytes would report all of them as
-    changes on every run. Hashing the parsed fields compares what the page says.
+    Many sites carry markup that changes on every request without the page
+    saying anything different: a clock, a rotating widget, a per-request form
+    token. Comparing raw bytes would report every such page as changed on every
+    run. Hashing the parsed fields compares what the page says instead.
     """
     parsed = monitor.parser.parse(raw_bytes.decode("utf-8", errors="replace"))
     return sha256(json.dumps(parsed, sort_keys=True, ensure_ascii=False).encode("utf-8"))
@@ -662,9 +662,9 @@ def run(monitor):
         "compared_fields": monitor.get("diff_fields") or [f["key"] for f in monitor.fields],
         "change_detection": (
             "A page counts as changed when the hash of its parsed fields differs from the "
-            "previous run. Pages whose bytes differ only in per-request markup (this source "
-            "ships a weather widget and an ASP.NET verification token) are counted under "
-            "chrome_only_differences and are not changes."),
+            "previous run. Pages whose bytes differ while their parsed fields are identical "
+            "are counted under chrome_only_differences and are not treated as changes; the "
+            "bytes already archived for them are left in place."),
     }
     record["summary"] = (
         f"{checked} ids checked, {len(new_pages)} new, {len(changed)} changed, "
