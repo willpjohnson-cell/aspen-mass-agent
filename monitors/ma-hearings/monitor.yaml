@@ -1,0 +1,68 @@
+# Monitor definition. The runner reads this file and monitor's parse.py and
+# needs nothing else to watch this source.
+name: ma-hearings
+title: Massachusetts Legislature — committee hearings
+jurisdiction: Massachusetts
+government: Massachusetts General Court
+description: >
+  Committee hearing and conference committee meeting pages published by the
+  Massachusetts Legislature at malegislature.gov. Each run re-fetches every
+  archived page and records whether it changed.
+
+source:
+  url_pattern: https://malegislature.gov/Events/Hearings/Detail/{id}
+  robots_txt: https://malegislature.gov/robots.txt
+  rendering: server-side          # plain HTTP retrieves what a browser would
+
+# How the id space is walked. The runner supports the integer-ids strategy;
+# a source shaped differently needs a new strategy in the runner, not a fork.
+discovery:
+  kind: integer-ids
+  floor: 5000                     # walk down to here
+  anchor: 5750                    # an id known to exist, used to bracket
+  probe: 5800                     # first guess above the frontier
+  clear_run: 40                   # consecutive 404s needed to call the frontier
+
+politeness:
+  delay_seconds: 1.5
+  parallel: false                 # the runner refuses to parallelise
+  user_agent: MA-Hearing-Archive/1.0 (public records archiving; {contact})
+
+schedule: weekly                  # declared cadence; runs are invoked manually
+
+storage:
+  archive_dir: raw                # byte-for-byte page snapshots
+  superseded_dir: raw/_superseded # prior bytes kept when a page changes
+  request_log: fetch_status.tsv   # every request, status, and UTC timestamp
+  data_dir: data                  # extracted json/csv
+
+# Columns for the extract and the rendered table, in order.
+fields:
+  - key: event_type
+    label: Type
+  - key: committee
+    label: Committee
+  - key: subject
+    label: Subject
+  - key: event_date
+    label: Event date
+  - key: start_time
+    label: Start
+  - key: status
+    label: Status
+  - key: location
+    label: Location
+  - key: bills
+    label: Bills
+    list: true
+  - key: general_court
+    label: General court
+  - key: bill_count
+    label: Bill count
+
+# Group the extraction report by this field, so absences expected for one kind
+# of page are distinguishable from real extraction misses.
+report_group_by: event_type
+
+# Fields whose value is compared between runs to describe a change.
+diff_fields: [event_type, committee, subject, event_date, start_time, status, location, bills]
