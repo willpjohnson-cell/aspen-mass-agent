@@ -1,141 +1,55 @@
 #!/usr/bin/env python3
-"""MVP scraper for Massachusetts Legislature hearing pages.
+"""MA Legislature hearing archive — command dispatcher.
 
 Usage:
-  python3 scrape.py fetch          # find frontier, download all hearing pages
+  ARCHIVE_CONTACT="+https://github.com/you/repo" python3 scrape.py fetch
   python3 scrape.py parse          # raw HTML -> hearings.json + hearings.csv
   python3 scrape.py page           # hearings.json -> index.html
+  python3 scrape.py check          # cross-check the parser against a second reader
+
+This keeps the original MVP's command surface. The implementations live in
+collect.py, parse.py, page.py, and spotcheck.py, which differ from the MVP in
+four ways that matter for an evidence archive:
+
+1. Raw HTML is written as bytes, not decoded to str and re-written as text.
+   The MVP's round trip happens to be byte-identical for this server's output,
+   but it is not byte-preserving by construction: it substitutes U+FFFD for any
+   byte that is not valid UTF-8 and applies newline translation on write.
+
+2. Titles are split into an event type plus either a committee (hearings) or a
+   subject (everything else). About 14% of pages in this id space are Conference
+   Committee Meetings, where the MVP's title.replace() left the whole string
+   "Conference Committee Meeting Details - Cannabis Laws" sitting in a column
+   labelled "committee".
+
+3. The frontier search brackets from a known-present anchor and the result is
+   confirmed by a contiguous scan above it. Roughly a third of ids inside the
+   range 404, so a plain binary search over a sparse space can land on a gap and
+   report a frontier below the true one.
+
+4. Every request is recorded in fetch_status.tsv with its HTTP status and UTC
+   timestamp, and every parsed row carries the SHA-256 of the file it came from,
+   so an extract can always be tied back to the bytes that produced it.
 """
-import csv, html, json, os, re, sys, time, urllib.request, urllib.error
+import subprocess
+import sys
+from pathlib import Path
 
-BASE = "https://malegislature.gov/Events/Hearings/Detail/%d"
-UA = "MA-Hearing-Archive/0.1 (+https://github.com/YOURNAME/REPO)"
-RAW = "raw"
-DELAY = 1.5
-LOW = 5000          # walk down to here; lower it if you want earlier sessions
-
-
-def get(hid, timeout=30):
-    """Return HTML string, or None on 404."""
-    req = urllib.request.Request(BASE % hid, headers={"User-Agent": UA})
-    try:
-        return urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "replace")
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return None
-        raise
+ROOT = Path(__file__).resolve().parent
+COMMANDS = {
+    "fetch": "collect.py",
+    "parse": "parse.py",
+    "page": "page.py",
+    "check": "spotcheck.py",
+}
 
 
-def find_frontier(lo=5000, hi=9000):
-    """Highest hearing id that exists."""
-    while lo < hi:
-        mid = (lo + hi + 1) // 2
-        sys.stderr.write("probe %d\n" % mid)
-        exists = get(mid) is not None
-        time.sleep(DELAY)
-        if exists:
-            lo = mid
-        else:
-            hi = mid - 1
-    return lo
-
-
-def fetch():
-    os.makedirs(RAW, exist_ok=True)
-    top = find_frontier()
-    print("frontier: %d" % top)
-    for hid in range(top, LOW - 1, -1):
-        path = os.path.join(RAW, "%d.html" % hid)
-        if os.path.exists(path):
-            continue
-        try:
-            doc = get(hid)
-        except Exception as e:
-            print("  %d ERROR %s" % (hid, e))
-            time.sleep(5)
-            continue
-        if doc is None:
-            print("  %d 404" % hid)
-        else:
-            open(path, "w", encoding="utf-8").write(doc)
-            print("  %d ok (%d bytes)" % (hid, len(doc)))
-        time.sleep(DELAY)
-
-
-# --- parsing -------------------------------------------------------------
-
-def field(doc, label):
-    """Grab the <dd> following a <dt> containing `label`."""
-    m = re.search(re.escape(label) + r"\s*:?\s*</dt>\s*<dd[^>]*>(.*?)</dd>", doc, re.S)
-    if not m:
-        return None
-    txt = re.sub(r"<[^>]+>", " ", m.group(1))
-    return html.unescape(re.sub(r"\s+", " ", txt)).strip() or None
-
-
-def parse_one(hid, doc):
-    t = re.search(r"<title>(.*?)</title>", doc, re.S)
-    title = html.unescape(t.group(1)).strip() if t else ""
-    committee = title.replace("Hearing Details -", "").strip()
-    bills = sorted(set(re.findall(r"/Bills/\d+/([HSD]\d+)\b", doc)))
-    return {
-        "id": hid,
-        "committee": committee,
-        "status": field(doc, "Status"),
-        "event_date": field(doc, "Event Date"),
-        "start_time": field(doc, "Start Time"),
-        "location": field(doc, "Location"),
-        "bill_count": len(bills),
-        "bills": bills,
-        "url": BASE % hid,
-    }
-
-
-def parse():
-    rows = []
-    for fn in sorted(os.listdir(RAW)):
-        if not fn.endswith(".html"):
-            continue
-        hid = int(fn[:-5])
-        rows.append(parse_one(hid, open(os.path.join(RAW, fn), encoding="utf-8").read()))
-    rows.sort(key=lambda r: r["id"])
-    json.dump(rows, open("hearings.json", "w"), indent=1)
-    cols = ["id", "committee", "status", "event_date", "start_time", "location", "bill_count", "url"]
-    with open("hearings.csv", "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(rows)
-    print("parsed %d hearings -> hearings.json, hearings.csv" % len(rows))
-
-
-def page():
-    rows = json.load(open("hearings.json"))
-    by_comm = {}
-    for r in rows:
-        by_comm[r["committee"]] = by_comm.get(r["committee"], 0) + 1
-    top = sorted(by_comm.items(), key=lambda kv: -kv[1])
-    trs = "\n".join(
-        "<tr><td>%d</td><td>%s</td><td>%s</td><td>%s</td><td>%d</td>"
-        "<td><a href='%s'>src</a></td></tr>"
-        % (r["id"], html.escape(r["committee"]), r["event_date"] or "",
-           r["status"] or "", r["bill_count"], r["url"])
-        for r in reversed(rows))
-    lis = "\n".join("<li>%s &mdash; %d</li>" % (html.escape(c), n) for c, n in top[:15])
-    open("index.html", "w").write(f"""<!doctype html><meta charset=utf-8>
-<title>MA Legislature Hearing Archive</title>
-<style>body{{font:15px/1.5 system-ui;margin:2rem auto;max-width:56rem;padding:0 1rem}}
-table{{border-collapse:collapse;width:100%;font-size:13px}}
-td,th{{border-bottom:1px solid #ddd;padding:4px 8px;text-align:left}}</style>
-<h1>Massachusetts Legislature &mdash; Hearing Archive</h1>
-<p>{len(rows)} hearings archived from malegislature.gov.
-Raw HTML snapshots and structured data in this repository.</p>
-<h2>Hearings by committee</h2><ul>{lis}</ul>
-<h2>All hearings</h2>
-<table><tr><th>ID<th>Committee<th>Date<th>Status<th>Bills<th>Source</tr>
-{trs}</table>""")
-    print("wrote index.html (%d hearings)" % len(rows))
+def main():
+    cmd = sys.argv[1] if len(sys.argv) > 1 else "fetch"
+    if cmd not in COMMANDS:
+        sys.exit(f"unknown command {cmd!r}; expected one of {', '.join(COMMANDS)}")
+    raise SystemExit(subprocess.call([sys.executable, str(ROOT / COMMANDS[cmd])] + sys.argv[2:]))
 
 
 if __name__ == "__main__":
-    cmd = sys.argv[1] if len(sys.argv) > 1 else "fetch"
-    {"fetch": fetch, "parse": parse, "page": page}[cmd]()
+    main()
