@@ -106,7 +106,7 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
     font-family: var(--mono);
     font-variant-numeric: tabular-nums;
   }
-  .stamp { font-size: var(--t-xs); color: var(--muted); }
+  .stamp { font-size: var(--t-xs); color: var(--muted); white-space: nowrap; }
   .hash { font-size: var(--t-xs); color: var(--faint); }
   .id { font-size: 0.9em; }
 
@@ -124,7 +124,8 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
     font-size: var(--t-md);
     color: var(--muted);
     margin: 0 0 1.1rem;
-    max-width: 34rem;
+    max-width: 44rem;
+    text-wrap: pretty;
   }
   header .beats { font-size: var(--t-sm); color: var(--muted); margin: 0; max-width: 40rem; }
   header .beats strong { color: var(--ink); font-weight: 600; }
@@ -160,6 +161,10 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
 
   .change { padding: 0.7rem 0; }
   .change + .change { border-top: 1px solid var(--rule); }
+  .entry { padding: 1.15rem 0; }
+  .entry + .entry { border-top: 1px solid var(--rule); }
+  .entry h3 { font-size: var(--t-md); letter-spacing: -0.005em; }
+  .entry .when { margin: 0.1rem 0 0.5rem; }
   .fieldname { font-size: var(--t-sm); color: var(--muted); }
   .diff { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.6rem;
           margin: 0.25rem 0 0; }
@@ -223,6 +228,7 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
   td.wrapcell { min-width: 13rem; }
   td.listcell { color: var(--muted); min-width: 10rem; }
   .runs td, .runs th { padding-right: 1.4rem; }
+  .runs td:first-child { white-space: nowrap; }
 
   /* --- totals --------------------------------------------------------- */
   .stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
@@ -450,6 +456,15 @@ def scope_box(beat):
             f'</div>')
 
 
+def lower_first(text):
+    """The beat description follows 'watches' in a sentence, so it must not
+    start with a capital that belongs to a standalone sentence."""
+    text = (text or "").strip()
+    if len(text) > 1 and text[1:2].islower():
+        return text[0].lower() + text[1:]
+    return text
+
+
 def build():
     beats = [runner.Beat(n) for n in runner.available()]
     beat = beats[0]
@@ -516,7 +531,7 @@ def build():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{PLATFORM} — {esc(beat.get('title', default=beat.name))}</title>
+<title>{PLATFORM}</title>
 {STYLE}
 </head>
 <body>
@@ -526,7 +541,7 @@ def build():
   <h1>{PLATFORM}</h1>
   <p class="tagline">{TAGLINE}</p>
   <p class="beats">Beats running: {len(beats)}. <strong>{esc(beat.name)}</strong> watches
-  {esc(beat.get('description', default='').strip())}
+  {esc(lower_first(beat.get('description', default='')))}
   Its definition is in <a href="beats/{esc(beat.name)}/beat.yaml">beat.yaml</a>, and its
   records are in <a href="runs/">runs</a> and <a href="data/{esc(beat.name)}.json">data</a>.</p>
 </header>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Monitor — Massachusetts Legislature — committee hearings</title>
+<title>The Monitor</title>
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
   :root {
@@ -87,7 +87,7 @@
     font-family: var(--mono);
     font-variant-numeric: tabular-nums;
   }
-  .stamp { font-size: var(--t-xs); color: var(--muted); }
+  .stamp { font-size: var(--t-xs); color: var(--muted); white-space: nowrap; }
   .hash { font-size: var(--t-xs); color: var(--faint); }
   .id { font-size: 0.9em; }
 
@@ -105,7 +105,8 @@
     font-size: var(--t-md);
     color: var(--muted);
     margin: 0 0 1.1rem;
-    max-width: 34rem;
+    max-width: 44rem;
+    text-wrap: pretty;
   }
   header .beats { font-size: var(--t-sm); color: var(--muted); margin: 0; max-width: 40rem; }
   header .beats strong { color: var(--ink); font-weight: 600; }
@@ -141,6 +142,10 @@
 
   .change { padding: 0.7rem 0; }
   .change + .change { border-top: 1px solid var(--rule); }
+  .entry { padding: 1.15rem 0; }
+  .entry + .entry { border-top: 1px solid var(--rule); }
+  .entry h3 { font-size: var(--t-md); letter-spacing: -0.005em; }
+  .entry .when { margin: 0.1rem 0 0.5rem; }
   .fieldname { font-size: var(--t-sm); color: var(--muted); }
   .diff { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.6rem;
           margin: 0.25rem 0 0; }
@@ -204,6 +209,7 @@
   td.wrapcell { min-width: 13rem; }
   td.listcell { color: var(--muted); min-width: 10rem; }
   .runs td, .runs th { padding-right: 1.4rem; }
+  .runs td:first-child { white-space: nowrap; }
 
   /* --- totals --------------------------------------------------------- */
   .stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
@@ -259,7 +265,7 @@
   <h1>The Monitor</h1>
   <p class="tagline">It archives government web pages and records when they change.</p>
   <p class="beats">Beats running: 1. <strong>ma-hearings</strong> watches
-  Committee hearing and conference committee meeting pages published by the Massachusetts Legislature at malegislature.gov. Each run re-fetches every archived page and records whether it changed.
+  committee hearing and conference committee meeting pages published by the Massachusetts Legislature at malegislature.gov. Each run re-fetches every archived page and records whether it changed.
   Its definition is in <a href="beats/ma-hearings/beat.yaml">beat.yaml</a>, and its
   records are in <a href="runs/">runs</a> and <a href="data/ma-hearings.json">data</a>.</p>
 </header>
@@ -322,7 +328,7 @@
 </section>
 
 <footer>
-Built 2026-09-01T01:15:28+00:00 from data/ma-hearings.json and runs/. Pages are fetched one at a
+Built 2026-09-01T01:20:07+00:00 from data/ma-hearings.json and runs/. Pages are fetched one at a
 time with 1.5 seconds between requests. Raw HTML is stored exactly as the
 server sent it; when a page's content changes, the replaced bytes are kept under
 raw/_superseded.
