@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
-"""Source-agnostic monitor runner.
+"""Source-agnostic beat runner.
 
 Fetch, archive, hash, timestamp, diff. Nothing in this file knows about any
-particular government. A monitor is a directory under monitors/ holding:
+particular government. A beat is one government surface being watched: a directory under beats/ holding
 
-  monitor.yaml   what to fetch, how politely, and how to present it
+  beat.yaml      what to fetch, how politely, and how to present it
   parse.py       one function, parse(html) -> dict, plus an optional
                  crosscheck(html) -> dict used by the check command
 
 Commands:
-  python3 runner.py collect <monitor>   fill the archive (resumable)
-  python3 runner.py run <monitor>       a monitoring pass: re-check every page,
+  python3 runner.py collect <beat>   fill the archive (resumable)
+  python3 runner.py run <beat>       a pass over the beat: re-check every page,
                                         pick up new ones, record what changed
-  python3 runner.py extract <monitor>   archived pages -> json + csv
-  python3 runner.py check <monitor>     cross-check the parser against itself
-  python3 runner.py seed-run <monitor>  reconstruct the first run record from
+  python3 runner.py extract <beat>   archived pages -> json + csv
+  python3 runner.py check <beat>     cross-check the parser against itself
+  python3 runner.py seed-run <beat>  reconstruct the first run record from
                                         the request log of the initial collection
-  python3 runner.py runs <monitor>      show run history
-  python3 runner.py snapshots <monitor> rebuild the archived-bytes ledger
-  python3 runner.py changes <monitor>   every change ever detected
-  python3 runner.py backfill <monitor>  add provenance to older change records
-  python3 runner.py monitors            list installed monitors
+  python3 runner.py runs <beat>      show run history
+  python3 runner.py snapshots <beat> rebuild the archived-bytes ledger
+  python3 runner.py changes <beat>   every change ever detected
+  python3 runner.py backfill <beat>  add provenance to older change records
+  python3 runner.py beats               list installed beats
 
 A run is recorded whether or not anything moved. A pass that finds no changes
 is a result about the source, not an empty state, and is written out as such.
@@ -40,7 +40,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-MONITORS = ROOT / "monitors"
+BEATS = ROOT / "beats"
 RUNS = ROOT / "runs"
 
 
@@ -146,28 +146,28 @@ def load_yaml(path):
     return value
 
 
-# --- monitors ------------------------------------------------------------
+# --- beats ------------------------------------------------------------
 
-class Monitor:
-    """A monitor's configuration and its parser, loaded from disk."""
+class Beat:
+    """A beat's configuration and its parser, loaded from disk."""
 
     def __init__(self, name):
         self.name = name
-        self.dir = MONITORS / name
+        self.dir = BEATS / name
         if not self.dir.is_dir():
-            sys.exit(f"no monitor named {name!r} in {MONITORS}")
-        self.config = load_yaml(self.dir / "monitor.yaml")
+            sys.exit(f"no beat named {name!r} in {BEATS}")
+        self.config = load_yaml(self.dir / "beat.yaml")
         self.parser = self._load_parser()
 
     def _load_parser(self):
         path = self.dir / "parse.py"
         if not path.exists():
-            sys.exit(f"monitor {self.name} has no parse.py")
-        spec = importlib.util.spec_from_file_location(f"monitors.{self.name}.parse", path)
+            sys.exit(f"beat {self.name} has no parse.py")
+        spec = importlib.util.spec_from_file_location(f"beats.{self.name}.parse", path)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         if not hasattr(module, "parse"):
-            sys.exit(f"monitor {self.name}: parse.py defines no parse(html) function")
+            sys.exit(f"beat {self.name}: parse.py defines no parse(html) function")
         return module
 
     def get(self, *path, default=None):
@@ -210,7 +210,7 @@ class Monitor:
     def url(self, page_id):
         pattern = self.get("source", "url_pattern")
         if not pattern:
-            sys.exit(f"monitor {self.name}: source.url_pattern is not set")
+            sys.exit(f"beat {self.name}: source.url_pattern is not set")
         return pattern.replace("{id}", str(page_id))
 
     def user_agent(self):
@@ -225,7 +225,7 @@ class Monitor:
 
 
 def available():
-    return sorted(p.name for p in MONITORS.iterdir() if (p / "monitor.yaml").exists())
+    return sorted(p.name for p in BEATS.iterdir() if (p / "beat.yaml").exists())
 
 
 # --- fetching ------------------------------------------------------------
@@ -243,15 +243,15 @@ def sha256(data):
 
 
 class Fetcher:
-    """Sequential, polite, byte-preserving retrieval for one monitor."""
+    """Sequential, polite, byte-preserving retrieval for one beat."""
 
-    def __init__(self, monitor):
-        self.m = monitor
-        self.ua = monitor.user_agent()
-        self.delay = monitor.delay
-        if monitor.get("politeness", "parallel", default=False):
+    def __init__(self, beat):
+        self.m = beat
+        self.ua = beat.user_agent()
+        self.delay = beat.delay
+        if beat.get("politeness", "parallel", default=False):
             sys.exit("politeness.parallel is not supported; runs are sequential by design")
-        monitor.archive.mkdir(parents=True, exist_ok=True)
+        beat.archive.mkdir(parents=True, exist_ok=True)
 
     def record(self, page_id, status, nbytes):
         path = self.m.request_log
@@ -312,7 +312,7 @@ class Fetcher:
 
 
 def find_frontier(fetcher):
-    """Highest id that exists, per the monitor's discovery strategy."""
+    """Highest id that exists, per the beat's discovery strategy."""
     m = fetcher.m
     kind = m.get("discovery", "kind", default="integer-ids")
     if kind != "integer-ids":
@@ -352,15 +352,15 @@ def confirm_frontier(fetcher, frontier):
 
 # --- extract -------------------------------------------------------------
 
-def fetch_times(monitor):
+def fetch_times(beat):
     """When the archived bytes were observed — from the snapshot ledger when it
     exists, since the request log's newest row may describe a re-fetch that was
     not archived."""
-    snaps = load_snapshots(monitor)
+    snaps = load_snapshots(beat)
     if snaps:
         return {i: r["first_seen_utc"] for i, r in snaps.items() if r["first_seen_utc"]}
     times = {}
-    path = monitor.request_log
+    path = beat.request_log
     if path and path.exists():
         with path.open(encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
@@ -369,31 +369,31 @@ def fetch_times(monitor):
     return times
 
 
-def build_record(monitor, page_id, raw_bytes, times=None):
-    """Generic envelope around whatever the monitor's parser returns."""
+def build_record(beat, page_id, raw_bytes, times=None):
+    """Generic envelope around whatever the beat's parser returns."""
     doc = raw_bytes.decode("utf-8", errors="replace")
-    rec = {"id": page_id, "source_url": monitor.url(page_id)}
-    rec.update(monitor.parser.parse(doc))
+    rec = {"id": page_id, "source_url": beat.url(page_id)}
+    rec.update(beat.parser.parse(doc))
     rec["raw_sha256"] = sha256(raw_bytes)
     rec["raw_bytes"] = len(raw_bytes)
     rec["fetched_at_utc"] = (times or {}).get(page_id)
     return rec
 
 
-def extract(monitor):
-    ids = monitor.archived_ids()
+def extract(beat):
+    ids = beat.archived_ids()
     if not ids:
-        sys.exit(f"no archived pages in {monitor.archive}")
-    times = fetch_times(monitor)
-    records = [build_record(monitor, i, (monitor.archive / f"{i}.html").read_bytes(), times)
+        sys.exit(f"no archived pages in {beat.archive}")
+    times = fetch_times(beat)
+    records = [build_record(beat, i, (beat.archive / f"{i}.html").read_bytes(), times)
                for i in ids]
 
-    monitor.data_dir.mkdir(parents=True, exist_ok=True)
-    json_out = monitor.data_dir / f"{monitor.name}.json"
-    csv_out = monitor.data_dir / f"{monitor.name}.csv"
+    beat.data_dir.mkdir(parents=True, exist_ok=True)
+    json_out = beat.data_dir / f"{beat.name}.json"
+    csv_out = beat.data_dir / f"{beat.name}.csv"
     json_out.write_text(json.dumps(records, indent=2) + "\n", encoding="utf-8")
 
-    keys = [f["key"] for f in monitor.fields]
+    keys = [f["key"] for f in beat.fields]
     with csv_out.open("w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(["id"] + keys + ["source_url", "fetched_at_utc", "raw_sha256"])
@@ -405,21 +405,21 @@ def extract(monitor):
                            else ("" if value is None else value))
             w.writerow(row + [r["source_url"], r["fetched_at_utc"] or "", r["raw_sha256"]])
 
-    report(monitor, records)
+    report(beat, records)
     print(f"\nextracted {len(records)} pages -> {json_out.relative_to(ROOT)}, "
           f"{csv_out.relative_to(ROOT)}")
     return records
 
 
-def report(monitor, records):
+def report(beat, records):
     """Count absent fields and say so; never let a null pass silently."""
     total = len(records)
-    group_key = monitor.get("report_group_by")
+    group_key = beat.get("report_group_by")
     groups = Counter(str(r.get(group_key)) for r in records) if group_key else Counter()
     absent, per_group = Counter(), Counter()
     for r in records:
         g = str(r.get(group_key)) if group_key else ""
-        for f in monitor.fields:
+        for f in beat.fields:
             value = r.get(f["key"])
             if value is None or value == [] or value == "":
                 absent[f["key"]] += 1
@@ -430,7 +430,7 @@ def report(monitor, records):
         for name, n in groups.most_common():
             print(f"  {name:<32} {n:>4}")
     print("\nfields absent from the page (never inferred, never filled in):")
-    for f in monitor.fields:
+    for f in beat.fields:
         n = absent[f["key"]]
         detail = ", ".join(f"{g}: {per_group[(g, f['key'])]}/{groups[g]}"
                            for g, _ in groups.most_common() if per_group[(g, f["key"])])
@@ -440,13 +440,13 @@ def report(monitor, records):
 
 # --- check ---------------------------------------------------------------
 
-def check(monitor, sample_size=20):
-    """Diff parse() against the monitor's second reader on a spread of pages."""
-    if not hasattr(monitor.parser, "crosscheck"):
-        sys.exit(f"monitor {monitor.name}: parse.py defines no crosscheck(html) function")
-    ids = monitor.archived_ids()
+def check(beat, sample_size=20):
+    """Diff parse() against the beat's second reader on a spread of pages."""
+    if not hasattr(beat.parser, "crosscheck"):
+        sys.exit(f"beat {beat.name}: parse.py defines no crosscheck(html) function")
+    ids = beat.archived_ids()
     if not ids:
-        sys.exit(f"no archived pages in {monitor.archive}")
+        sys.exit(f"no archived pages in {beat.archive}")
     step = max(1, len(ids) // sample_size)
     sample = ids[::step][:sample_size]
     if ids[-1] not in sample:
@@ -457,8 +457,8 @@ def check(monitor, sample_size=20):
     mismatched, absent = Counter(), Counter()
     bad = []
     for page_id in sample:
-        doc = (monitor.archive / f"{page_id}.html").read_bytes().decode("utf-8", errors="replace")
-        got, ref = monitor.parser.parse(doc), monitor.parser.crosscheck(doc)
+        doc = (beat.archive / f"{page_id}.html").read_bytes().decode("utf-8", errors="replace")
+        got, ref = beat.parser.parse(doc), beat.parser.crosscheck(doc)
         diffs = [f"{k}: parse={got.get(k)!r} crosscheck={ref.get(k)!r}"
                  for k in sorted(set(got) | set(ref)) if got.get(k) != ref.get(k)]
         for k in set(got) | set(ref):
@@ -472,7 +472,7 @@ def check(monitor, sample_size=20):
         if diffs:
             bad.append(page_id)
     print(f"\nover {len(sample)} sampled pages:")
-    for f in monitor.fields:
+    for f in beat.fields:
         k = f["key"]
         print(f"  {k:<14} mismatches {mismatched[k]:>2}   absent on page (both agree) {absent[k]:>2}")
     print("\n" + (f"pages needing attention: {bad}" if bad else
@@ -482,7 +482,7 @@ def check(monitor, sample_size=20):
 
 # --- runs and change detection -------------------------------------------
 
-def content_hash(monitor, raw_bytes):
+def content_hash(beat, raw_bytes):
     """Hash of what the parser reads, not of the bytes.
 
     Many sites carry markup that changes on every request without the page
@@ -490,18 +490,18 @@ def content_hash(monitor, raw_bytes):
     token. Comparing raw bytes would report every such page as changed on every
     run. Hashing the parsed fields compares what the page says instead.
     """
-    parsed = monitor.parser.parse(raw_bytes.decode("utf-8", errors="replace"))
+    parsed = beat.parser.parse(raw_bytes.decode("utf-8", errors="replace"))
     return sha256(json.dumps(parsed, sort_keys=True, ensure_ascii=False).encode("utf-8"))
 
 
-def snapshot_path(monitor):
-    return (monitor.path("storage", "snapshot_log")
-            or monitor.data_dir / f"{monitor.name}-snapshots.tsv")
+def snapshot_path(beat):
+    return (beat.path("storage", "snapshot_log")
+            or beat.data_dir / f"{beat.name}-snapshots.tsv")
 
 
-def load_snapshots(monitor):
+def load_snapshots(beat):
     """id -> {raw_sha256, content_sha256, first_seen_utc} for the archived bytes."""
-    path = snapshot_path(monitor)
+    path = snapshot_path(beat)
     out = {}
     if path.exists():
         with path.open(encoding="utf-8") as fh:
@@ -510,8 +510,8 @@ def load_snapshots(monitor):
     return out
 
 
-def save_snapshots(monitor, snaps):
-    path = snapshot_path(monitor)
+def save_snapshots(beat, snaps):
+    path = snapshot_path(beat)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
@@ -521,10 +521,10 @@ def save_snapshots(monitor, snaps):
             w.writerow([page_id, r["raw_sha256"], r["content_sha256"], r["first_seen_utc"]])
 
 
-def seed_snapshots(monitor):
+def seed_snapshots(beat):
     """Build the ledger from the archive, dating each page by its first 200."""
     first = {}
-    log_path = monitor.request_log
+    log_path = beat.request_log
     if log_path.exists():
         with log_path.open(encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
@@ -534,22 +534,22 @@ def seed_snapshots(monitor):
                     if page_id not in first or stamp < first[page_id]:
                         first[page_id] = stamp
     snaps = {}
-    for page_id in monitor.archived_ids():
-        raw = (monitor.archive / f"{page_id}.html").read_bytes()
+    for page_id in beat.archived_ids():
+        raw = (beat.archive / f"{page_id}.html").read_bytes()
         snaps[page_id] = {
             "raw_sha256": sha256(raw),
-            "content_sha256": content_hash(monitor, raw),
+            "content_sha256": content_hash(beat, raw),
             "first_seen_utc": first.get(page_id, ""),
         }
-    save_snapshots(monitor, snaps)
-    print(f"wrote {snapshot_path(monitor).relative_to(ROOT)} for {len(snaps)} archived pages")
+    save_snapshots(beat, snaps)
+    print(f"wrote {snapshot_path(beat).relative_to(ROOT)} for {len(snaps)} archived pages")
     return snaps
 
-def field_diff(monitor, before_bytes, after_bytes):
-    """Which of the monitor's diff_fields changed between two snapshots."""
-    keys = monitor.get("diff_fields") or [f["key"] for f in monitor.fields]
-    old = monitor.parser.parse(before_bytes.decode("utf-8", errors="replace"))
-    new = monitor.parser.parse(after_bytes.decode("utf-8", errors="replace"))
+def field_diff(beat, before_bytes, after_bytes):
+    """Which of the beat's diff_fields changed between two snapshots."""
+    keys = beat.get("diff_fields") or [f["key"] for f in beat.fields]
+    old = beat.parser.parse(before_bytes.decode("utf-8", errors="replace"))
+    new = beat.parser.parse(after_bytes.decode("utf-8", errors="replace"))
     changes = []
     for key in keys:
         if old.get(key) != new.get(key):
@@ -557,43 +557,43 @@ def field_diff(monitor, before_bytes, after_bytes):
     return changes
 
 
-def supersede(monitor, page_id, old_bytes, stamp):
+def supersede(beat, page_id, old_bytes, stamp):
     """Keep the bytes we are about to replace. The archive never loses a version."""
-    folder = monitor.superseded / str(page_id)
+    folder = beat.superseded / str(page_id)
     folder.mkdir(parents=True, exist_ok=True)
     dest = folder / f"{stamp.replace(':', '').replace('-', '')}.html"
     dest.write_bytes(old_bytes)
     return str(dest.relative_to(ROOT))
 
 
-def write_run(monitor, record):
+def write_run(beat, record):
     RUNS.mkdir(exist_ok=True)
     path = RUNS / f"{record['run_id']}.json"
     path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
     return path
 
 
-def run(monitor):
-    """One monitoring pass over the whole id space, recording what moved."""
-    fetcher = Fetcher(monitor)
-    snaps = load_snapshots(monitor) or seed_snapshots(monitor)
+def run(beat):
+    """One pass over the beat's whole id space, recording what moved."""
+    fetcher = Fetcher(beat)
+    snaps = load_snapshots(beat) or seed_snapshots(beat)
     started = now()
-    log(f"monitor {monitor.name}; run started {started}")
+    log(f"beat {beat.name}; run started {started}")
     frontier = find_frontier(fetcher)
-    floor = int(monitor.get("discovery", "floor"))
+    floor = int(beat.get("discovery", "floor"))
 
     checked = 0
     new_pages, changed, removed, errors = [], [], [], []
     unchanged = absent = chrome_only = 0
 
     for page_id in range(frontier, floor - 1, -1):
-        dest = monitor.archive / f"{page_id}.html"
+        dest = beat.archive / f"{page_id}.html"
         known = dest.exists() and dest.stat().st_size > 0
         status, body = fetcher.probe(page_id)
         checked += 1
 
         if status == 200 and body:
-            new_content = content_hash(monitor, body)
+            new_content = content_hash(beat, body)
             if not known:
                 fetcher.save(page_id, body)
                 snaps[page_id] = {"raw_sha256": sha256(body),
@@ -604,19 +604,19 @@ def run(monitor):
                 continue
             before = dest.read_bytes()
             prior = snaps.get(page_id, {})
-            old_content = prior.get("content_sha256") or content_hash(monitor, before)
+            old_content = prior.get("content_sha256") or content_hash(beat, before)
             if new_content != old_content:
                 stamp = now()
                 observed_before = (snaps.get(page_id) or {}).get("first_seen_utc") or None
-                kept = supersede(monitor, page_id, before, stamp)
+                kept = supersede(beat, page_id, before, stamp)
                 fetcher.save(page_id, body)
-                fields = field_diff(monitor, before, body)
+                fields = field_diff(beat, before, body)
                 snaps[page_id] = {"raw_sha256": sha256(body),
                                   "content_sha256": new_content,
                                   "first_seen_utc": stamp}
                 changed.append({
                     "id": page_id,
-                    "url": monitor.url(page_id),
+                    "url": beat.url(page_id),
                     "observed_before_utc": observed_before,
                     "observed_after_utc": stamp,
                     "content_sha256_before": old_content,
@@ -624,7 +624,7 @@ def run(monitor):
                     "raw_sha256_before": sha256(before),
                     "raw_sha256_after": sha256(body),
                     "previous_snapshot": kept,
-                    "current_snapshot": str((monitor.archive / f"{page_id}.html").relative_to(ROOT)),
+                    "current_snapshot": str((beat.archive / f"{page_id}.html").relative_to(ROOT)),
                     "fields_changed": fields,
                 })
                 log(f"  {page_id}: CHANGED — {', '.join(f['field'] for f in fields) or 'no diffed field'}")
@@ -648,17 +648,17 @@ def run(monitor):
             log(f"progress {done}/{frontier - floor + 1} at id {page_id}; "
                 f"{len(changed)} changed, {len(new_pages)} new, {chrome_only} chrome-only")
 
-    save_snapshots(monitor, snaps)
+    save_snapshots(beat, snaps)
     record = {
         "run_id": started.replace(":", "").replace("-", ""),
-        "monitor": monitor.name,
+        "beat": beat.name,
         "kind": "recheck",
         "started_utc": started,
         "finished_utc": now(),
         "frontier": frontier,
         "id_range": [floor, frontier],
         "pages_checked": checked,
-        "pages_archived_after_run": len(monitor.archived_ids()),
+        "pages_archived_after_run": len(beat.archived_ids()),
         "new_pages": new_pages,
         "changed_pages": changed,
         "removed_pages": removed,
@@ -666,7 +666,7 @@ def run(monitor):
         "chrome_only_differences": chrome_only,
         "ids_absent": absent,
         "errors": errors,
-        "compared_fields": monitor.get("diff_fields") or [f["key"] for f in monitor.fields],
+        "compared_fields": beat.get("diff_fields") or [f["key"] for f in beat.fields],
         "change_detection": (
             "A page counts as changed when the hash of its parsed fields differs from the "
             "previous run. Pages whose bytes differ while their parsed fields are identical "
@@ -678,18 +678,18 @@ def run(monitor):
         f"{len(removed)} removed, {len(errors)} errors"
         if (new_pages or changed or removed or errors) else
         f"{checked} ids checked; no page changed since the previous run")
-    path = write_run(monitor, record)
+    path = write_run(beat, record)
     log(f"run recorded: {path.relative_to(ROOT)} — {record['summary']}")
     return record
 
 
-def seed_run(monitor):
+def seed_run(beat):
     """Reconstruct the initial collection as a run record, from the request log.
 
     Marked reconstructed: it is assembled from the request log written during
     the first collection, not observed by a run of this code.
     """
-    path = monitor.request_log
+    path = beat.request_log
     if not path.exists():
         sys.exit(f"no request log at {path}")
     rows = list(csv.DictReader(path.open(encoding="utf-8"), delimiter="\t"))
@@ -699,14 +699,14 @@ def seed_run(monitor):
     ids = sorted({int(r["id"]) for r in ok})
     record = {
         "run_id": stamps[0].replace(":", "").replace("-", ""),
-        "monitor": monitor.name,
+        "beat": beat.name,
         "kind": "initial-collection",
         "reconstructed": True,
         "reconstructed_from": str(path.relative_to(ROOT)),
         "started_utc": stamps[0],
         "finished_utc": stamps[-1],
         "frontier": max(ids),
-        "id_range": [int(monitor.get("discovery", "floor")), max(ids)],
+        "id_range": [int(beat.get("discovery", "floor")), max(ids)],
         "pages_checked": len({int(r["id"]) for r in rows}),
         "pages_archived_after_run": len(ids),
         "new_pages": ids,
@@ -721,19 +721,19 @@ def seed_run(monitor):
                  "contiguous scan run above the frontier to confirm it, so the id count "
                  "is larger than the walked range alone."),
     }
-    p = write_run(monitor, record)
+    p = write_run(beat, record)
     print(f"wrote {p.relative_to(ROOT)} — {record['summary']}")
     return record
 
 
-def all_changes(monitor_name=None):
+def all_changes(beat_name=None):
     """Every change ever detected, newest first, each tagged with its run."""
     out = []
-    for record in load_runs(monitor_name):
+    for record in load_runs(beat_name):
         for change in record.get("changed_pages", []):
             entry = dict(change)
             entry["run_id"] = record["run_id"]
-            entry["monitor"] = record["monitor"]
+            entry["beat"] = record["beat"]
             entry["detected_in_run_started_utc"] = record["started_utc"]
             out.append(entry)
     out.sort(key=lambda c: (c.get("observed_after_utc") or c["detected_in_run_started_utc"],
@@ -741,7 +741,7 @@ def all_changes(monitor_name=None):
     return out
 
 
-def backfill_changes(monitor):
+def backfill_changes(beat):
     """Add provenance to change records written before the runner stored it.
 
     Timestamps and hashes are read from the retained snapshot, the request log
@@ -749,28 +749,28 @@ def backfill_changes(monitor):
     record says so; nothing is reconstructed from what a page says now.
     """
     first_seen = {}
-    if monitor.request_log.exists():
-        with monitor.request_log.open(encoding="utf-8") as fh:
+    if beat.request_log.exists():
+        with beat.request_log.open(encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
                 if row["http_status"] == "200":
                     page_id, stamp = int(row["id"]), row["fetched_at_utc"]
                     if page_id not in first_seen or stamp < first_seen[page_id]:
                         first_seen[page_id] = stamp
-    snaps = load_snapshots(monitor)
+    snaps = load_snapshots(beat)
 
     touched = 0
     for path in sorted(RUNS.glob("*.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
-        if record.get("monitor") != monitor.name or not record.get("changed_pages"):
+        if record.get("beat") != beat.name or not record.get("changed_pages"):
             continue
         dirty = False
         for change in record["changed_pages"]:
             if change.get("observed_after_utc"):
                 continue
             page_id = change["id"]
-            change.setdefault("url", monitor.url(page_id))
+            change.setdefault("url", beat.url(page_id))
             change["current_snapshot"] = str(
-                (monitor.archive / f"{page_id}.html").relative_to(ROOT))
+                (beat.archive / f"{page_id}.html").relative_to(ROOT))
 
             prev = change.get("previous_snapshot")
             prev_path = ROOT / prev if prev else None
@@ -780,9 +780,9 @@ def backfill_changes(monitor):
                     sha256(old_bytes) == change.get("raw_sha256_before"))
                 change["observed_before_utc"] = first_seen.get(page_id)
                 # Re-derive the field diff from the two retained snapshots.
-                current = (monitor.archive / f"{page_id}.html")
+                current = (beat.archive / f"{page_id}.html")
                 if current.exists() and sha256(current.read_bytes()) == change.get("raw_sha256_after"):
-                    change["fields_changed"] = field_diff(monitor, old_bytes, current.read_bytes())
+                    change["fields_changed"] = field_diff(beat, old_bytes, current.read_bytes())
             else:
                 change["previous_snapshot"] = None
                 change["previous_snapshot_verified"] = False
@@ -808,8 +808,8 @@ def backfill_changes(monitor):
     print(f"backfilled {touched} change record{'s' if touched != 1 else ''}")
 
 
-def show_changes(monitor):
-    changes = all_changes(monitor.name)
+def show_changes(beat):
+    changes = all_changes(beat.name)
     if not changes:
         print("no changes detected in any recorded run")
         return
@@ -822,20 +822,20 @@ def show_changes(monitor):
             print(f"    {f['field']}: {f['before']!r} -> {f['after']!r}")
 
 
-def load_runs(monitor=None):
+def load_runs(beat=None):
     if not RUNS.exists():
         return []
     out = []
     for p in sorted(RUNS.glob("*.json")):
         rec = json.loads(p.read_text(encoding="utf-8"))
-        if monitor is None or rec.get("monitor") == monitor:
+        if beat is None or rec.get("beat") == beat:
             out.append(rec)
     out.sort(key=lambda r: r["started_utc"])
     return out
 
 
-def show_runs(monitor):
-    runs = load_runs(monitor.name)
+def show_runs(beat):
+    runs = load_runs(beat.name)
     if not runs:
         print("no runs recorded yet")
         return
@@ -847,16 +847,16 @@ def show_runs(monitor):
 
 # --- collect -------------------------------------------------------------
 
-def collect(monitor):
+def collect(beat):
     """Fill the archive down to the floor. Archived ids are left untouched."""
-    fetcher = Fetcher(monitor)
-    log(f"monitor {monitor.name}; user-agent: {fetcher.ua}")
+    fetcher = Fetcher(beat)
+    log(f"beat {beat.name}; user-agent: {fetcher.ua}")
     frontier = find_frontier(fetcher)
-    floor = int(monitor.get("discovery", "floor"))
+    floor = int(beat.get("discovery", "floor"))
     log(f"walking {frontier} down to {floor}")
     counts = Counter()
     for page_id in range(frontier, floor - 1, -1):
-        dest = monitor.archive / f"{page_id}.html"
+        dest = beat.archive / f"{page_id}.html"
         if dest.exists() and dest.stat().st_size > 0:
             counts["skipped"] += 1
             continue
@@ -871,32 +871,32 @@ def main():
     if not args:
         sys.exit(__doc__)
     cmd = args[0]
-    if cmd == "monitors":
+    if cmd == "beats":
         for name in available():
-            m = Monitor(name)
+            m = Beat(name)
             print(f"{name:<16} {m.get('title', default='')}")
         return
     if len(args) < 2:
-        sys.exit(f"usage: python3 runner.py {cmd} <monitor>   (installed: {', '.join(available())})")
-    monitor = Monitor(args[1])
+        sys.exit(f"usage: python3 runner.py {cmd} <beat>   (installed: {', '.join(available())})")
+    beat = Beat(args[1])
     if cmd == "collect":
-        collect(monitor)
+        collect(beat)
     elif cmd == "run":
-        run(monitor)
+        run(beat)
     elif cmd == "seed-run":
-        seed_run(monitor)
+        seed_run(beat)
     elif cmd == "runs":
-        show_runs(monitor)
+        show_runs(beat)
     elif cmd == "snapshots":
-        seed_snapshots(monitor)
+        seed_snapshots(beat)
     elif cmd == "changes":
-        show_changes(monitor)
+        show_changes(beat)
     elif cmd == "backfill":
-        backfill_changes(monitor)
+        backfill_changes(beat)
     elif cmd == "extract":
-        extract(monitor)
+        extract(beat)
     elif cmd == "check":
-        check(monitor)
+        check(beat)
     else:
         sys.exit(f"unknown command {cmd!r}")
 

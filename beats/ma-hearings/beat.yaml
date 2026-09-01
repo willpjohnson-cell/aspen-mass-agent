@@ -1,5 +1,5 @@
-# Monitor definition. The runner reads this file and monitor's parse.py and
-# needs nothing else to watch this source.
+# Beat definition: one government surface being watched. The runner reads this
+# file and the beat's parse.py and needs nothing else to watch this source.
 name: ma-hearings
 title: Massachusetts Legislature — committee hearings
 jurisdiction: Massachusetts
@@ -61,15 +61,22 @@ fields:
   - key: bill_count
     label: Bill count
 
-# How this monitor's data is presented. The renderer reads these rather than
-# knowing anything about hearings; the scope disclosure belongs to the monitor
-# because only the monitor knows what its source does and does not publish.
+# How this beat's data is presented. The renderer reads these rather than
+# knowing anything about hearings; the scope disclosure belongs to the beat
+# because only the beat knows what its source does and does not publish.
 presentation:
   filter_placeholder: Filter by committee, date, status, bill number…
   hide_columns: [bill_count, general_court]
   summary_stat:
     field: bill_count
     label: bill references
+  # The archive table opens on this slice; everything else is behind an
+  # explicit control. Filtering always searches the whole archive.
+  default_view:
+    field: status
+    value: Upcoming
+    label: upcoming events
+    empty_note: No page in the archive currently says its event is upcoming.
   scope:
     heading: What this shows
     establishes: >

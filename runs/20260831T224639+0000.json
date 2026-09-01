@@ -1,6 +1,6 @@
 {
   "run_id": "20260831T224639+0000",
-  "monitor": "ma-hearings",
+  "beat": "ma-hearings",
   "kind": "recheck",
   "started_utc": "2026-08-31T22:46:39+00:00",
   "finished_utc": "2026-08-31T23:16:23+00:00",
