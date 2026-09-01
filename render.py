@@ -426,29 +426,41 @@ def custody(change, page):
     return f'<div class="custody">{"".join(bits)}</div>'
 
 
-def describe(change, records):
-    rec = records.get(change["id"], {})
-    name = rec.get("committee") or rec.get("subject") or "An archived page"
-    fields = [f["field"] for f in change.get("fields_changed", [])]
-    if fields == ["status"]:
-        f = change["fields_changed"][0]
-        return f'{esc(name)} moved from {esc(f["before"])} to {esc(f["after"])}'
-    if fields == ["bills"]:
-        f = change["fields_changed"][0]
-        added = [x for x in (f["after"] or []) if x not in (f["before"] or [])]
-        if added:
-            return f'{esc(name)} added {esc(", ".join(added))} to its agenda'
+def describe(change, ctx):
+    """One sentence for a change, in the beat's own vocabulary.
+
+    Which fields name the thing, and how a change to a given field reads, are
+    declared in beat.yaml. Nothing here knows what a committee or a bill is.
+    """
+    pres = ctx.beat.get("presentation") or {}
+    rec = ctx.by_id.get(change["id"], {})
+    name = next((rec.get(f) for f in (pres.get("name_fields") or []) if rec.get(f)),
+                None) or f'An archived {pres.get("page_noun", "page")}'
+    changed = change.get("fields_changed", [])
+    fields = [f["field"] for f in changed]
+    templates = {t["field"]: t.get("template", "")
+                 for t in (pres.get("headline_templates") or [])}
+
+    if len(changed) == 1 and fields[0] in templates:
+        f, template = changed[0], esc(templates[fields[0]])
+        before, after = f.get("before"), f.get("after")
+        if isinstance(before, list) or isinstance(after, list):
+            added = [x for x in (after or []) if x not in (before or [])]
+            if added and "{added}" in template:
+                return template.format(name=esc(name), added=esc(", ".join(added)))
+        elif "{before}" in template and "{after}" in template:
+            return template.format(name=esc(name), before=esc(before), after=esc(after))
     if fields:
         return f'{esc(name)} changed {esc(" and ".join(fields))}'
     return f'{esc(name)} changed'
 
 
-def change_entry(change, records, page, lead=False):
+def change_entry(change, ctx, page, lead=False):
     body = "".join(field_block(f) for f in change.get("fields_changed", []))
     note = (f'<p class="note">{esc(change["provenance_note"])}</p>'
             if change.get("provenance_note") else "")
     when = change.get("observed_after_utc") or change.get("detected_in_run_started_utc")
-    heading = describe(change, records)
+    heading = describe(change, ctx)
     page_label = f'<span class="id">page {change["id"]}</span>'
     if lead:
         return (f'<div class="headline">'
@@ -463,6 +475,7 @@ def change_entry(change, records, page, lead=False):
 
 def archive_table(beat, records, slice_field, slice_value, page):
     hidden = set(beat.get("presentation", "hide_columns") or [])
+    wrap = set(beat.get("presentation", "wrap_columns") or [])
     fields = [f for f in beat.fields if f["key"] not in hidden]
     head = "".join(f'<th>{esc(f["label"])}</th>' for f in fields)
     rows = []
@@ -477,7 +490,7 @@ def archive_table(beat, records, slice_field, slice_value, page):
             elif v in (None, "", []):
                 cells.append(f'<td data-label="{label}"></td>')
             else:
-                cls = ' class="wrapcell"' if f["key"] in ("committee", "subject") else ""
+                cls = ' class="wrapcell"' if f["key"] in wrap else ""
                 cells.append(f'<td{cls} data-label="{label}">{esc(v)}</td>')
         snapshot = page.rel(f"raw/{r['id']}.html")
         rows.append(
@@ -664,6 +677,9 @@ class Context:
         self.slice_field, self.slice_value = dv.get("field"), dv.get("value")
         self.slice_label = dv.get("label", "the default slice")
         self.slice_empty = dv.get("empty_note", "")
+        pres = beat.get("presentation") or {}
+        self.noun = pres.get("page_noun", "page")
+        self.noun_plural = pres.get("page_noun_plural", self.noun + "s")
         self.slice_rows = [r for r in self.records
                            if self.slice_field and r.get(self.slice_field) == self.slice_value]
 
@@ -771,6 +787,17 @@ def landing_page(contexts):
             if (rule.get("verdict_status") or "").strip():
                 blocked.append((c, rule, sum((c.rules["tallies"][rule["id"]]).values())))
 
+    if len(contexts) == 1:
+        c0 = contexts[0]
+        doing = (f"One beat is running. It archives "
+                 f"{c0.beat.get('title', default=c0.name)} {c0.noun_plural} byte for "
+                 f"byte, re-fetches every one of them on a schedule, and records what "
+                 f"changed between runs.")
+    else:
+        doing = (f"{len(contexts)} beats are running. Each archives the pages it "
+                 f"watches byte for byte, re-fetches them on a schedule, and records "
+                 f"what changed between runs.")
+
     rule_finding = ""
     for c, rule, total in blocked:
         counts = c.rules["tallies"][rule["id"]]
@@ -794,10 +821,8 @@ def landing_page(contexts):
 
 <section>
   <h2>What this does today</h2>
-  <p class="prose">One beat is running. It archives Massachusetts Legislature
-  hearing pages byte for byte, re-fetches every one of them on a schedule, and
-  records what changed between runs. That is change detection and provenance, and
-  it is the part of this project that works.</p>
+  <p class="prose">{esc(doing)} That is change detection and provenance, and it is
+  the part of this project that works.</p>
   <p class="prose">{archived:,} pages are archived. {detected} changes have been
   detected and each one links to the stored bytes from before and after it. Every
   extracted row carries the SHA-256 of the file it came from.</p>
@@ -896,7 +921,7 @@ def beat_page(c):
     beat = c.beat
 
     if c.changes:
-        lead = change_entry(c.changes[0], c.by_id, page, lead=True)
+        lead = change_entry(c.changes[0], c, page, lead=True)
         others = [x for x in c.changes[1:] if x["run_id"] == c.changes[0]["run_id"]]
         if others:
             lead += (f'<p class="note">{len(others)} other page'
@@ -922,17 +947,17 @@ def beat_page(c):
     stats = "".join(f'<div><span class="n">{v}</span><span class="k">{k}</span></div>'
                     for v, k in cells)
 
-    changes_list = ("".join(change_entry(x, c.by_id, page) for x in c.changes)
+    changes_list = ("".join(change_entry(x, c, page) for x in c.changes)
                     if c.changes else
                     '<p class="lede">No run has detected a change yet.</p>')
 
     body = f"""
 <header>
   <h1>{esc(beat.get("title", default=c.name))}</h1>
-  <p class="tagline">Change detection and provenance over
-  {len(c.records):,} hearing pages. Every page is archived byte for byte, re-fetched
-  on every run, and any change to what a page says is recorded with the bytes from
-  before and after it.</p>
+  <p class="tagline">Change detection and provenance over {len(c.records):,}
+  {esc(c.noun_plural)}. Every one is archived byte for byte, re-fetched on every
+  run, and any change to what it says is recorded with the bytes from before and
+  after it.</p>
   <p class="beats"><a href="{page.rel(c.archive)}">Archive of {len(c.records):,} pages</a> ·
     <a href="{page.rel(c.runs_page)}">Run records</a> ·
     <a href="{page.rel(f"beats/{c.name}/beat.yaml")}">beat.yaml</a> ·

@@ -70,6 +70,20 @@ fields:
 presentation:
   filter_placeholder: Filter by committee, date, status, bill number…
   hide_columns: [bill_count, general_court]
+  # What one archived thing is called, in prose.
+  page_noun: hearing page
+  page_noun_plural: hearing pages
+  # Fields that name the thing a change happened to, in priority order.
+  name_fields: [committee, subject]
+  # Columns whose values are prose and need room to wrap.
+  wrap_columns: [committee, subject]
+  # Sentence forms for a change to a single field. {name}, {before}, {after} for
+  # a scalar; {name}, {added} for a list.
+  headline_templates:
+    - field: status
+      template: "{name} moved from {before} to {after}"
+    - field: bills
+      template: "{name} added {added} to its agenda"
   summary_stat:
     field: bill_count
     label: bill references
