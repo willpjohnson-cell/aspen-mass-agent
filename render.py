@@ -11,22 +11,54 @@ headline.
 """
 import html
 import json
+import posixpath
 import sys
 from urllib.parse import quote
-from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import runner  # noqa: E402
 
 ROOT = runner.ROOT
-OUT = ROOT / "index.html"
 PLATFORM = "The Monitor"
-TAGLINE = ("It archives government web pages and records when they change.")
+TAGLINE = "It archives government web pages and records when they change."
+STYLESHEET = "assets/style.css"
+FONTS = "fonts/fonts.css"
 
-STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
-<style>
-  :root {
+
+class Page:
+    """One output file, and the arithmetic for linking out of it.
+
+    Every href in a generated page is a repo-relative path resolved against the
+    page's own location, so a page can be written at any depth without a link
+    being rewritten by hand. Paths that arrive as data — the snapshot paths
+    stored in run records — go through the same resolution.
+    """
+
+    def __init__(self, path):
+        self.path = str(path).lstrip("./")
+        self.dir = posixpath.dirname(self.path)
+
+    def rel(self, target):
+        """Repo-relative target -> href from this page."""
+        return posixpath.relpath(str(target), self.dir or ".")
+
+    def url(self, target):
+        """As rel(), percent-encoded for characters that are legal but risky."""
+        return quote(self.rel(target), safe="/")
+
+    def head(self):
+        return (f'<link rel="stylesheet" href="{self.rel(FONTS)}">\n'
+                f'<link rel="stylesheet" href="{self.rel(STYLESHEET)}">')
+
+    def write(self, doc):
+        out = ROOT / self.path
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(doc, encoding="utf-8")
+        return out
+
+
+CSS = """:root {
     /* Neutrals carry the whole page. One accent, used only for a changed value. */
     --ground: #f7f8f7;
     --raised: #ffffff;
@@ -294,7 +326,7 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
     .diff { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
     .becomes { display: none; }
   }
-</style>"""
+"""
 
 
 def esc(v):
@@ -349,7 +381,7 @@ def field_block(field):
     return f'<div class="change"><span class="fieldname">{esc(field["field"])}</span>{body}</div>'
 
 
-def custody(change):
+def custody(change, page):
     """Both observations, both hashes, both snapshots, beside the claim."""
     bits = []
     if change.get("observed_before_utc"):
@@ -358,13 +390,13 @@ def custody(change):
         bits.append(f'<span>Changed by {stamp(change["observed_after_utc"])}</span>')
     prev, cur = change.get("previous_snapshot"), change.get("current_snapshot")
     if prev:
-        bits.append(f'<span>Snapshot before <a href="{esc(prev)}">'
+        bits.append(f'<span>Snapshot before <a href="{esc(page.rel(prev))}">'
                     f'{hashcell(change.get("raw_sha256_before"))}</a></span>')
     else:
         bits.append('<span class="flagged">The replaced bytes were not retained, so '
                     'the previous values cannot be checked against a snapshot.</span>')
     if cur:
-        bits.append(f'<span>Snapshot after <a href="{esc(cur)}">'
+        bits.append(f'<span>Snapshot after <a href="{esc(page.rel(cur))}">'
                     f'{hashcell(change.get("raw_sha256_after"))}</a></span>')
     if change.get("url"):
         bits.append(f'<span><a href="{esc(change["url"])}">Live page</a></span>')
@@ -391,25 +423,25 @@ def describe(change, records):
     return f'{esc(name)} changed'
 
 
-def change_entry(change, records, lead=False):
+def change_entry(change, records, page, lead=False):
     body = "".join(field_block(f) for f in change.get("fields_changed", []))
     note = (f'<p class="note">{esc(change["provenance_note"])}</p>'
             if change.get("provenance_note") else "")
     when = change.get("observed_after_utc") or change.get("detected_in_run_started_utc")
     heading = describe(change, records)
-    page = f'<span class="id">page {change["id"]}</span>'
+    page_label = f'<span class="id">page {change["id"]}</span>'
     if lead:
         return (f'<div class="headline">'
                 f'<p class="when">Detected {stamp(when)}</p>'
-                f'<p class="what">{heading} {page}</p>'
-                f'{body}{note}{custody(change)}</div>')
+                f'<p class="what">{heading} {page_label}</p>'
+                f'{body}{note}{custody(change, page)}</div>')
     return (f'<div class="entry">'
-            f'<h3>{heading} {page}</h3>'
+            f'<h3>{heading} {page_label}</h3>'
             f'<p class="when stamp">Detected {esc(when)}</p>'
-            f'{body}{note}{custody(change)}</div>')
+            f'{body}{note}{custody(change, page)}</div>')
 
 
-def archive_table(beat, records, slice_field, slice_value):
+def archive_table(beat, records, slice_field, slice_value, page):
     hidden = set(beat.get("presentation", "hide_columns") or [])
     fields = [f for f in beat.fields if f["key"] not in hidden]
     head = "".join(f'<th>{esc(f["label"])}</th>' for f in fields)
@@ -427,13 +459,14 @@ def archive_table(beat, records, slice_field, slice_value):
             else:
                 cls = ' class="wrapcell"' if f["key"] in ("committee", "subject") else ""
                 cells.append(f'<td{cls} data-label="{label}">{esc(v)}</td>')
+        snapshot = page.rel(f"raw/{r['id']}.html")
         rows.append(
             f'<tr data-slice="{"1" if in_slice else "0"}">'
             f'<td data-label="Page"><a class="id" href="{esc(r["source_url"])}">'
             f'{r["id"]}</a></td>'
             + "".join(cells)
             + f'<td data-label="Fetched">{stamp(r.get("fetched_at_utc"))}</td>'
-            f'<td data-label="Snapshot"><a href="raw/{r["id"]}.html">'
+            f'<td data-label="Snapshot"><a href="{esc(snapshot)}">'
             f'{hashcell(r.get("raw_sha256"))}</a></td></tr>')
     return (f'<div class="scroller"><table class="rows" id="archive">'
             f'<thead><tr><th>Page</th>{head}<th>Fetched</th><th>Snapshot</th></tr></thead>'
@@ -571,7 +604,7 @@ def lower_first(text):
     return text
 
 
-def build_runs_index(beat, runs):
+def build_runs_index(beat, runs, page):
     """A real page for runs/, because a static host has no directory listing."""
     rows = []
     for r in reversed(runs):
@@ -583,10 +616,11 @@ def build_runs_index(beat, runs):
                     f'previous run'))
         name = f'{r["run_id"]}.json'
         # '+' is legal in a path but some CDNs normalise it; encode it.
+        href = page.url(f"runs/{name}")
         rows.append(f'<tr><td data-label="Started">{stamp(r["started_utc"])}</td>'
                     f'<td data-label="Kind">{esc(r["kind"].replace("-", " "))}</td>'
                     f'<td data-label="Outcome">{esc(outcome)}</td>'
-                    f'<td data-label="Record"><a href="{quote(name)}">{esc(name)}</a>'
+                    f'<td data-label="Record"><a href="{href}">{esc(name)}</a>'
                     f'</td></tr>')
     doc = f"""<!doctype html>
 <html lang="en">
@@ -594,7 +628,7 @@ def build_runs_index(beat, runs):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Run records</title>
-{STYLE.replace('href="fonts/fonts.css"', 'href="../fonts/fonts.css"')}
+{page.head()}
 </head>
 <body>
 <div class="wrap">
@@ -602,7 +636,7 @@ def build_runs_index(beat, runs):
   <h1>Run records</h1>
   <p class="tagline">One JSON record per pass over the {esc(beat.name)} beat, newest
   first. Each records what was checked and what changed.</p>
-  <p class="beats"><a href="../index.html">Back to {esc(PLATFORM)}</a></p>
+  <p class="beats"><a href="{page.rel("index.html")}">Back to {esc(PLATFORM)}</a></p>
 </header>
 <div class="scroller"><table class="rows">
 <thead><tr><th>Started</th><th>Kind</th><th>Outcome</th><th>Record</th></tr></thead>
@@ -612,12 +646,11 @@ def build_runs_index(beat, runs):
 </body>
 </html>
 """
-    path = runner.RUNS / "index.html"
-    path.write_text(doc, encoding="utf-8")
-    return path
+    return page.write(doc)
 
 
 def build():
+    page = Page("index.html")
     beats = [runner.Beat(n) for n in runner.available()]
     beat = beats[0]
     data_file = beat.data_dir / f"{beat.name}.json"
@@ -632,15 +665,20 @@ def build():
     findings = runner.load_findings(beat)
     confirmed = [f for f in findings if f.get("status") == "confirmed"]
     unreviewed = [f for f in findings if f.get("status") != "confirmed"]
-    built = datetime.now(timezone.utc).isoformat(timespec="seconds")
-
     latest = runs[-1] if runs else None
+    # The page is dated by the evidence it was built from, not by the clock, so
+    # rendering twice without a new run produces a byte-identical file.
+    footer_provenance = (
+        f"Built from the run that finished {latest['finished_utc']}, over "
+        f"data/{beat.name}.json and runs/."
+        if latest else
+        f"Built from data/{beat.name}.json. No run has been recorded yet.")
     dv = beat.get("presentation", "default_view") or {}
     dv_field, dv_value = dv.get("field"), dv.get("value")
     slice_rows = [r for r in records if dv_field and r.get(dv_field) == dv_value]
 
     if changes:
-        lead = change_entry(changes[0], by_id, lead=True)
+        lead = change_entry(changes[0], by_id, page, lead=True)
         others = [c for c in changes[1:] if c["run_id"] == changes[0]["run_id"]]
         if others:
             lead += (f'<p class="note">{len(others)} other page'
@@ -680,7 +718,7 @@ def build():
     stats = "".join(f'<div><span class="n">{v}</span><span class="k">{k}</span></div>'
                     for v, k in cells)
 
-    changes_panel = ("".join(change_entry(c, by_id) for c in changes) if changes else
+    changes_panel = ("".join(change_entry(c, by_id, page) for c in changes) if changes else
                      '<p class="lede">No run has detected a change yet.</p>')
 
     placeholder = beat.get("presentation", "filter_placeholder", default="Filter…")
@@ -694,7 +732,7 @@ def build():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{PLATFORM}</title>
-{STYLE}
+{page.head()}
 </head>
 <body>
 <div class="wrap">
@@ -704,8 +742,9 @@ def build():
   <p class="tagline">{TAGLINE}</p>
   <p class="beats">Beats running: {len(beats)}. <strong>{esc(beat.name)}</strong> watches
   {esc(lower_first(beat.get('description', default='')))}
-  Its definition is in <a href="beats/{esc(beat.name)}/beat.yaml">beat.yaml</a>, and its
-  records are in <a href="runs/index.html">runs</a> and <a href="data/{esc(beat.name)}.json">data</a>.</p>
+  Its definition is in <a href="{page.rel(f"beats/{beat.name}/beat.yaml")}">beat.yaml</a>,
+  and its records are in <a href="{page.rel("runs/index.html")}">runs</a> and
+  <a href="{page.rel(f"data/{beat.name}.json")}">data</a>.</p>
 </header>
 
 <section>
@@ -739,7 +778,7 @@ def build():
       <button class="expand" id="expand" aria-expanded="false">Show all {len(records)} pages</button>
       <span class="count" id="count">{slice_intro}</span>
     </div>
-    {archive_table(beat, records, dv_field, dv_value)}
+    {archive_table(beat, records, dv_field, dv_value, page)}
   </div>
 </section>
 
@@ -788,10 +827,9 @@ def build():
 </section>
 
 <footer>
-Built {esc(built)} from data/{esc(beat.name)}.json and runs/. Pages are fetched one at a
-time with {esc(beat.delay)} seconds between requests. Raw HTML is stored exactly as the
-server sent it; when a page's content changes, the replaced bytes are kept under
-raw/_superseded.
+{esc(footer_provenance)} Pages are fetched one at a time with {esc(beat.delay)} seconds
+between requests. Raw HTML is stored exactly as the server sent it; when a page's
+content changes, the replaced bytes are kept under raw/_superseded.
 </footer>
 
 </div>
@@ -848,12 +886,16 @@ raw/_superseded.
 </body>
 </html>
 """
-    OUT.write_text(doc, encoding="utf-8")
-    runs_index = build_runs_index(beat, runs)
+    stylesheet = ROOT / STYLESHEET
+    stylesheet.parent.mkdir(parents=True, exist_ok=True)
+    stylesheet.write_text(CSS, encoding="utf-8")
+    out = page.write(doc)
+    runs_index = build_runs_index(beat, runs, Page("runs/index.html"))
+    print(f"wrote {stylesheet.relative_to(ROOT)} ({stylesheet.stat().st_size} bytes)")
     print(f"wrote {runs_index.relative_to(ROOT)}")
-    print(f"wrote {OUT.name}: {len(records)} archived pages, {len(changes)} changes, "
+    print(f"wrote {out.name}: {len(records)} archived pages, {len(changes)} changes, "
           f"{len(runs)} runs, {len(slice_rows)} in the default slice, "
-          f"{OUT.stat().st_size} bytes")
+          f"{out.stat().st_size} bytes")
 
 
 if __name__ == "__main__":
