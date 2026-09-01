@@ -36,6 +36,9 @@ storage:
   request_log: fetch_status.tsv   # every request, status, and UTC timestamp
   data_dir: data                  # extracted json/csv
   snapshot_log: data/ma-hearings-snapshots.tsv  # which bytes are archived, and when first seen
+  first_seen_log: data/ma-hearings-first-seen.tsv  # when each page was first observed to exist
+  rules_out: data/ma-hearings-rules.json           # per-page rule evaluations
+  findings: data/ma-hearings-findings.json         # not_compliant evaluations awaiting review
 
 # Columns for the extract and the rendered table, in order.
 fields:

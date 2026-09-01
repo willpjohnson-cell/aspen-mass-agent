@@ -19,6 +19,7 @@ Commands:
   python3 runner.py runs <beat>      show run history
   python3 runner.py snapshots <beat> rebuild the archived-bytes ledger
   python3 runner.py changes <beat>   every change ever detected
+  python3 runner.py first-seen <beat>  record when each archived page was first seen
   python3 runner.py backfill <beat>  add provenance to older change records
   python3 runner.py beats               list installed beats
 
@@ -193,6 +194,11 @@ class Beat:
     @property
     def data_dir(self):
         return self.path("storage", "data_dir", default="data")
+
+    @property
+    def first_seen_log(self):
+        return (self.path("storage", "first_seen_log")
+                or self.data_dir / f"{self.name}-first-seen.tsv")
 
     @property
     def superseded(self):
@@ -480,6 +486,98 @@ def check(beat, sample_size=20):
     return bad
 
 
+# --- when a page was first observed to exist -----------------------------
+#
+# This is the primitive every notice rule depends on, so it is written once per
+# page and never recomputed. It carries its own confidence, because the same
+# timestamp means two different things:
+#
+#   bounded    the id returned 404 in an earlier run and 200 in this one, so the
+#              page became observable inside a known window. Real evidence.
+#   unbounded  the page was already there the first time anything looked. It
+#              existed at some unknown earlier time. Not evidence of posting.
+
+FIRST_SEEN_COLUMNS = ["id", "first_seen_utc", "first_seen_confidence",
+                      "observed_in_run", "window_start_utc"]
+
+
+def load_first_seen(beat):
+    path = beat.first_seen_log
+    out = {}
+    if path.exists():
+        with path.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                out[int(row["id"])] = row
+    return out
+
+
+def save_first_seen(beat, ledger):
+    path = beat.first_seen_log
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, delimiter="\t")
+        w.writerow(FIRST_SEEN_COLUMNS)
+        for page_id in sorted(ledger):
+            row = ledger[page_id]
+            w.writerow([page_id] + [row.get(c, "") for c in FIRST_SEEN_COLUMNS[1:]])
+
+
+def request_history(beat):
+    """Every request ever made, per id, in order. The evidence for boundedness."""
+    history = {}
+    if beat.request_log.exists():
+        with beat.request_log.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                history.setdefault(int(row["id"]), []).append(
+                    (row["fetched_at_utc"], row["http_status"]))
+    for entries in history.values():
+        entries.sort()
+    return history
+
+
+def classify_first_seen(history, page_id, observed_utc):
+    """Was this page absent when something looked earlier?
+
+    Returns (confidence, window_start). A 404 recorded for this id before the
+    observation bounds the window; anything else leaves it unbounded.
+    """
+    absences = [t for t, status in history.get(page_id, [])
+                if status == "404" and t < observed_utc]
+    if absences:
+        return "bounded", absences[-1]
+    return "unbounded", ""
+
+
+def seed_first_seen(beat):
+    """Record the pages already archived. All of them are unbounded.
+
+    Nothing looked before the initial collection, so no page in it can be shown
+    to have appeared in a window. Existing entries are never overwritten.
+    """
+    ledger = load_first_seen(beat)
+    history = request_history(beat)
+    runs = load_runs(beat.name)
+    first_run = runs[0]["run_id"] if runs else ""
+    added = 0
+    for page_id in beat.archived_ids():
+        if page_id in ledger:
+            continue
+        seen = [t for t, status in history.get(page_id, []) if status == "200"]
+        if not seen:
+            continue
+        confidence, window = classify_first_seen(history, page_id, seen[0])
+        ledger[page_id] = {"first_seen_utc": seen[0],
+                           "first_seen_confidence": confidence,
+                           "observed_in_run": first_run,
+                           "window_start_utc": window}
+        added += 1
+    save_first_seen(beat, ledger)
+    counts = Counter(r["first_seen_confidence"] for r in ledger.values())
+    print(f"{beat.first_seen_log.relative_to(ROOT)}: {added} added, "
+          f"{len(ledger)} pages total ({dict(counts)})")
+    return ledger
+
+
 # --- runs and change detection -------------------------------------------
 
 def content_hash(beat, raw_bytes):
@@ -577,6 +675,8 @@ def run(beat):
     """One pass over the beat's whole id space, recording what moved."""
     fetcher = Fetcher(beat)
     snaps = load_snapshots(beat) or seed_snapshots(beat)
+    first_seen = load_first_seen(beat)
+    history = request_history(beat)
     started = now()
     log(f"beat {beat.name}; run started {started}")
     frontier = find_frontier(fetcher)
@@ -595,12 +695,21 @@ def run(beat):
         if status == 200 and body:
             new_content = content_hash(beat, body)
             if not known:
+                observed = now()
                 fetcher.save(page_id, body)
                 snaps[page_id] = {"raw_sha256": sha256(body),
                                   "content_sha256": new_content,
-                                  "first_seen_utc": now()}
+                                  "first_seen_utc": observed}
+                if page_id not in first_seen:
+                    confidence, window = classify_first_seen(history, page_id, observed)
+                    first_seen[page_id] = {
+                        "first_seen_utc": observed,
+                        "first_seen_confidence": confidence,
+                        "observed_in_run": started.replace(":", "").replace("-", ""),
+                        "window_start_utc": window,
+                    }
+                    log(f"  {page_id}: new page archived, first seen {confidence}")
                 new_pages.append(page_id)
-                log(f"  {page_id}: new page archived")
                 continue
             before = dest.read_bytes()
             prior = snaps.get(page_id, {})
@@ -649,6 +758,7 @@ def run(beat):
                 f"{len(changed)} changed, {len(new_pages)} new, {chrome_only} chrome-only")
 
     save_snapshots(beat, snaps)
+    save_first_seen(beat, first_seen)
     record = {
         "run_id": started.replace(":", "").replace("-", ""),
         "beat": beat.name,
@@ -660,6 +770,11 @@ def run(beat):
         "pages_checked": checked,
         "pages_archived_after_run": len(beat.archived_ids()),
         "new_pages": new_pages,
+        "first_seen_recorded": [
+            {"id": i, "first_seen_utc": first_seen[i]["first_seen_utc"],
+             "first_seen_confidence": first_seen[i]["first_seen_confidence"],
+             "window_start_utc": first_seen[i]["window_start_utc"]}
+            for i in new_pages if i in first_seen],
         "changed_pages": changed,
         "removed_pages": removed,
         "unchanged_pages": unchanged,
@@ -891,6 +1006,8 @@ def main():
         seed_snapshots(beat)
     elif cmd == "changes":
         show_changes(beat)
+    elif cmd == "first-seen":
+        seed_first_seen(beat)
     elif cmd == "backfill":
         backfill_changes(beat)
     elif cmd == "extract":
