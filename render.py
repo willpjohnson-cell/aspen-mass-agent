@@ -339,6 +339,8 @@ CSS = """:root {
   .cardsub { font-size: var(--t-sm); color: var(--muted); margin: 0 0 0.6rem; }
   .card .stats { margin: 0.8rem 0 0.6rem; gap: 1.25rem 2rem; }
   .card .stats .n { font-size: var(--t-md); }
+  .statusline { border-left: 2px solid var(--rule-strong); padding-left: 0.75rem;
+                margin: 0.6rem 0 0.2rem; }
   .callout {
     border: 1px solid var(--rule-strong); border-left: 3px solid var(--ink);
     padding: 0.9rem 1.1rem; margin: 1rem 0; max-width: 44rem;
@@ -550,12 +552,14 @@ def rules_section(report):
         why = "".join(
             f'<li><span class="n">{n}</span> {esc(reason)}</li>'
             for reason, n in sorted(reasons.items(), key=lambda kv: -kv[1]))
-        status = (rule.get("verdict_status") or "").strip()
-        status_note = (rule.get("verdict_status_note") or "").strip()
-        banner = (f'<div class="callout"><p class="calloutlead">'
-                  f'{esc(rule["id"])} has returned no verdict on any of the '
-                  f'{total:,} archived pages, and {esc(status)}.</p>'
-                  f'<p>{esc(status_note)}</p></div>') if status else ""
+        reason = (rule.get("verdict_status_reason") or "").strip()
+        if reason and counts["indeterminate"] == total and total:
+            banner = (f'<p class="note statusline">{esc(rule["id"])} returns '
+                      f'indeterminate on all {total:,} pages: {esc(reason)}</p>')
+        elif reason:
+            banner = f'<p class="note statusline">{esc(rule["id"])}: {esc(reason)}</p>'
+        else:
+            banner = ""
         blocks.append(
             f'<div class="rule">'
             f'<h3>{esc(rule["id"])}</h3>'
@@ -590,7 +594,7 @@ def findings_section(confirmed, unreviewed, report):
             for f in confirmed)
         return rows
     rules = (report or {}).get("rules", [])
-    blocked = [r for r in rules if (r.get("verdict_status") or "").strip()]
+    blocked = [r for r in rules if (r.get("verdict_status_reason") or "").strip()]
     if rules and len(blocked) == len(rules):
         names = ", ".join(esc(r["id"]) for r in blocked)
         return (
@@ -760,19 +764,7 @@ def landing_page(contexts):
     page = Page("index.html")
     archived = sum(len(c.records) for c in contexts)
     detected = sum(len(c.changes) for c in contexts)
-    verdicts = {"compliant": 0, "not_compliant": 0, "indeterminate": 0}
-    for c in contexts:
-        for k, v in c.verdicts().items():
-            verdicts[k] += v
-    confirmed = sum(len(c.confirmed) for c in contexts)
     last = max((c.last_run_utc for c in contexts if c.last_run_utc), default=None)
-
-    cells = [(f"{len(contexts)}", f"beat{'s' if len(contexts) != 1 else ''} running"),
-             (f"{archived:,}", "pages archived"),
-             (f"{detected}", "changes detected"),
-             (f"{confirmed}", "findings confirmed")]
-    stats = "".join(f'<div><span class="n">{v}</span><span class="k">{k}</span></div>'
-                    for v, k in cells)
 
     rows = "".join(
         f'<tr><td data-label="Beat"><a href="{page.rel(c.home)}">{esc(c.name)}</a></td>'
@@ -781,102 +773,100 @@ def landing_page(contexts):
         f'<td data-label="Last run">{stamp(c.last_run_utc) or "never"}</td></tr>'
         for c in contexts)
 
-    blocked = []
+    # The most recent real change across every beat, shown as itself.
+    newest = None
     for c in contexts:
-        for rule in (c.rules or {}).get("rules", []):
-            if (rule.get("verdict_status") or "").strip():
-                blocked.append((c, rule, sum((c.rules["tallies"][rule["id"]]).values())))
+        for change in c.changes:
+            when = change.get("observed_after_utc") or ""
+            if newest is None or when > newest[2]:
+                newest = (c, change, when)
 
-    if len(contexts) == 1:
-        c0 = contexts[0]
-        gov = c0.beat.get("government")
-        publisher = (f"the {gov}" if gov
-                     else c0.beat.get("jurisdiction")
-                     or c0.beat.get("title", default=c0.name))
-        doing = (f"One beat is running. It archives {c0.noun_plural} published by "
-                 f"{publisher} byte for byte, re-fetches every one of them on a "
-                 f"schedule, and records what changed between runs.")
+    if newest:
+        ctx, change, _ = newest
+        proof = (change_entry(change, ctx, page, lead=True)
+                 + f'<p class="note">Detected by the {esc(ctx.name)} beat, which has '
+                   f'caught {len(ctx.changes)} changes across {len(ctx.records):,} '
+                   f'archived {esc(ctx.noun_plural)}. '
+                   f'<a href="{page.rel(ctx.home)}">Every change it has detected</a>.</p>')
     else:
-        doing = (f"{len(contexts)} beats are running. Each archives the pages it "
-                 f"watches byte for byte, re-fetches them on a schedule, and records "
-                 f"what changed between runs.")
-
-    rule_finding = ""
-    for c, rule, total in blocked:
-        counts = c.rules["tallies"][rule["id"]]
-        rule_finding += f"""
-  <div class="callout">
-    <p class="calloutlead">{esc(rule["id"])} on {esc(c.name)}: no verdict on any of
-    {total:,} pages, and it cannot return one against this source.</p>
-    <p>Across {total:,} archived pages the rule has returned
-    {counts["compliant"]} compliant, {counts["not_compliant"]} not compliant, and
-    {counts["indeterminate"]:,} indeterminate.</p>
-    <p>{esc((rule.get("verdict_status_note") or "").strip())}</p>
-    <p class="note"><a href="{page.rel(c.home)}">The rule, its citation, and the
-    per-page reasons</a>.</p>
-  </div>"""
+        proof = ('<p class="lede">No run has detected a change yet.</p>')
 
     body = f"""
 <header>
   <h1>{PLATFORM}</h1>
-  <p class="tagline">{TAGLINE}</p>
+  <p class="tagline">A platform for building agents that watch government activity,
+  archive it byte for byte, and detect what changed.</p>
 </header>
 
 <section>
-  <h2>What this does today</h2>
-  <p class="prose">{esc(doing)} That is change detection and provenance, and it is
-  the part of this project that works.</p>
-  <p class="prose">{archived:,} pages are archived. {detected} changes have been
-  detected and each one links to the stored bytes from before and after it. Every
-  extracted row carries the SHA-256 of the file it came from.</p>
+  <h2>What it is</h2>
+  <p class="prose">A <strong>beat</strong> is an agent that watches one government
+  surface. You declare it in a YAML file: where its pages live, how politely to
+  fetch them, which fields to read, and which rules to apply. The platform does the
+  rest — fetching on a schedule, storing the bytes exactly as the server sent them,
+  and comparing every page against the last time it looked.</p>
+  <p class="prose">{len(contexts)} beat{"s are" if len(contexts) != 1 else " is"}
+  running, over {archived:,} archived pages, with {detected} changes detected so far.
+  Every claim on this site links to the stored bytes it came from.</p>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>It works. Here is the most recent thing it caught.</h2>
+  {proof}
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>How a beat works</h2>
+
+  <h3>Declared, not coded</h3>
+  <p class="prose">A beat is a <code>beat.yaml</code> and a <code>parse.py</code>.
+  The config carries the URL pattern, the id range, the delay between requests, the
+  fields to extract and the rules to evaluate. The parser turns one fetched page
+  into a flat record. Nothing else about a jurisdiction lives in the platform.</p>
+
+  <h3>Fetches on a schedule, politely</h3>
+  <p class="prose">Pages are fetched one at a time with a configured delay and no
+  parallelism; the runner refuses to parallelise. Every request is logged with its
+  status and timestamp, including the ones that return nothing.</p>
+
+  <h3>Archives the bytes</h3>
+  <p class="prose">Each page is stored exactly as the server sent it, and every
+  extracted row carries the SHA-256 of the file it came from. When a page's content
+  changes, the bytes being replaced are kept, so both versions stay in the archive
+  and a change links to each of them.</p>
+
+  <h3>Diffs what the page says, not what it shipped</h3>
+  <p class="prose">A run compares the hash of the parsed fields rather than the hash
+  of the raw bytes, because pages routinely carry markup that changes on every
+  request. On the last full run that distinction separated 4 real changes from 639
+  pages whose bytes differed and whose content did not.</p>
+
+  <h3>Evaluates declarative rules</h3>
+  <p class="prose">Rules are configuration too. Each is evaluated against every
+  archived page and returns <strong>compliant</strong>, <strong>not
+  compliant</strong>, or <strong>indeterminate</strong> with a reason. There is no
+  fourth outcome, no default and no skipped page: a rule that lacks the evidence to
+  decide says so rather than guessing.</p>
+
+  <h3>A person promotes a finding, never the engine</h3>
+  <p class="prose">A not-compliant verdict enters a review queue as pending. It
+  becomes public only when someone reviews it and marks it confirmed. Exactly one
+  line in the codebase writes a finding status, and it writes pending.</p>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>Active beats</h2>
   <div class="scroller"><table class="rows">
   <thead><tr><th>Beat</th><th>Watching</th><th>Pages</th><th>Last run</th></tr></thead>
   <tbody>{rows}</tbody></table></div>
-  <p class="note"><a href="{page.rel("beats/index.html")}">All beats</a></p>
-</section>
-
-<section>
-  <h2>What the rule layer has produced: nothing</h2>
-  <p class="prose">The platform can evaluate declarative rules against archived
-  pages and return one of three verdicts. Against the only source it currently
-  watches, it has returned none of them.</p>
-  {rule_finding}
-  <p class="prose">This is a limit of the source, not a bug in the rule engine and
-  not something more collection will fix. It is recorded here rather than left for
-  a reader to infer from a column of zeros.</p>
-  <p class="prose">A municipal beat is planned to exercise the rule layer, on a
-  source that publishes the posting timestamp a notice rule needs. It does not
-  exist yet, and nothing on this site depends on it.</p>
-</section>
-
-<section>
-  <h2>How the archive works</h2>
-
-  <h3>The bytes are the evidence</h3>
-  <p class="prose">Pages are fetched one at a time and stored exactly as the server
-  sent them. Nothing is cleaned or reformatted. When a page's content changes, the
-  bytes being replaced are kept, so both versions remain.</p>
-
-  <h3>Content changes, not byte changes</h3>
-  <p class="prose">This source regenerates a weather widget and a per-request form
-  token on every response, so the raw bytes of every page differ on every fetch. A
-  run therefore compares the hash of the parsed fields rather than the hash of the
-  bytes. In the last full run that distinction separated 4 real changes from 639
-  pages that differed only in that per-request markup.</p>
-
-  <h3>First seen, and how well that is known</h3>
-  <p class="prose">Each page records when it was first observed, with a confidence.
-  <strong>Bounded</strong> means an earlier run recorded the page as absent and a
-  later one found it. <strong>Unbounded</strong> means it was already there the
-  first time anything looked. All {archived:,} pages in this archive are unbounded,
-  because nothing looked before the first collection, and an unbounded observation
-  is never used to produce a notice figure.</p>
-</section>
-
-<section>
-  <h2>Totals</h2>
-  <div class="stats">{stats}</div>
-  <p class="note">{"Last run finished " + esc(last) + "." if last else "No run recorded yet."}</p>
+  <p class="note"><a href="{page.rel("beats/index.html")}">All beats</a>{
+    " · Last run finished " + esc(last) if last else ""}</p>
 </section>
 """
     return page, document(page, PLATFORM, body)
@@ -987,8 +977,7 @@ def beat_page(c):
 <section>
   <h2>Rules</h2>
   <p class="lede">Each rule is evaluated against every archived page and returns one
-  of three verdicts, or says why it cannot. Every rule this beat declares currently
-  returns nothing at all, for the reason stated below.</p>
+  of three verdicts, or says why it cannot.</p>
   {rules_section(c.rules)}
 </section>
 

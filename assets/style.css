@@ -279,6 +279,8 @@
   .cardsub { font-size: var(--t-sm); color: var(--muted); margin: 0 0 0.6rem; }
   .card .stats { margin: 0.8rem 0 0.6rem; gap: 1.25rem 2rem; }
   .card .stats .n { font-size: var(--t-md); }
+  .statusline { border-left: 2px solid var(--rule-strong); padding-left: 0.75rem;
+                margin: 0.6rem 0 0.2rem; }
   .callout {
     border: 1px solid var(--rule-strong); border-left: 3px solid var(--ink);
     padding: 0.9rem 1.1rem; margin: 1rem 0; max-width: 44rem;

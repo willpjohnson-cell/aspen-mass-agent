@@ -13,74 +13,78 @@
 
 <header>
   <h1>The Monitor</h1>
-  <p class="tagline">It archives government web pages and records when they change.</p>
+  <p class="tagline">A platform for building agents that watch government activity,
+  archive it byte for byte, and detect what changed.</p>
 </header>
 
 <section>
-  <h2>What this does today</h2>
-  <p class="prose">One beat is running. It archives hearing pages published by the Massachusetts General Court byte for byte, re-fetches every one of them on a schedule, and records what changed between runs. That is change detection and provenance, and it is
-  the part of this project that works.</p>
-  <p class="prose">643 pages are archived. 4 changes have been
-  detected and each one links to the stored bytes from before and after it. Every
-  extracted row carries the SHA-256 of the file it came from.</p>
+  <h2>What it is</h2>
+  <p class="prose">A <strong>beat</strong> is an agent that watches one government
+  surface. You declare it in a YAML file: where its pages live, how politely to
+  fetch them, which fields to read, and which rules to apply. The platform does the
+  rest — fetching on a schedule, storing the bytes exactly as the server sent them,
+  and comparing every page against the last time it looked.</p>
+  <p class="prose">1 beat is
+  running, over 643 archived pages, with 4 changes detected so far.
+  Every claim on this site links to the stored bytes it came from.</p>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>It works. Here is the most recent thing it caught.</h2>
+  <div class="headline"><p class="when">Detected <span class="stamp">2026-08-31T22:18:36+00:00</span></p><p class="what">Joint Committee on Public Service added S3268 to its agenda <span class="id">page 5770</span></p><div class="change"><span class="fieldname">bills</span><div class="diff"><span class="items"><span class="val new">S3268</span></span><span class="note">added, taking the list from 11 to 12</span></div></div><div class="custody"><span>First seen <span class="stamp">2026-08-31T03:30:39+00:00</span></span><span>Changed by <span class="stamp">2026-08-31T22:18:36+00:00</span></span><span>Snapshot before <a href="raw/_superseded/5770/20260831T221836+0000.html"><span class="hash" title="sha-256 2771775a52d881a889645d43f0338d89cce166c602e751071e3af613ed347aa3">2771775a52d8…</span></a></span><span>Snapshot after <a href="raw/5770.html"><span class="hash" title="sha-256 8cfe76143ca791a86acd759a4700abfb63eb4bbcc88e6df26c5293b926ea4665">8cfe76143ca7…</span></a></span><span><a href="https://malegislature.gov/Events/Hearings/Detail/5770">Live page</a></span></div></div><p class="note">Detected by the ma-hearings beat, which has caught 4 changes across 643 archived hearing pages. <a href="beats/ma-hearings/index.html">Every change it has detected</a>.</p>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>How a beat works</h2>
+
+  <h3>Declared, not coded</h3>
+  <p class="prose">A beat is a <code>beat.yaml</code> and a <code>parse.py</code>.
+  The config carries the URL pattern, the id range, the delay between requests, the
+  fields to extract and the rules to evaluate. The parser turns one fetched page
+  into a flat record. Nothing else about a jurisdiction lives in the platform.</p>
+
+  <h3>Fetches on a schedule, politely</h3>
+  <p class="prose">Pages are fetched one at a time with a configured delay and no
+  parallelism; the runner refuses to parallelise. Every request is logged with its
+  status and timestamp, including the ones that return nothing.</p>
+
+  <h3>Archives the bytes</h3>
+  <p class="prose">Each page is stored exactly as the server sent it, and every
+  extracted row carries the SHA-256 of the file it came from. When a page's content
+  changes, the bytes being replaced are kept, so both versions stay in the archive
+  and a change links to each of them.</p>
+
+  <h3>Diffs what the page says, not what it shipped</h3>
+  <p class="prose">A run compares the hash of the parsed fields rather than the hash
+  of the raw bytes, because pages routinely carry markup that changes on every
+  request. On the last full run that distinction separated 4 real changes from 639
+  pages whose bytes differed and whose content did not.</p>
+
+  <h3>Evaluates declarative rules</h3>
+  <p class="prose">Rules are configuration too. Each is evaluated against every
+  archived page and returns <strong>compliant</strong>, <strong>not
+  compliant</strong>, or <strong>indeterminate</strong> with a reason. There is no
+  fourth outcome, no default and no skipped page: a rule that lacks the evidence to
+  decide says so rather than guessing.</p>
+
+  <h3>A person promotes a finding, never the engine</h3>
+  <p class="prose">A not-compliant verdict enters a review queue as pending. It
+  becomes public only when someone reviews it and marks it confirmed. Exactly one
+  line in the codebase writes a finding status, and it writes pending.</p>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>Active beats</h2>
   <div class="scroller"><table class="rows">
   <thead><tr><th>Beat</th><th>Watching</th><th>Pages</th><th>Last run</th></tr></thead>
   <tbody><tr><td data-label="Beat"><a href="beats/ma-hearings/index.html">ma-hearings</a></td><td data-label="Watching">Massachusetts Legislature — committee hearings</td><td data-label="Pages">643</td><td data-label="Last run"><span class="stamp">2026-08-31T23:16:23+00:00</span></td></tr></tbody></table></div>
-  <p class="note"><a href="beats/index.html">All beats</a></p>
-</section>
-
-<section>
-  <h2>What the rule layer has produced: nothing</h2>
-  <p class="prose">The platform can evaluate declarative rules against archived
-  pages and return one of three verdicts. Against the only source it currently
-  watches, it has returned none of them.</p>
-  
-  <div class="callout">
-    <p class="calloutlead">notice-10-day on ma-hearings: no verdict on any of
-    643 pages, and it cannot return one against this source.</p>
-    <p>Across 643 archived pages the rule has returned
-    0 compliant, 0 not compliant, and
-    643 indeterminate.</p>
-    <p>The ten-day clock in Joint Rule 1D runs from the moment a committee notifies the Sergeant-at-Arms. The Legislature does not publish that date anywhere on malegislature.gov, so the archive does not hold it and no amount of further collection will produce it. first_seen records when this platform first saw a hearing page, which is a different event. Measuring one against the other would produce a number that looks like a notice figure and is not one. The rule is kept because the requirement is real and the gap is worth stating.</p>
-    <p class="note"><a href="beats/ma-hearings/index.html">The rule, its citation, and the
-    per-page reasons</a>.</p>
-  </div>
-  <p class="prose">This is a limit of the source, not a bug in the rule engine and
-  not something more collection will fix. It is recorded here rather than left for
-  a reader to infer from a column of zeros.</p>
-  <p class="prose">A municipal beat is planned to exercise the rule layer, on a
-  source that publishes the posting timestamp a notice rule needs. It does not
-  exist yet, and nothing on this site depends on it.</p>
-</section>
-
-<section>
-  <h2>How the archive works</h2>
-
-  <h3>The bytes are the evidence</h3>
-  <p class="prose">Pages are fetched one at a time and stored exactly as the server
-  sent them. Nothing is cleaned or reformatted. When a page's content changes, the
-  bytes being replaced are kept, so both versions remain.</p>
-
-  <h3>Content changes, not byte changes</h3>
-  <p class="prose">This source regenerates a weather widget and a per-request form
-  token on every response, so the raw bytes of every page differ on every fetch. A
-  run therefore compares the hash of the parsed fields rather than the hash of the
-  bytes. In the last full run that distinction separated 4 real changes from 639
-  pages that differed only in that per-request markup.</p>
-
-  <h3>First seen, and how well that is known</h3>
-  <p class="prose">Each page records when it was first observed, with a confidence.
-  <strong>Bounded</strong> means an earlier run recorded the page as absent and a
-  later one found it. <strong>Unbounded</strong> means it was already there the
-  first time anything looked. All 643 pages in this archive are unbounded,
-  because nothing looked before the first collection, and an unbounded observation
-  is never used to produce a notice figure.</p>
-</section>
-
-<section>
-  <h2>Totals</h2>
-  <div class="stats"><div><span class="n">1</span><span class="k">beat running</span></div><div><span class="n">643</span><span class="k">pages archived</span></div><div><span class="n">4</span><span class="k">changes detected</span></div><div><span class="n">0</span><span class="k">findings confirmed</span></div></div>
-  <p class="note">Last run finished 2026-08-31T23:16:23+00:00.</p>
+  <p class="note"><a href="beats/index.html">All beats</a> · Last run finished 2026-08-31T23:16:23+00:00</p>
 </section>
 
 </div>
