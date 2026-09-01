@@ -789,10 +789,13 @@ def landing_page(contexts):
 
     if len(contexts) == 1:
         c0 = contexts[0]
-        doing = (f"One beat is running. It archives "
-                 f"{c0.beat.get('title', default=c0.name)} {c0.noun_plural} byte for "
-                 f"byte, re-fetches every one of them on a schedule, and records what "
-                 f"changed between runs.")
+        gov = c0.beat.get("government")
+        publisher = (f"the {gov}" if gov
+                     else c0.beat.get("jurisdiction")
+                     or c0.beat.get("title", default=c0.name))
+        doing = (f"One beat is running. It archives {c0.noun_plural} published by "
+                 f"{publisher} byte for byte, re-fetches every one of them on a "
+                 f"schedule, and records what changed between runs.")
     else:
         doing = (f"{len(contexts)} beats are running. Each archives the pages it "
                  f"watches byte for byte, re-fetches them on a schedule, and records "
