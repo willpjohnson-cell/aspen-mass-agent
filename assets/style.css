@@ -279,3 +279,10 @@
   .cardsub { font-size: var(--t-sm); color: var(--muted); margin: 0 0 0.6rem; }
   .card .stats { margin: 0.8rem 0 0.6rem; gap: 1.25rem 2rem; }
   .card .stats .n { font-size: var(--t-md); }
+  .callout {
+    border: 1px solid var(--rule-strong); border-left: 3px solid var(--ink);
+    padding: 0.9rem 1.1rem; margin: 1rem 0; max-width: 44rem;
+  }
+  .callout p { margin: 0 0 0.6rem; font-size: var(--t-sm); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .calloutlead { font-weight: 600; font-size: var(--t-base); color: var(--ink); }

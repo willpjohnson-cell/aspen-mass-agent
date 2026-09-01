@@ -14,13 +14,17 @@
 <header>
   <h1>The Monitor</h1>
   <p class="tagline">It archives government web pages and records when they change.</p>
-  <p class="beats">Every page a beat watches is archived byte for byte. Every run
-  records what changed. Every rule returns a verdict a person can check, or says
-  why it cannot.</p>
 </header>
 
 <section>
-  <h2>Beats running: 1</h2>
+  <h2>What this does today</h2>
+  <p class="prose">One beat is running. It archives Massachusetts Legislature
+  hearing pages byte for byte, re-fetches every one of them on a schedule, and
+  records what changed between runs. That is change detection and provenance, and
+  it is the part of this project that works.</p>
+  <p class="prose">643 pages are archived. 4 changes have been
+  detected and each one links to the stored bytes from before and after it. Every
+  extracted row carries the SHA-256 of the file it came from.</p>
   <div class="scroller"><table class="rows">
   <thead><tr><th>Beat</th><th>Watching</th><th>Pages</th><th>Last run</th></tr></thead>
   <tbody><tr><td data-label="Beat"><a href="beats/ma-hearings/index.html">ma-hearings</a></td><td data-label="Watching">Massachusetts Legislature — committee hearings</td><td data-label="Pages">643</td><td data-label="Last run"><span class="stamp">2026-08-31T23:16:23+00:00</span></td></tr></tbody></table></div>
@@ -28,39 +32,51 @@
 </section>
 
 <section>
-  <h2>How it works</h2>
+  <h2>What the rule layer has produced: nothing</h2>
+  <p class="prose">The platform can evaluate declarative rules against archived
+  pages and return one of three verdicts. Against the only source it currently
+  watches, it has returned none of them.</p>
+  
+  <div class="callout">
+    <p class="calloutlead">notice-10-day on ma-hearings: no verdict on any of
+    643 pages, and it cannot return one against this source.</p>
+    <p>Across 643 archived pages the rule has returned
+    0 compliant, 0 not compliant, and
+    643 indeterminate.</p>
+    <p>The ten-day clock in Joint Rule 1D runs from the moment a committee notifies the Sergeant-at-Arms. The Legislature does not publish that date anywhere on malegislature.gov, so the archive does not hold it and no amount of further collection will produce it. first_seen records when this platform first saw a hearing page, which is a different event. Measuring one against the other would produce a number that looks like a notice figure and is not one. The rule is kept because the requirement is real and the gap is worth stating.</p>
+    <p class="note"><a href="beats/ma-hearings/index.html">The rule, its citation, and the
+    per-page reasons</a>.</p>
+  </div>
+  <p class="prose">This is a limit of the source, not a bug in the rule engine and
+  not something more collection will fix. It is recorded here rather than left for
+  a reader to infer from a column of zeros.</p>
+  <p class="prose">A municipal beat is planned to exercise the rule layer, on a
+  source that publishes the posting timestamp a notice rule needs. It does not
+  exist yet, and nothing on this site depends on it.</p>
+</section>
 
-  <h3>Evidence before conclusions</h3>
-  <p class="prose">A beat fetches the pages it watches one at a time and stores
-  exactly the bytes the server sent. Nothing is cleaned or reformatted. Every row
-  of extracted data carries the SHA-256 of the file it came from, so any claim on
-  these pages can be checked against the bytes behind it.</p>
+<section>
+  <h2>How the archive works</h2>
 
-  <h3>Three verdicts, and no fourth</h3>
-  <p class="prose">Rules are configuration, not code. Each one is evaluated against
-  every archived page and returns <strong>compliant</strong>,
-  <strong>not compliant</strong>, or <strong>indeterminate</strong> with a reason.
-  A rule whose evidence is missing returns indeterminate rather than a guess, and
-  no page is skipped. Across every beat that is currently
-  0 compliant, 0 not compliant,
-  and 643 indeterminate.</p>
+  <h3>The bytes are the evidence</h3>
+  <p class="prose">Pages are fetched one at a time and stored exactly as the server
+  sent them. Nothing is cleaned or reformatted. When a page's content changes, the
+  bytes being replaced are kept, so both versions remain.</p>
 
-  <h3>Only a person promotes a finding</h3>
-  <p class="prose">A not-compliant verdict becomes a finding with the status
-  <strong>pending</strong>. It appears publicly only after someone reviews it and
-  sets its status to confirmed in the findings file. There is no automatic
-  promotion and no flag that creates one; exactly one line in this codebase writes
-  a finding status, and it writes pending.</p>
+  <h3>Content changes, not byte changes</h3>
+  <p class="prose">This source regenerates a weather widget and a per-request form
+  token on every response, so the raw bytes of every page differ on every fetch. A
+  run therefore compares the hash of the parsed fields rather than the hash of the
+  bytes. In the last full run that distinction separated 4 real changes from 639
+  pages that differed only in that per-request markup.</p>
 
-  <h3>When a page was first seen, and how well that is known</h3>
-  <p class="prose">Notice rules depend on knowing when something became visible, so
-  each page carries a first-seen timestamp with a confidence.
+  <h3>First seen, and how well that is known</h3>
+  <p class="prose">Each page records when it was first observed, with a confidence.
   <strong>Bounded</strong> means an earlier run recorded the page as absent and a
-  later one found it, placing its appearance inside a known window.
-  <strong>Unbounded</strong> means the page was already there the first time
-  anything looked; it existed at some unknown earlier time. An unbounded
-  observation is never used to produce a notice figure, whatever the arithmetic
-  would say.</p>
+  later one found it. <strong>Unbounded</strong> means it was already there the
+  first time anything looked. All 643 pages in this archive are unbounded,
+  because nothing looked before the first collection, and an unbounded observation
+  is never used to produce a notice figure.</p>
 </section>
 
 <section>

@@ -136,3 +136,15 @@ rules:
     requires: [first_seen, event_date]
     test: event_date - first_seen >= 10 days
     on_missing_evidence: indeterminate
+    # This rule has never returned a verdict and cannot return one against this
+    # source. Recorded here so the page states it rather than leaving a reader to
+    # infer it from a tally of zeros.
+    verdict_status: cannot return a verdict against this source
+    verdict_status_note: >
+      The ten-day clock in Joint Rule 1D runs from the moment a committee notifies
+      the Sergeant-at-Arms. The Legislature does not publish that date anywhere on
+      malegislature.gov, so the archive does not hold it and no amount of further
+      collection will produce it. first_seen records when this platform first saw a
+      hearing page, which is a different event. Measuring one against the other
+      would produce a number that looks like a notice figure and is not one. The
+      rule is kept because the requirement is real and the gap is worth stating.
