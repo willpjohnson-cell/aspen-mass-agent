@@ -12,6 +12,7 @@ headline.
 import html
 import json
 import sys
+from urllib.parse import quote
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -570,6 +571,52 @@ def lower_first(text):
     return text
 
 
+def build_runs_index(beat, runs):
+    """A real page for runs/, because a static host has no directory listing."""
+    rows = []
+    for r in reversed(runs):
+        n = len(r["changed_pages"])
+        outcome = (f'{len(r["new_pages"])} pages archived'
+                   if r["kind"] == "initial-collection" else
+                   (f'{n} page{"s" if n != 1 else ""} changed' if n else
+                    f'{r["pages_checked"]} pages checked, none changed since the '
+                    f'previous run'))
+        name = f'{r["run_id"]}.json'
+        # '+' is legal in a path but some CDNs normalise it; encode it.
+        rows.append(f'<tr><td data-label="Started">{stamp(r["started_utc"])}</td>'
+                    f'<td data-label="Kind">{esc(r["kind"].replace("-", " "))}</td>'
+                    f'<td data-label="Outcome">{esc(outcome)}</td>'
+                    f'<td data-label="Record"><a href="{quote(name)}">{esc(name)}</a>'
+                    f'</td></tr>')
+    doc = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run records</title>
+{STYLE.replace('href="fonts/fonts.css"', 'href="../fonts/fonts.css"')}
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Run records</h1>
+  <p class="tagline">One JSON record per pass over the {esc(beat.name)} beat, newest
+  first. Each records what was checked and what changed.</p>
+  <p class="beats"><a href="../index.html">Back to {esc(PLATFORM)}</a></p>
+</header>
+<div class="scroller"><table class="rows">
+<thead><tr><th>Started</th><th>Kind</th><th>Outcome</th><th>Record</th></tr></thead>
+<tbody>{"".join(rows)}</tbody>
+</table></div>
+</div>
+</body>
+</html>
+"""
+    path = runner.RUNS / "index.html"
+    path.write_text(doc, encoding="utf-8")
+    return path
+
+
 def build():
     beats = [runner.Beat(n) for n in runner.available()]
     beat = beats[0]
@@ -658,7 +705,7 @@ def build():
   <p class="beats">Beats running: {len(beats)}. <strong>{esc(beat.name)}</strong> watches
   {esc(lower_first(beat.get('description', default='')))}
   Its definition is in <a href="beats/{esc(beat.name)}/beat.yaml">beat.yaml</a>, and its
-  records are in <a href="runs/">runs</a> and <a href="data/{esc(beat.name)}.json">data</a>.</p>
+  records are in <a href="runs/index.html">runs</a> and <a href="data/{esc(beat.name)}.json">data</a>.</p>
 </header>
 
 <section>
@@ -802,6 +849,8 @@ raw/_superseded.
 </html>
 """
     OUT.write_text(doc, encoding="utf-8")
+    runs_index = build_runs_index(beat, runs)
+    print(f"wrote {runs_index.relative_to(ROOT)}")
     print(f"wrote {OUT.name}: {len(records)} archived pages, {len(changes)} changes, "
           f"{len(runs)} runs, {len(slice_rows)} in the default slice, "
           f"{OUT.stat().st_size} bytes")
