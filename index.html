@@ -220,6 +220,24 @@
   }
   .stats .k { font-size: var(--t-sm); color: var(--muted); }
 
+  .rule { border-top: 1px solid var(--rule); padding: 1rem 0 0.4rem; }
+  .rule h3 { font-family: var(--mono); font-size: var(--t-sm); }
+  .ruletext { max-width: 40rem; margin: 0 0 0.6rem; }
+  .verdicts { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin: 0.8rem 0 0.4rem; }
+  .verdict { display: flex; flex-direction: column; gap: 0.1rem; }
+  .verdict .n { font-family: var(--mono); font-variant-numeric: tabular-nums;
+                font-size: var(--t-lg); line-height: 1; }
+  .verdict .k { font-size: var(--t-sm); color: var(--muted); }
+  ul.reasons { margin: 0.2rem 0 0.6rem; padding-left: 0; list-style: none;
+               max-width: 44rem; }
+  ul.reasons li { display: flex; gap: 0.6rem; font-size: var(--t-sm);
+                  color: var(--muted); padding: 0.15rem 0; }
+  ul.reasons .n { font-family: var(--mono); font-variant-numeric: tabular-nums;
+                  color: var(--ink); flex: 0 0 3rem; text-align: right; }
+  .emptystate { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+                padding: 1rem 0; max-width: 44rem; }
+  .emptystate p:first-child { margin: 0 0 0.5rem; font-weight: 600; }
+  .internal { border-left: 3px solid var(--rule-strong); padding-left: 1rem; }
   .scope { border-left: 3px solid var(--rule-strong); padding: 0.1rem 0 0.1rem 1rem; }
   .scope h2 { font-size: var(--t-base); margin: 0 0 0.4rem; }
   .scope p { margin: 0.35rem 0; font-size: var(--t-sm); }
@@ -315,8 +333,34 @@
 </section>
 
 <section>
+  <h2>Rules</h2>
+  <p class="lede">Each rule is evaluated against every archived page and returns one
+  of three verdicts. A page whose evidence is missing, or whose first-seen date is
+  unbounded, returns indeterminate with a reason rather than a guess.</p>
+  <div class="rule"><h3>notice-10-day</h3><p class="ruletext">Joint standing committees must notify the Sergeant-at-Arms of a public hearing at least ten days before it is held.</p><p class="note"><strong>Rule as published:</strong> Massachusetts General Court, Joint Rule 1D, as amended June 26, 2025: &quot;Notification to the Sergeant-at-Arms for public hearings conducted shall not be less than 10 days prior to the time of such meetings.&quot; https://malegislature.gov/Laws/Rules/Joint</p><p class="note"><strong>What the test actually measures:</strong> The rule runs on the date a committee notified the Sergeant-at-Arms. The Legislature does not publish that date, and this archive does not hold it. first_seen records when this platform first observed a hearing page, which is a different event and can only ever be later than the notification. A bounded first_seen therefore supports a claim about what was observable on the website, not a finding about the rule itself.</p><p class="note"><strong>Exceptions the archive cannot see:</strong> Joint Rule 1D lets the ten-day requirement be suspended in an emergency by recorded vote of the committee. The site does not publish those votes, so a page failing this test may still be compliant.</p><p class="note">Test: <span class="val">event_date - first_seen &gt;= 10 days</span> over 643 archived pages.</p><div class="verdicts"><div class="verdict"><span class="n">0</span><span class="k">compliant</span></div><div class="verdict"><span class="n">0</span><span class="k">not compliant</span></div><div class="verdict"><span class="n">643</span><span class="k">indeterminate</span></div></div><p class="note">Why every page is indeterminate:</p><ul class="reasons"><li><span class="n">632</span> first_seen is unbounded: the page was already present the first time this platform looked, so the date it became available is unknown and cannot support a finding</li><li><span class="n">11</span> first_seen is unbounded: the page was already present the first time this platform looked, so the date it became available is unknown and cannot support a finding; event_date is present but does not match the declared date format</li></ul></div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>Confirmed findings</h2>
+  <p class="lede">A finding appears here only after a person has reviewed it and set
+  its status to confirmed in the findings file.</p>
+  <div class="emptystate"><p>No finding has been confirmed, because no rule has evaluated a page as not compliant.</p><p class="note">Producing one takes three things in order. A run has to discover a hearing page that an earlier run recorded as absent, which is what makes its first-seen date bounded evidence rather than an unknown earlier time. The rule then has to evaluate that page as not compliant, which currently happens for 0 of the archived pages. A reviewer then has to open the findings file and set that finding's status to confirmed. Nothing here can perform that last step.</p></div>
+</section>
+
+<section class="internal">
+  <h2>Review queue, unreviewed</h2>
+  <p class="lede">Everything the engine has flagged that no one has reviewed yet.
+  Nothing in this section is a confirmed finding, and nothing here appears above.</p>
+  <p class="note">The review queue is empty. Nothing has been flagged for a reviewer to look at.</p>
+</section>
+
+<hr class="divider">
+
+<section>
   <h2>Totals</h2>
-  <div class="stats"><div><span class="n">643</span><span class="k">pages archived</span></div><div><span class="n">3</span><span class="k">runs recorded</span></div><div><span class="n">4</span><span class="k">changes detected</span></div><div><span class="n">7,441</span><span class="k">bill references</span></div><div><span class="n">132</span><span class="k">ids absent inside the range</span></div></div>
+  <div class="stats"><div><span class="n">643</span><span class="k">pages archived</span></div><div><span class="n">3</span><span class="k">runs recorded</span></div><div><span class="n">4</span><span class="k">changes detected</span></div><div><span class="n">7,441</span><span class="k">bill references</span></div><div><span class="n">132</span><span class="k">ids absent inside the range</span></div><div><span class="n">1</span><span class="k">rule evaluated</span></div></div>
 </section>
 
 <section>
@@ -324,11 +368,12 @@
   <h2>What this shows</h2>
   <p><strong>Establishes:</strong> what each hearing page said when it was fetched, at the timestamp shown in the last column. The raw HTML is kept byte-for-byte and each row carries the SHA-256 of the file it came from.</p>
   <p><strong>Does not establish:</strong> when a hearing was announced or posted. The site does not publish a posting or announcement date, so this archive contains none and no notice-timing conclusion can be drawn from it. Blank cells mean the field was absent from the page, not that it was zero or unknown to the Legislature.</p>
+  <p><strong>Notice dates:</strong> pages archived before this platform began running cannot yield a notice date. All 643 pages in the first collection were already published when it ran, so the date each became available is unknown and no notice figure can be derived from them. Forward-looking notice measurement starts from the first page a later run discovers after an earlier run recorded it absent.</p>
 </div>
 </section>
 
 <footer>
-Built 2026-09-01T01:20:07+00:00 from data/ma-hearings.json and runs/. Pages are fetched one at a
+Built 2026-09-01T01:46:36+00:00 from data/ma-hearings.json and runs/. Pages are fetched one at a
 time with 1.5 seconds between requests. Raw HTML is stored exactly as the
 server sent it; when a page's content changes, the replaced bytes are kept under
 raw/_superseded.

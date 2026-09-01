@@ -21,6 +21,7 @@ Commands:
   python3 runner.py changes <beat>   every change ever detected
   python3 runner.py first-seen <beat>  record when each archived page was first seen
   python3 runner.py rules <beat>      evaluate the beat's rules against every page
+  python3 runner.py findings <beat>   queue not_compliant evaluations for review
   python3 runner.py backfill <beat>  add provenance to older change records
   python3 runner.py beats               list installed beats
 
@@ -951,6 +952,72 @@ def evaluate_rules(beat):
     return report
 
 
+def findings_path(beat):
+    return (beat.path("storage", "findings")
+            or beat.data_dir / f"{beat.name}-findings.json")
+
+
+def load_findings(beat):
+    path = findings_path(beat)
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return []
+
+
+def update_findings(beat):
+    """Queue every not_compliant evaluation for human review.
+
+    A finding enters as pending and stays there. Nothing in this code moves a
+    finding to confirmed: that requires a person editing the file. There is no
+    flag, option or environment variable that changes this, by design — the
+    public section of the page renders confirmed findings only.
+    """
+    report = evaluate_rules(beat)
+    existing = {(f["rule"], f["id"]): f for f in load_findings(beat)}
+    stamp = now()
+    added = 0
+    for result in report["results"]:
+        if result["status"] != "not_compliant":
+            continue
+        key = (result["rule"], result["id"])
+        if key in existing:
+            # Never touch a reviewer's decision; only refresh what the engine saw.
+            existing[key]["last_evaluated_utc"] = stamp
+            existing[key]["latest_engine_status"] = result["status"]
+            existing[key]["latest_engine_reason"] = result["reason"]
+            continue
+        existing[key] = {
+            "rule": result["rule"],
+            "id": result["id"],
+            "source_url": result.get("source_url"),
+            "status": "pending",
+            "reviewer_note": "",
+            "reviewed_by": "",
+            "reviewed_utc": "",
+            "created_utc": stamp,
+            "last_evaluated_utc": stamp,
+            "latest_engine_status": result["status"],
+            "latest_engine_reason": result["reason"],
+            "evidence": result["values"],
+        }
+        added += 1
+
+    findings = sorted(existing.values(), key=lambda f: (f["rule"], f["id"]))
+    path = findings_path(beat)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(findings, indent=2) + "\n", encoding="utf-8")
+
+    counts = Counter(f["status"] for f in findings)
+    print(f"\n{path.relative_to(ROOT)}: {len(findings)} finding(s), {added} new")
+    for status in ("confirmed", "pending", "dismissed"):
+        print(f"  {status:<12} {counts.get(status, 0)}")
+    if not findings:
+        print("  No rule evaluated as not_compliant, so nothing is queued for review.")
+    print("  Findings reach the public section only when a person sets status to "
+          "'confirmed' in this file.")
+    return findings
+
+
 def show_changes(beat):
     changes = all_changes(beat.name)
     if not changes:
@@ -1038,6 +1105,8 @@ def main():
         seed_first_seen(beat)
     elif cmd == "rules":
         evaluate_rules(beat)
+    elif cmd == "findings":
+        update_findings(beat)
     elif cmd == "backfill":
         backfill_changes(beat)
     elif cmd == "extract":

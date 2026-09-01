@@ -86,6 +86,12 @@ presentation:
       what each hearing page said when it was fetched, at the timestamp shown in
       the last column. The raw HTML is kept byte-for-byte and each row carries
       the SHA-256 of the file it came from.
+    notice_dates: >
+      pages archived before this platform began running cannot yield a notice date.
+      All 643 pages in the first collection were already published when it ran, so the
+      date each became available is unknown and no notice figure can be derived from
+      them. Forward-looking notice measurement starts from the first page a later run
+      discovers after an earlier run recorded it absent.
     does_not_establish: >
       when a hearing was announced or posted. The site does not publish a posting
       or announcement date, so this archive contains none and no notice-timing

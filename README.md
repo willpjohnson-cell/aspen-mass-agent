@@ -137,6 +137,56 @@ the runner requires `clear_run` consecutive absences before concluding.
 Every request is appended to `fetch_status.tsv` with its status and UTC
 timestamp, including the ones that 404. Gaps are part of the record.
 
+## Rules and findings
+
+Rules are configuration, not code. Each beat declares them in `beat.yaml` with an
+id, the provision they come from, the evidence they require, and a test. The
+engine in `rules.py` evaluates every rule against every archived page and returns
+exactly one of three verdicts, each with a reason:
+
+| Verdict | Meaning |
+| --- | --- |
+| `compliant` | The test ran on real evidence and passed. |
+| `not_compliant` | The test ran on real evidence and failed. |
+| `indeterminate` | The test could not be run. The reason says why. |
+
+There is no fourth outcome, no default, and no skipped page.
+
+### first_seen, and why its confidence decides everything
+
+Every archived page carries a `first_seen` timestamp in
+`data/<beat>-first-seen.tsv`, written once and never recomputed. It records the
+earliest run that observed the page, and it carries a confidence:
+
+- **bounded** — the id returned 404 in an earlier run and 200 in a later one, so
+  the page became observable inside a known window. The window's start is stored
+  with it. This is real evidence.
+- **unbounded** — the page was already present the first time anything looked. It
+  existed at some unknown earlier time. **This is not evidence of when it was
+  posted**, and the engine refuses to compute a notice figure from it, whatever
+  the arithmetic would say.
+
+All 643 pages from the first collection are unbounded, so every rule currently
+returns `indeterminate`. That is the correct result rather than an empty one.
+Bounded evidence can only come from pages a future run discovers.
+
+### The review queue
+
+A `not_compliant` evaluation becomes a finding in `data/<beat>-findings.json` with
+status `pending`, plus a reviewer note and timestamps. Only findings a person has
+set to `confirmed` render in the public part of the page; pending and dismissed
+appear in a separate section labelled unreviewed.
+
+Nothing in this codebase writes `confirmed` — exactly one line assigns a finding
+status, and it writes `pending`. Re-running the engine refreshes what it saw and
+never touches a reviewer's decision or note.
+
+```bash
+python3 runner.py first-seen ma-hearings   # record when each page was first seen
+python3 runner.py rules ma-hearings        # evaluate rules -> data/<beat>-rules.json
+python3 runner.py findings ma-hearings     # queue not_compliant for review
+```
+
 ## How change detection works
 
 Each run re-fetches every id in the range and compares the hash of the **parsed

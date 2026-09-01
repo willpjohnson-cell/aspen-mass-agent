@@ -239,6 +239,24 @@ STYLE = """<link rel="stylesheet" href="fonts/fonts.css">
   }
   .stats .k { font-size: var(--t-sm); color: var(--muted); }
 
+  .rule { border-top: 1px solid var(--rule); padding: 1rem 0 0.4rem; }
+  .rule h3 { font-family: var(--mono); font-size: var(--t-sm); }
+  .ruletext { max-width: 40rem; margin: 0 0 0.6rem; }
+  .verdicts { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin: 0.8rem 0 0.4rem; }
+  .verdict { display: flex; flex-direction: column; gap: 0.1rem; }
+  .verdict .n { font-family: var(--mono); font-variant-numeric: tabular-nums;
+                font-size: var(--t-lg); line-height: 1; }
+  .verdict .k { font-size: var(--t-sm); color: var(--muted); }
+  ul.reasons { margin: 0.2rem 0 0.6rem; padding-left: 0; list-style: none;
+               max-width: 44rem; }
+  ul.reasons li { display: flex; gap: 0.6rem; font-size: var(--t-sm);
+                  color: var(--muted); padding: 0.15rem 0; }
+  ul.reasons .n { font-family: var(--mono); font-variant-numeric: tabular-nums;
+                  color: var(--ink); flex: 0 0 3rem; text-align: right; }
+  .emptystate { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+                padding: 1rem 0; max-width: 44rem; }
+  .emptystate p:first-child { margin: 0 0 0.5rem; font-weight: 600; }
+  .internal { border-left: 3px solid var(--rule-strong); padding-left: 1rem; }
   .scope { border-left: 3px solid var(--rule-strong); padding: 0.1rem 0 0.1rem 1rem; }
   .scope h2 { font-size: var(--t-base); margin: 0 0 0.4rem; }
   .scope p { margin: 0.35rem 0; font-size: var(--t-sm); }
@@ -445,14 +463,101 @@ def runs_table(runs):
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 
 
+def rules_section(report):
+    """What each rule asks, and how every archived page answered it."""
+    if not report:
+        return ('<p class="lede">No rule evaluation has been written yet. Run '
+                '<code>runner.py rules</code>.</p>')
+    blocks = []
+    for rule in report["rules"]:
+        counts = report["tallies"][rule["id"]]
+        total = sum(counts.values())
+        bar = "".join(
+            f'<div class="verdict"><span class="n">{counts[k]}</span>'
+            f'<span class="k">{k.replace("_", " ")}</span></div>'
+            for k in ("compliant", "not_compliant", "indeterminate"))
+        reasons = {}
+        for r in report["results"]:
+            if r["rule"] == rule["id"] and r["status"] == "indeterminate":
+                reasons[r["reason"]] = reasons.get(r["reason"], 0) + 1
+        why = "".join(
+            f'<li><span class="n">{n}</span> {esc(reason)}</li>'
+            for reason, n in sorted(reasons.items(), key=lambda kv: -kv[1]))
+        blocks.append(
+            f'<div class="rule">'
+            f'<h3>{esc(rule["id"])}</h3>'
+            f'<p class="ruletext">{esc((rule.get("description") or "").strip())}</p>'
+            f'<p class="note"><strong>Rule as published:</strong> '
+            f'{esc((rule.get("source") or "").strip())}</p>'
+            f'<p class="note"><strong>What the test actually measures:</strong> '
+            f'{esc((rule.get("measures") or "").strip())}</p>'
+            f'<p class="note"><strong>Exceptions the archive cannot see:</strong> '
+            f'{esc((rule.get("exceptions") or "").strip())}</p>'
+            f'<p class="note">Test: <span class="val">{esc(rule.get("test"))}</span> '
+            f'over {total} archived pages.</p>'
+            f'<div class="verdicts">{bar}</div>'
+            + (f'<p class="note">Why every page is indeterminate:</p>'
+               f'<ul class="reasons">{why}</ul>' if why else "")
+            + '</div>')
+    return "".join(blocks)
+
+
+def findings_section(confirmed, unreviewed, report):
+    """Confirmed findings are public. Everything else is labelled unreviewed."""
+    if confirmed:
+        rows = "".join(
+            f'<div class="entry"><h3>{esc(f["rule"])} on page '
+            f'<span class="id">{f["id"]}</span></h3>'
+            f'<p class="note">{esc(f.get("latest_engine_reason", ""))}</p>'
+            f'<p class="note">Confirmed {stamp(f.get("reviewed_utc"))} '
+            f'{esc(f.get("reviewed_by", ""))}. {esc(f.get("reviewer_note", ""))}</p>'
+            f'<div class="custody"><span><a href="{esc(f.get("source_url", ""))}">'
+            f'Live page</a></span></div></div>'
+            for f in confirmed)
+        return rows
+    n_not = sum(t.get("not_compliant", 0) for t in (report or {}).get("tallies", {}).values())
+    return (
+        '<div class="emptystate">'
+        '<p>No finding has been confirmed, because no rule has evaluated a page as '
+        'not compliant.</p>'
+        f'<p class="note">Producing one takes three things in order. A run has to '
+        f'discover a hearing page that an earlier run recorded as absent, which is '
+        f'what makes its first-seen date bounded evidence rather than an unknown '
+        f'earlier time. The rule then has to evaluate that page as not compliant, '
+        f'which currently happens for {n_not} of the archived pages. A reviewer then '
+        f'has to open the findings file and set that finding\'s status to confirmed. '
+        f'Nothing here can perform that last step.</p>'
+        '</div>')
+
+
+def unreviewed_section(unreviewed):
+    if not unreviewed:
+        return ('<p class="note">The review queue is empty. Nothing has been flagged '
+                'for a reviewer to look at.</p>')
+    rows = "".join(
+        f'<tr><td data-label="Rule">{esc(f["rule"])}</td>'
+        f'<td data-label="Page"><a class="id" href="{esc(f.get("source_url", ""))}">'
+        f'{f["id"]}</a></td>'
+        f'<td data-label="Status">{esc(f.get("status"))}</td>'
+        f'<td data-label="Queued">{stamp(f.get("created_utc"))}</td>'
+        f'<td data-label="Engine said">{esc(f.get("latest_engine_reason", ""))}</td></tr>'
+        for f in unreviewed)
+    return ('<div class="scroller"><table class="rows"><thead><tr><th>Rule</th>'
+            '<th>Page</th><th>Status</th><th>Queued</th><th>Engine said</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>')
+
+
 def scope_box(beat):
     scope = beat.get("presentation", "scope") or {}
     if not scope.get("establishes") and not scope.get("does_not_establish"):
         return ""
+    third = scope.get("notice_dates")
+    extra = (f'  <p><strong>Notice dates:</strong> {third}</p>\n' if third else "")
     return (f'<div class="scope">\n'
             f'  <h2>{esc(scope.get("heading", "What this shows"))}</h2>\n'
             f'  <p><strong>Establishes:</strong> {scope["establishes"]}</p>\n'
             f'  <p><strong>Does not establish:</strong> {scope["does_not_establish"]}</p>\n'
+            f'{extra}'
             f'</div>')
 
 
@@ -473,6 +578,13 @@ def build():
     by_id = {r["id"]: r for r in records}
     runs = runner.load_runs(beat.name)
     changes = runner.all_changes(beat.name)
+    rules_path = (beat.path("storage", "rules_out")
+                  or beat.data_dir / f"{beat.name}-rules.json")
+    rules_report = (json.loads(rules_path.read_text(encoding="utf-8"))
+                    if rules_path.exists() else None)
+    findings = runner.load_findings(beat)
+    confirmed = [f for f in findings if f.get("status") == "confirmed"]
+    unreviewed = [f for f in findings if f.get("status") != "confirmed"]
     built = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     latest = runs[-1] if runs else None
@@ -515,6 +627,9 @@ def build():
         cells.append((f"{total:,}", esc(stat.get("label", stat["field"]))))
     if latest and latest.get("ids_absent") is not None:
         cells.append((f"{latest['ids_absent']}", "ids absent inside the range"))
+    if rules_report:
+        n_rules = len(rules_report["rules"])
+        cells.append((f"{n_rules}", f"rule{'s' if n_rules != 1 else ''} evaluated"))
     stats = "".join(f'<div><span class="n">{v}</span><span class="k">{k}</span></div>'
                     for v, k in cells)
 
@@ -589,6 +704,32 @@ def build():
   against the previous run.</p>
   {runs_table(runs)}
 </section>
+
+<section>
+  <h2>Rules</h2>
+  <p class="lede">Each rule is evaluated against every archived page and returns one
+  of three verdicts. A page whose evidence is missing, or whose first-seen date is
+  unbounded, returns indeterminate with a reason rather than a guess.</p>
+  {rules_section(rules_report)}
+</section>
+
+<hr class="divider">
+
+<section>
+  <h2>Confirmed findings</h2>
+  <p class="lede">A finding appears here only after a person has reviewed it and set
+  its status to confirmed in the findings file.</p>
+  {findings_section(confirmed, unreviewed, rules_report)}
+</section>
+
+<section class="internal">
+  <h2>Review queue, unreviewed</h2>
+  <p class="lede">Everything the engine has flagged that no one has reviewed yet.
+  Nothing in this section is a confirmed finding, and nothing here appears above.</p>
+  {unreviewed_section(unreviewed)}
+</section>
+
+<hr class="divider">
 
 <section>
   <h2>Totals</h2>
