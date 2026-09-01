@@ -18,6 +18,8 @@ Commands:
                                         the request log of the initial collection
   python3 runner.py runs <monitor>      show run history
   python3 runner.py snapshots <monitor> rebuild the archived-bytes ledger
+  python3 runner.py changes <monitor>   every change ever detected
+  python3 runner.py backfill <monitor>  add provenance to older change records
   python3 runner.py monitors            list installed monitors
 
 A run is recorded whether or not anything moved. A pass that finds no changes
@@ -605,6 +607,7 @@ def run(monitor):
             old_content = prior.get("content_sha256") or content_hash(monitor, before)
             if new_content != old_content:
                 stamp = now()
+                observed_before = (snaps.get(page_id) or {}).get("first_seen_utc") or None
                 kept = supersede(monitor, page_id, before, stamp)
                 fetcher.save(page_id, body)
                 fields = field_diff(monitor, before, body)
@@ -613,11 +616,15 @@ def run(monitor):
                                   "first_seen_utc": stamp}
                 changed.append({
                     "id": page_id,
+                    "url": monitor.url(page_id),
+                    "observed_before_utc": observed_before,
+                    "observed_after_utc": stamp,
                     "content_sha256_before": old_content,
                     "content_sha256_after": new_content,
                     "raw_sha256_before": sha256(before),
                     "raw_sha256_after": sha256(body),
                     "previous_snapshot": kept,
+                    "current_snapshot": str((monitor.archive / f"{page_id}.html").relative_to(ROOT)),
                     "fields_changed": fields,
                 })
                 log(f"  {page_id}: CHANGED — {', '.join(f['field'] for f in fields) or 'no diffed field'}")
@@ -719,6 +726,102 @@ def seed_run(monitor):
     return record
 
 
+def all_changes(monitor_name=None):
+    """Every change ever detected, newest first, each tagged with its run."""
+    out = []
+    for record in load_runs(monitor_name):
+        for change in record.get("changed_pages", []):
+            entry = dict(change)
+            entry["run_id"] = record["run_id"]
+            entry["monitor"] = record["monitor"]
+            entry["detected_in_run_started_utc"] = record["started_utc"]
+            out.append(entry)
+    out.sort(key=lambda c: (c.get("observed_after_utc") or c["detected_in_run_started_utc"],
+                            c["id"]), reverse=True)
+    return out
+
+
+def backfill_changes(monitor):
+    """Add provenance to change records written before the runner stored it.
+
+    Timestamps and hashes are read from the retained snapshot, the request log
+    and the snapshot ledger. Where the replaced bytes were not retained, the
+    record says so; nothing is reconstructed from what a page says now.
+    """
+    first_seen = {}
+    if monitor.request_log.exists():
+        with monitor.request_log.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row["http_status"] == "200":
+                    page_id, stamp = int(row["id"]), row["fetched_at_utc"]
+                    if page_id not in first_seen or stamp < first_seen[page_id]:
+                        first_seen[page_id] = stamp
+    snaps = load_snapshots(monitor)
+
+    touched = 0
+    for path in sorted(RUNS.glob("*.json")):
+        record = json.loads(path.read_text(encoding="utf-8"))
+        if record.get("monitor") != monitor.name or not record.get("changed_pages"):
+            continue
+        dirty = False
+        for change in record["changed_pages"]:
+            if change.get("observed_after_utc"):
+                continue
+            page_id = change["id"]
+            change.setdefault("url", monitor.url(page_id))
+            change["current_snapshot"] = str(
+                (monitor.archive / f"{page_id}.html").relative_to(ROOT))
+
+            prev = change.get("previous_snapshot")
+            prev_path = ROOT / prev if prev else None
+            if prev_path and prev_path.exists():
+                old_bytes = prev_path.read_bytes()
+                change["previous_snapshot_verified"] = (
+                    sha256(old_bytes) == change.get("raw_sha256_before"))
+                change["observed_before_utc"] = first_seen.get(page_id)
+                # Re-derive the field diff from the two retained snapshots.
+                current = (monitor.archive / f"{page_id}.html")
+                if current.exists() and sha256(current.read_bytes()) == change.get("raw_sha256_after"):
+                    change["fields_changed"] = field_diff(monitor, old_bytes, current.read_bytes())
+            else:
+                change["previous_snapshot"] = None
+                change["previous_snapshot_verified"] = False
+                change["observed_before_utc"] = None
+                change["provenance_note"] = (
+                    "The replaced bytes were not retained for this page, so the previous "
+                    "values recorded here cannot be checked against a stored snapshot.")
+
+            ledger = snaps.get(page_id)
+            if ledger and ledger.get("raw_sha256") == change.get("raw_sha256_after"):
+                change["observed_after_utc"] = ledger["first_seen_utc"]
+            elif prev:
+                change["observed_after_utc"] = None
+                change["provenance_note"] = (
+                    change.get("provenance_note", "") + " The page has changed again since "
+                    "this record was written, so the time these bytes were fetched is not "
+                    "recoverable from the ledger.").strip()
+            dirty = True
+            touched += 1
+        if dirty:
+            path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+            print(f"updated {path.relative_to(ROOT)}")
+    print(f"backfilled {touched} change record{'s' if touched != 1 else ''}")
+
+
+def show_changes(monitor):
+    changes = all_changes(monitor.name)
+    if not changes:
+        print("no changes detected in any recorded run")
+        return
+    for c in changes:
+        fields = ", ".join(f["field"] for f in c["fields_changed"]) or "no compared field"
+        verified = "verified" if c.get("previous_snapshot_verified") else "UNVERIFIED"
+        print(f"{c.get('observed_after_utc') or c['detected_in_run_started_utc']}  "
+              f"id {c['id']}  {fields}  [{verified}]")
+        for f in c["fields_changed"]:
+            print(f"    {f['field']}: {f['before']!r} -> {f['after']!r}")
+
+
 def load_runs(monitor=None):
     if not RUNS.exists():
         return []
@@ -786,6 +889,10 @@ def main():
         show_runs(monitor)
     elif cmd == "snapshots":
         seed_snapshots(monitor)
+    elif cmd == "changes":
+        show_changes(monitor)
+    elif cmd == "backfill":
+        backfill_changes(monitor)
     elif cmd == "extract":
         extract(monitor)
     elif cmd == "check":
