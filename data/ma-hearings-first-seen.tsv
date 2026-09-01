@@ -1,4 +1,4 @@
-id	first_seen_utc	first_seen_confidence	observed_in_run	window_start_utc
+record_key	first_seen_utc	first_seen_confidence	observed_in_run	window_start_utc
 5000	2026-08-31T03:58:20+00:00	unbounded	20260831T033020+0000	
 5001	2026-08-31T03:58:17+00:00	unbounded	20260831T033020+0000	
 5002	2026-08-31T03:58:15+00:00	unbounded	20260831T033020+0000	

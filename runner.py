@@ -499,29 +499,42 @@ def check(beat, sample_size=20):
 #   unbounded  the page was already there the first time anything looked. It
 #              existed at some unknown earlier time. Not evidence of posting.
 
-FIRST_SEEN_COLUMNS = ["id", "first_seen_utc", "first_seen_confidence",
+# Keyed by record_key, a string, not by an integer page id. A beat whose unit is
+# a document carries many records inside one fetched file, and those records are
+# identified by whatever key their source gives them. For a beat whose unit is a
+# page the key is the page id written as a string, so nothing about the existing
+# entries changes except the column they sit under.
+FIRST_SEEN_COLUMNS = ["record_key", "first_seen_utc", "first_seen_confidence",
                       "observed_in_run", "window_start_utc"]
 
 
 def load_first_seen(beat):
+    """record_key (str) -> row. Reads the pre-migration 'id' header too, so an
+    existing ledger loads unchanged and is rewritten under the new column."""
     path = beat.first_seen_log
     out = {}
     if path.exists():
         with path.open(encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
-                out[int(row["id"])] = row
+                key = row.get("record_key") or row.get("id")
+                if key is None:
+                    continue
+                out[str(key)] = row
     return out
 
 
 def save_first_seen(beat, ledger):
     path = beat.first_seen_log
     path.parent.mkdir(parents=True, exist_ok=True)
+    def sort_key(k):
+        return (0, int(k), "") if k.isdigit() else (1, 0, k)
+
     with path.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
         w.writerow(FIRST_SEEN_COLUMNS)
-        for page_id in sorted(ledger):
-            row = ledger[page_id]
-            w.writerow([page_id] + [row.get(c, "") for c in FIRST_SEEN_COLUMNS[1:]])
+        for key in sorted(ledger, key=sort_key):
+            row = ledger[key]
+            w.writerow([key] + [row.get(c, "") for c in FIRST_SEEN_COLUMNS[1:]])
 
 
 def request_history(beat):
@@ -562,13 +575,14 @@ def seed_first_seen(beat):
     first_run = runs[0]["run_id"] if runs else ""
     added = 0
     for page_id in beat.archived_ids():
-        if page_id in ledger:
+        key = str(page_id)
+        if key in ledger:
             continue
         seen = [t for t, status in history.get(page_id, []) if status == "200"]
         if not seen:
             continue
         confidence, window = classify_first_seen(history, page_id, seen[0])
-        ledger[page_id] = {"first_seen_utc": seen[0],
+        ledger[key] = {"first_seen_utc": seen[0],
                            "first_seen_confidence": confidence,
                            "observed_in_run": first_run,
                            "window_start_utc": window}
@@ -702,9 +716,9 @@ def run(beat):
                 snaps[page_id] = {"raw_sha256": sha256(body),
                                   "content_sha256": new_content,
                                   "first_seen_utc": observed}
-                if page_id not in first_seen:
+                if str(page_id) not in first_seen:
                     confidence, window = classify_first_seen(history, page_id, observed)
-                    first_seen[page_id] = {
+                    first_seen[str(page_id)] = {
                         "first_seen_utc": observed,
                         "first_seen_confidence": confidence,
                         "observed_in_run": started.replace(":", "").replace("-", ""),
@@ -773,10 +787,11 @@ def run(beat):
         "pages_archived_after_run": len(beat.archived_ids()),
         "new_pages": new_pages,
         "first_seen_recorded": [
-            {"id": i, "first_seen_utc": first_seen[i]["first_seen_utc"],
-             "first_seen_confidence": first_seen[i]["first_seen_confidence"],
-             "window_start_utc": first_seen[i]["window_start_utc"]}
-            for i in new_pages if i in first_seen],
+            {"record_key": str(i),
+             "first_seen_utc": first_seen[str(i)]["first_seen_utc"],
+             "first_seen_confidence": first_seen[str(i)]["first_seen_confidence"],
+             "window_start_utc": first_seen[str(i)]["window_start_utc"]}
+            for i in new_pages if str(i) in first_seen],
         "changed_pages": changed,
         "removed_pages": removed,
         "unchanged_pages": unchanged,

@@ -128,7 +128,9 @@ def evaluate_beat(beat, records, first_seen):
     for rule in rules:
         counts = {COMPLIANT: 0, NOT_COMPLIANT: 0, INDETERMINATE: 0}
         for record in records:
-            outcome = evaluate(rule, record, first_seen.get(record["id"]), date_formats)
+            outcome = evaluate(rule, record,
+                               first_seen.get(str(record.get("record_key", record["id"]))),
+                               date_formats)
             counts[outcome["status"]] += 1
             results.append({
                 "id": record["id"],
