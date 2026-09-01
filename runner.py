@@ -20,6 +20,7 @@ Commands:
   python3 runner.py snapshots <beat> rebuild the archived-bytes ledger
   python3 runner.py changes <beat>   every change ever detected
   python3 runner.py first-seen <beat>  record when each archived page was first seen
+  python3 runner.py rules <beat>      evaluate the beat's rules against every page
   python3 runner.py backfill <beat>  add provenance to older change records
   python3 runner.py beats               list installed beats
 
@@ -923,6 +924,33 @@ def backfill_changes(beat):
     print(f"backfilled {touched} change record{'s' if touched != 1 else ''}")
 
 
+def evaluate_rules(beat):
+    """Run the beat's rules over every archived page and write the report."""
+    import rules as rule_engine
+
+    data_file = beat.data_dir / f"{beat.name}.json"
+    if not data_file.exists():
+        sys.exit(f"no extract at {data_file}; run 'extract' first")
+    records = json.loads(data_file.read_text(encoding="utf-8"))
+    first_seen = load_first_seen(beat)
+    if not first_seen:
+        sys.exit("no first-seen ledger; run 'first-seen' first")
+
+    report, path = rule_engine.run(beat, records, first_seen)
+    print(f"evaluated {len(report['rules'])} rule(s) over {report['pages_evaluated']} pages "
+          f"-> {path.relative_to(ROOT)}\n")
+    for rule in report["rules"]:
+        counts = report["tallies"][rule["id"]]
+        print(f"{rule['id']}: {rule.get('description', '').strip()}")
+        for status in ("compliant", "not_compliant", "indeterminate"):
+            print(f"  {status:<16} {counts[status]:>5}")
+        reasons = Counter(r["reason"] for r in report["results"]
+                          if r["rule"] == rule["id"] and r["status"] == "indeterminate")
+        for reason, n in reasons.most_common(3):
+            print(f"    {n:>5}  {reason[:96]}")
+    return report
+
+
 def show_changes(beat):
     changes = all_changes(beat.name)
     if not changes:
@@ -1008,6 +1036,8 @@ def main():
         show_changes(beat)
     elif cmd == "first-seen":
         seed_first_seen(beat)
+    elif cmd == "rules":
+        evaluate_rules(beat)
     elif cmd == "backfill":
         backfill_changes(beat)
     elif cmd == "extract":
